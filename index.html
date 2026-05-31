@@ -766,6 +766,8 @@
     <button class="pp-btn" onclick="jumpTo('pz-r4')">🧩 Cryptic</button>
     <button class="pp-btn" onclick="jumpTo('pz-r5')">🧠 Logic</button>
     <button class="pp-btn" onclick="jumpTo('pz-r6')">✏️ Fill Blanks</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r7')">🔢 Sudoku</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r8')">🧠 Logic</button>
   </div>
 
 
@@ -820,6 +822,26 @@
     <div id="r-fillblank"></div>
   </div>
 
+  <div class="puzzle-card" id="pz-r7" data-num="Puzzle R-7 · Sudoku">
+    <h3>Granite Grid: Mount Rushmore Sudoku</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Hard</div>
+    <p>A harder Sudoku challenge. Fill every row, column, and 3×3 box with 1–9. Tap a cell, then tap a number.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-r"></div>
+    <div class="numpad" id="numpad-r"></div>
+    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudokuBoard('r')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; letter-spacing:1px;">Check Solution</button>
+      <button onclick="clearSudokuBoard('r')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer; letter-spacing:1px;">Clear</button>
+    </div>
+    <div id="sudoku-msg-r" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:10px; display:none;"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-r8" data-num="Puzzle R-8 · Logic Puzzle">
+    <h3>The Avenue of Flags: A Logic Puzzle</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
+    <p>Five visitors arrived at Mount Rushmore on five different days, from five different states, each with a favorite president. Use the clues to match them all!<br><small style="color:var(--stone); font-style:italic;">A classic grid logic puzzle — mark ✓ for yes, ✗ for no.</small></p>
+    <div id="rushmore-logic2"></div>
+  </div>
+
 </div><!-- end rushmore -->
 
 <!-- YELLOWSTONE SECTION -->
@@ -841,6 +863,8 @@
     <button class="pp-btn" onclick="jumpTo('pz-y6')">🧠 Logic</button>
     <button class="pp-btn" onclick="jumpTo('pz-y7')">👁 Spot Diff</button>
     <button class="pp-btn" onclick="jumpTo('pz-y8')">✏️ Fill Blanks</button>
+    <button class="pp-btn" onclick="jumpTo('pz-y9')">🔢 Sudoku 2</button>
+    <button class="pp-btn" onclick="jumpTo('pz-y10')">🧠 Logic 2</button>
   </div>
 
 
@@ -919,6 +943,26 @@
     <div id="ys-fillblank"></div>
   </div>
 
+  <div class="puzzle-card" id="pz-y9" data-num="Puzzle Y-9 · Sudoku">
+    <h3>Thermal Grid: Yellowstone Sudoku</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Hard</div>
+    <p>A harder Sudoku. Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-y2"></div>
+    <div class="numpad" id="numpad-y2"></div>
+    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudokuBoard('y2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; letter-spacing:1px;">Check Solution</button>
+      <button onclick="clearSudokuBoard('y2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer; letter-spacing:1px;">Clear</button>
+    </div>
+    <div id="sudoku-msg-y2" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:10px; display:none;"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-y10" data-num="Puzzle Y-10 · Logic Puzzle">
+    <h3>The Geyser Schedule: A Logic Puzzle</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
+    <p>Five geysers in the Upper Geyser Basin each erupt at a different interval, reach a different height, and have a different color pool. Use the clues to match them all!<br><small style="color:var(--stone); font-style:italic;">Mark ✓ for yes, ✗ for no.</small></p>
+    <div id="yellowstone-logic2"></div>
+  </div>
+
 </div><!-- end yellowstone -->
 
 <!-- BADLANDS SECTION -->
@@ -938,6 +982,8 @@
     <button class="pp-btn" onclick="jumpTo('pz-b5')">✓/✗ True/False</button>
     <button class="pp-btn" onclick="jumpTo('pz-b6')">⏱ Timeline</button>
     <button class="pp-btn" onclick="jumpTo('pz-b7')">✏️ Fill Blanks</button>
+    <button class="pp-btn" onclick="jumpTo('pz-b8')">🔢 Sudoku</button>
+    <button class="pp-btn" onclick="jumpTo('pz-b9')">🧠 Logic</button>
   </div>
 
 
@@ -993,6 +1039,26 @@
     <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
     <p>Complete the fossil field notes. Use the word bank to fill every blank!</p>
     <div id="b-fillblank"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-b8" data-num="Puzzle B-8 · Sudoku">
+    <h3>Fossil Grid: Badlands Sudoku</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Medium</div>
+    <p>Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-b"></div>
+    <div class="numpad" id="numpad-b"></div>
+    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudokuBoard('b')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; letter-spacing:1px;">Check Solution</button>
+      <button onclick="clearSudokuBoard('b')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer; letter-spacing:1px;">Clear</button>
+    </div>
+    <div id="sudoku-msg-b" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:10px; display:none;"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-b9" data-num="Puzzle B-9 · Logic Puzzle">
+    <h3>The Fossil Hunters: A Logic Puzzle</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
+    <p>Five paleontologists each found a different fossil, in a different rock layer, in a different year. Use the clues to match them all!<br><small style="color:var(--stone); font-style:italic;">Mark ✓ for yes, ✗ for no.</small></p>
+    <div id="badlands-logic2"></div>
   </div>
 
 </div><!-- end badlands -->
@@ -2682,7 +2748,8 @@ const devilstowerTOF = [
       <button class="pp-btn" onclick="jumpTo('pz-d4')">🧩 Cryptic</button>
       <button class="pp-btn" onclick="jumpTo('pz-d5')">✓/✗ True/False</button>
       <button class="pp-btn" onclick="jumpTo('pz-d6')">📖 Legend</button>
-      <button class="pp-btn" onclick="jumpTo('pz-d7')">🎨 Drawing</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d8')">🔢 Sudoku</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d9')">🧠 Logic</button>
     </div>
 
     <div class="puzzle-card" id="pz-d1" data-num="Puzzle D-1 · Scavenger Hunt">
@@ -2730,6 +2797,26 @@ const devilstowerTOF = [
       <p>Many tribes tell stories about how the Tower's columns were formed. Read the legend fragment below, then answer the questions!</p>
       <div id="dt-legend"></div>
     </div>
+
+    <div class="puzzle-card" id="pz-d8" data-num="Puzzle D-8 · Sudoku">
+      <h3>Column Grid: Devil's Tower Sudoku</h3>
+      <div class="difficulty">⭐⭐⭐ Explorer Level · Hard</div>
+      <p>Like the Tower's 867 hexagonal columns — every row, column, and box must contain 1–9.</p>
+      <div class="sudoku-wrap" id="sudoku-wrap-d"></div>
+      <div class="numpad" id="numpad-d"></div>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button onclick="checkSudokuBoard('d')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; letter-spacing:1px;">Check Solution</button>
+        <button onclick="clearSudokuBoard('d')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer; letter-spacing:1px;">Clear</button>
+      </div>
+      <div id="sudoku-msg-d" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:10px; display:none;"></div>
+    </div>
+
+    <div class="puzzle-card" id="pz-d9" data-num="Puzzle D-9 · Logic Puzzle">
+      <h3>The Climbers' Register: A Logic Puzzle</h3>
+      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
+      <p>Five historical climbers of Devil's Tower each used a different route, reached the summit in a different year, and came from a different state. Use the clues!<br><small style="color:var(--stone); font-style:italic;">Mark ✓ for yes, ✗ for no.</small></p>
+      <div id="devilstower-logic"></div>
+    </div>
   `;
   // Insert before closing body
   document.body.insertBefore(section, document.getElementById('fabHQ').nextSibling);
@@ -2741,6 +2828,7 @@ const devilstowerTOF = [
   buildCryptic(devilstowerCryptics, 'dt-cryptic');
   buildTOF2(devilstowerTOF, 'dt-tof');
   buildLegend('dt-legend');
+  setTimeout(() => { buildSudokuBoard('d'); }, 100);
   // Make all DT cards collapsible
   // cards built inline, no collapsible needed
 })();
@@ -2880,7 +2968,287 @@ function doUpdate() {
 
 window.addEventListener('load', checkForUpdate);
 
-// Register service worker for PWA / offline use
+// ===================== REUSABLE SUDOKU ENGINE =====================
+const sudokuBoards = {
+  // Original Yellowstone board (already built separately above)
+  // Rushmore - Hard
+  r: {
+    puzzle: [
+      [0,2,0, 0,0,0, 0,0,0],
+      [0,0,0, 6,0,0, 0,0,3],
+      [0,7,4, 0,8,0, 0,0,0],
+      [0,0,0, 0,0,3, 0,0,2],
+      [0,8,0, 0,4,0, 0,1,0],
+      [6,0,0, 5,0,0, 0,0,0],
+      [0,0,0, 0,1,0, 7,8,0],
+      [5,0,0, 0,0,9, 0,0,0],
+      [0,0,0, 0,0,0, 0,4,0]
+    ],
+    solution: [
+      [1,2,6, 4,3,7, 9,5,8],
+      [8,9,5, 6,2,1, 4,7,3],
+      [3,7,4, 9,8,5, 1,2,6],
+      [4,5,7, 1,9,3, 8,6,2],
+      [9,8,3, 2,4,6, 5,1,7],
+      [6,1,2, 5,7,8, 3,9,4],
+      [2,6,9, 3,1,4, 7,8,5],
+      [5,4,8, 7,6,9, 2,3,1],
+      [7,3,1, 8,5,2, 6,4,9]
+    ]
+  },
+  // Yellowstone 2 - Hard
+  y2: {
+    puzzle: [
+      [0,0,0, 2,6,0, 7,0,1],
+      [6,8,0, 0,7,0, 0,9,0],
+      [1,9,0, 0,0,4, 5,0,0],
+      [8,2,0, 1,0,0, 0,4,0],
+      [0,0,4, 6,0,2, 9,0,0],
+      [0,5,0, 0,0,3, 0,2,8],
+      [0,0,9, 3,0,0, 0,7,4],
+      [0,4,0, 0,5,0, 0,3,6],
+      [7,0,3, 0,1,8, 0,0,0]
+    ],
+    solution: [
+      [4,3,5, 2,6,9, 7,8,1],
+      [6,8,2, 5,7,1, 4,9,3],
+      [1,9,7, 8,3,4, 5,6,2],
+      [8,2,6, 1,9,5, 3,4,7],
+      [3,7,4, 6,8,2, 9,1,5],
+      [9,5,1, 7,4,3, 6,2,8],
+      [5,1,9, 3,2,6, 8,7,4],
+      [2,4,8, 9,5,7, 1,3,6],
+      [7,6,3, 4,1,8, 2,5,9]
+    ]
+  },
+  // Badlands - Medium
+  b: {
+    puzzle: [
+      [0,0,0, 0,0,0, 0,0,0],
+      [0,0,0, 0,0,3, 0,8,5],
+      [0,0,1, 0,2,0, 0,0,0],
+      [0,0,0, 5,0,7, 0,0,0],
+      [0,0,4, 0,0,0, 1,0,0],
+      [0,9,0, 0,0,0, 0,0,0],
+      [5,0,0, 0,0,0, 0,7,3],
+      [0,0,2, 0,1,0, 0,0,0],
+      [0,0,0, 0,4,0, 0,0,9]
+    ],
+    solution: [
+      [9,8,7, 6,5,4, 3,2,1],
+      [2,4,6, 1,7,3, 9,8,5],
+      [3,5,1, 9,2,8, 7,4,6],
+      [1,2,8, 5,3,7, 6,9,4],
+      [6,3,4, 8,9,2, 1,5,7],
+      [7,9,5, 4,6,1, 8,3,2],
+      [5,1,9, 2,8,6, 4,7,3],
+      [4,7,2, 3,1,9, 5,6,8],
+      [8,6,3, 7,4,5, 2,1,9]
+    ]
+  },
+  // Devil's Tower - Hard
+  d: {
+    puzzle: [
+      [0,0,0, 0,0,0, 0,0,0],
+      [0,0,0, 0,0,3, 0,8,5],
+      [0,0,1, 0,2,0, 0,0,0],
+      [0,0,0, 5,0,7, 0,0,0],
+      [0,0,4, 0,0,0, 1,0,0],
+      [0,9,0, 0,0,0, 0,0,0],
+      [5,0,0, 0,0,0, 0,7,3],
+      [0,0,2, 0,1,0, 0,0,0],
+      [0,0,0, 0,4,0, 0,0,9]
+    ],
+    solution: [
+      [9,8,7, 6,5,4, 3,2,1],
+      [2,4,6, 1,7,3, 9,8,5],
+      [3,5,1, 9,2,8, 7,4,6],
+      [1,2,8, 5,3,7, 6,9,4],
+      [6,3,4, 8,9,2, 1,5,7],
+      [7,9,5, 4,6,1, 8,3,2],
+      [5,1,9, 2,8,6, 4,7,3],
+      [4,7,2, 3,1,9, 5,6,8],
+      [8,6,3, 7,4,5, 2,1,9]
+    ]
+  }
+};
+
+const sudokuStates = {};
+const sudokuSelections = {};
+
+function buildSudokuBoard(id) {
+  const board = sudokuBoards[id];
+  if (!board) return;
+  sudokuStates[id] = board.puzzle.map(r => [...r]);
+  sudokuSelections[id] = null;
+
+  const wrap = document.getElementById(`sudoku-wrap-${id}`);
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  const gridDiv = document.createElement('div');
+  gridDiv.className = 'sudoku-grid';
+  gridDiv.id = `sudoku-grid-${id}`;
+
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'sudoku-cell';
+      cell.id = `sc-${id}-${r}-${c}`;
+      if (r === 2 || r === 5) cell.classList.add(`sudoku-row-${r}`);
+      if (board.puzzle[r][c] !== 0) {
+        cell.classList.add('given');
+        cell.textContent = board.puzzle[r][c];
+      } else {
+        cell.classList.add('editable');
+        cell.textContent = sudokuStates[id][r][c] || '';
+        cell.addEventListener('click', () => {
+          document.querySelectorAll(`#sudoku-grid-${id} .selected-s`).forEach(e => e.classList.remove('selected-s'));
+          cell.classList.add('selected-s');
+          sudokuSelections[id] = {r, c};
+        });
+      }
+      gridDiv.appendChild(cell);
+    }
+  }
+  wrap.appendChild(gridDiv);
+
+  const numpad = document.getElementById(`numpad-${id}`);
+  if (!numpad) return;
+  numpad.innerHTML = '';
+  for (let n = 1; n <= 9; n++) {
+    const btn = document.createElement('button');
+    btn.textContent = n;
+    btn.onclick = () => enterSudokuNum(id, n);
+    numpad.appendChild(btn);
+  }
+  const clr = document.createElement('button');
+  clr.textContent = '✕';
+  clr.onclick = () => enterSudokuNum(id, 0);
+  numpad.appendChild(clr);
+}
+
+function enterSudokuNum(id, n) {
+  const sel = sudokuSelections[id];
+  if (!sel) return;
+  const {r, c} = sel;
+  if (sudokuBoards[id].puzzle[r][c] !== 0) return;
+  sudokuStates[id][r][c] = n;
+  const el = document.getElementById(`sc-${id}-${r}-${c}`);
+  if (el) { el.textContent = n || ''; el.classList.remove('error'); }
+}
+
+function checkSudokuBoard(id) {
+  const board = sudokuBoards[id];
+  const state = sudokuStates[id];
+  if (!board || !state) return;
+  let errors = 0;
+  for (let r = 0; r < 9; r++) for (let c = 0; c < 9; c++) {
+    const el = document.getElementById(`sc-${id}-${r}-${c}`);
+    if (board.puzzle[r][c] === 0) {
+      if (state[r][c] !== 0 && state[r][c] !== board.solution[r][c]) {
+        if (el) el.classList.add('error'); errors++;
+      } else if (el) el.classList.remove('error');
+    }
+  }
+  const msg = document.getElementById(`sudoku-msg-${id}`);
+  if (!msg) return;
+  msg.style.display = 'block';
+  const filled = state.flat().filter((v,i) => board.puzzle.flat()[i] === 0 && v !== 0).length;
+  const total = board.puzzle.flat().filter(v => v === 0).length;
+  if (errors === 0 && filled === total) {
+    msg.textContent = '🎉 Perfect solution! +50 points!';
+    msg.style.color = 'var(--forest)';
+    addScore(50);
+  } else if (errors === 0) {
+    msg.textContent = `✓ No errors — keep going! (${filled}/${total} filled)`;
+    msg.style.color = 'var(--sky)';
+  } else {
+    msg.textContent = `✗ ${errors} error(s) — marked in red.`;
+    msg.style.color = 'var(--rust)';
+  }
+}
+
+function clearSudokuBoard(id) {
+  const board = sudokuBoards[id];
+  if (!board) return;
+  sudokuStates[id] = board.puzzle.map(r => [...r]);
+  const msg = document.getElementById(`sudoku-msg-${id}`);
+  if (msg) msg.style.display = 'none';
+  buildSudokuBoard(id);
+}
+
+// Build all new sudoku boards
+buildSudokuBoard('r');
+buildSudokuBoard('y2');
+buildSudokuBoard('b');
+buildSudokuBoard('d');
+
+// ===================== NEW LOGIC PUZZLES =====================
+
+// Rushmore: Avenue of Flags
+buildLogicPuzzle('rushmore-logic2',
+  ['Alita', 'Bertram', 'Clara', 'Desmond', 'Evelyn'],
+  ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Texas', 'Ohio', 'Montana', 'Maine', 'Oregon', 'Washington', 'Jefferson', 'Roosevelt', 'Lincoln', 'All Four'],
+  [
+    "The visitor from Texas arrived on Monday.",
+    "Bertram arrived the day after the visitor from Ohio.",
+    "Clara's favorite president is the one whose face was originally carved in the wrong spot.",
+    "The visitor from Montana arrived midweek and loves the Rough Rider president.",
+    "Evelyn is from Maine and arrived on Friday.",
+    "Desmond's favorite president is the one who preserved the Union during the Civil War.",
+    "The visitor who loves all four presidents arrived on Wednesday.",
+    "Alita arrived before Clara but after Bertram.",
+    "The visitor from Oregon arrived on Thursday."
+  ]
+);
+
+// Yellowstone: Geyser Schedule
+buildLogicPuzzle('yellowstone-logic2',
+  ['Old Faithful', 'Steamboat', 'Beehive', 'Grand', 'Castle'],
+  ['44 min', '90 min', '8 hrs', '12 hrs', 'Irregular', '100 ft', '184 ft', '200 ft', '300 ft', '90 ft', 'Blue', 'Clear', 'Green', 'Orange', 'White'],
+  [
+    "Old Faithful erupts on average every 90 minutes and shoots water 184 feet high.",
+    "Steamboat is the world's tallest active geyser and erupts irregularly.",
+    "The geyser with the blue pool erupts every 44 minutes.",
+    "Castle Geyser has an orange mineral cone and erupts roughly every 12 hours.",
+    "Beehive Geyser erupts about every 8 hours and reaches 200 feet.",
+    "The geyser with the clear pool is the tallest at 300 feet.",
+    "Grand Geyser has a green-tinged pool and erupts every 8 hours.",
+    "The geyser that erupts every 44 minutes reaches only 90 feet."
+  ]
+);
+
+// Badlands: Fossil Hunters
+buildLogicPuzzle('badlands-logic2',
+  ['Dr. Marsh', 'Dr. Cope', 'Dr. Brown', 'Dr. Hatcher', 'Dr. Leidy'],
+  ['1850', '1880', '1907', '1922', '1993', 'Brontothere', 'Mosasaur', 'Oreodont', 'Titanothere', 'Ancient Horse', 'Layer 1', 'Layer 2', 'Layer 3', 'Layer 4', 'Layer 5'],
+  [
+    "Dr. Leidy made the first scientific fossil discovery in the Badlands in 1850.",
+    "The Mosasaur fossil was found in the deepest rock layer — the oldest sediment.",
+    "Dr. Brown discovered the Titanothere skeleton in 1907.",
+    "The Oreodont was found in Layer 3, the middle rock band.",
+    "Dr. Cope and Dr. Marsh were bitter rivals — Cope arrived one year after Marsh.",
+    "The Big Pig Dig in 1993 uncovered the Ancient Horse remains.",
+    "Dr. Hatcher found his specimen in Layer 2, just above the oldest layer.",
+    "The Brontothere — the thunder beast — was found in Layer 4 in 1922."
+  ]
+);
+
+// Devil's Tower: Climbers' Register
+buildLogicPuzzle('devilstower-logic',
+  ['Rogers', 'Ripley', 'Fritz', 'Durrance', 'Wiessner'],
+  ['1893', '1927', '1937', '1938', '1941', 'Stake Ladder', 'South Face', 'Durrance Route', 'East Face', 'North Face', 'Wyoming', 'Colorado', 'Montana', 'New York', 'Vermont'],
+  [
+    "Rogers and Ripley were the first to summit in 1893 using a wooden stake ladder they built themselves.",
+    "Fritz Wiessner completed the first true rock climb of the Tower in 1937.",
+    "The Durrance Route — now the most popular — was established in 1938 by its namesake.",
+    "The climber from New York pioneered the East Face route.",
+    "Wiessner was originally from Germany but represented Vermont.",
+    "The 1927 climber used the South Face approach and was from Wyoming.",
+    "Jack Durrance was from Colorado.",
+    "The North Face route was the last of the five to be established, in 1941."
+  ]
+);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/FamilyExpeditions/sw.js').catch(() => {});
