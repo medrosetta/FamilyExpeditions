@@ -1,8 +1,9 @@
 {
-  "name": "Lee Family Expeditions",
-  "short_name": "Lee Expeditions",
+  "name": "Family Expeditions",
+  "short_name": "Family Expeditions",
   "description": "Lee Family road trip puzzle kit — Black Hills & Yellowstone",
-  "start_url": "/index.html",
+  "start_url": "/FamilyExpeditions/index.html",
+  "scope": "/FamilyExpeditions/",
   "display": "standalone",
   "background_color": "#5a2e0a",
   "theme_color": "#7a4a1e",

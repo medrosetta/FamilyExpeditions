@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#7a4a1e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Lee Expeditions">
+<meta name="apple-mobile-web-app-title" content="Family Expeditions">
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap');
@@ -1632,7 +1632,7 @@ buildSpotDiff();
 // Register service worker for PWA / offline use
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('/FamilyExpeditions/sw.js').catch(() => {});
   });
 }
 </script>

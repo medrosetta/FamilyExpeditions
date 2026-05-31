@@ -1,9 +1,9 @@
-const CACHE = 'lee-expeditions-v1';
+const CACHE = 'family-expeditions-v1';
 const ASSETS = [
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/FamilyExpeditions/index.html',
+  '/FamilyExpeditions/manifest.json',
+  '/FamilyExpeditions/icon-192.png',
+  '/FamilyExpeditions/icon-512.png'
 ];
 
 self.addEventListener('install', e => {
