@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family Expeditions — Great Plains & Peaks Puzzle Kit</title>
+<title>Lee Family Expeditions — Great Plains & Peaks Puzzle Kit</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#7a4a1e">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -199,12 +199,13 @@
   }
   .back-btn:hover { background: var(--stone); color: var(--parchment); }
 
-  /* PUZZLE CARD — COLLAPSIBLE */
+  /* PUZZLE CARD */
   .puzzle-card {
     background: var(--parchment-dark);
     border: 1px solid var(--leather);
-    margin-bottom: 16px;
-    box-shadow: 3px 3px 0 var(--shadow);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    box-shadow: 4px 4px 0 var(--shadow);
     position: relative;
   }
 
@@ -223,27 +224,12 @@
     padding: 3px 12px;
   }
 
-  .card-header {
-    padding: 22px 28px 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-
-  .card-header:hover { background: rgba(122,74,30,0.05); }
-
-  .card-header-left { flex: 1; }
-
   .puzzle-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--rust);
-    margin-bottom: 4px;
+    margin-bottom: 12px;
   }
 
   .puzzle-card .difficulty {
@@ -252,32 +238,14 @@
     letter-spacing: 2px;
     color: var(--gold);
     text-transform: uppercase;
+    margin-bottom: 16px;
   }
 
-  .card-toggle {
-    font-size: 18px;
-    color: var(--leather);
-    transition: transform 0.25s;
-    min-width: 24px;
-    text-align: center;
-  }
-
-  .puzzle-card.open .card-toggle { transform: rotate(180deg); }
-
-  .card-body {
-    display: none;
-    padding: 0 28px 24px;
-    border-top: 1px dashed var(--parchment-dark);
-  }
-
-  .card-body p {
+  .puzzle-card p {
     font-size: 14px;
     line-height: 1.8;
     margin-bottom: 12px;
-    margin-top: 14px;
   }
-
-  .puzzle-card.open .card-body { display: block; }
 
   /* SCAVENGER HUNT */
   .hunt-grid {
@@ -689,7 +657,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">v1.0</span></div>
+  <div>LEE FAMILY EXPEDITIONS</div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -701,20 +669,19 @@
 
 <!-- COVER -->
 <div class="cover" id="cover">
-  <div class="cover-badge">Family Expeditions — June 2026</div>
+  <div class="cover-badge">Lee Family Expeditions — June 2026</div>
   <div class="cover-divider"></div>
   <h1>Great Plains<br><span>&amp; Peaks</span></h1>
-  <div class="cover-sub">Puzzle Kit — Black Hills, Badlands, Yellowstone &amp; Devil's Tower</div>
+  <div class="cover-sub">Puzzle Kit — Black Hills, Badlands &amp; Yellowstone</div>
   <div class="cover-divider"></div>
   <div class="cover-details">
     Prepared for the Expedition of June 6–21, 2026<br>
-    From the Desk of Family Expeditions
+    From the Desk of Lee Family Expeditions
   </div>
   <div class="cover-nav">
     <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
     <button onclick="showSection('badlands')">🦕 Badlands</button>
     <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
-    <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
   </div>
 </div>
 
@@ -729,14 +696,8 @@
 
   <!-- SCAVENGER HUNT - RUSHMORE -->
   <div class="puzzle-card" data-num="Puzzle R-1 · Scavenger Hunt">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Presidents on Patrol: Black Hills Scavenger Hunt</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · 50 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Presidents on Patrol: Black Hills Scavenger Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 50 pts possible</div>
     <p>Check off each item as you find or complete it during your Black Hills visit. Tap to mark as found!</p>
     <div class="hunt-grid" id="rushmore-hunt"></div>
     <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
@@ -746,28 +707,16 @@
 
   <!-- TRIVIA - RUSHMORE -->
   <div class="puzzle-card" data-num="Puzzle R-2 · Trivia">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Stone Cold Facts: Mount Rushmore Quiz</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Stone Cold Facts: Mount Rushmore Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
     <p>Seven questions about the mountain, the presidents, and the people who built it. No peeking!</p>
     <div id="rushmore-trivia"></div>
   </div>
 
   <!-- WORD SEARCH - RUSHMORE -->
   <div class="puzzle-card" data-num="Puzzle R-3 · Word Search">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Black Hills Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Black Hills Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
     <p>Find all 12 hidden words. They run across, down, and diagonally.</p>
     <div class="word-search-wrap" id="rushmore-ws-wrap"></div>
     <div class="word-list" id="rushmore-ws-words"></div>
@@ -775,28 +724,16 @@
 
   <!-- CRYPTIC - RUSHMORE -->
   <div class="puzzle-card" data-num="Puzzle R-4 · Cryptic Clues">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Granite Riddles: Presidential Cryptics</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Granite Riddles: Presidential Cryptics</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
     <p>Each clue hides two pathways to the same answer — a wordplay definition and a direct definition. Unravel both to find the word!</p>
     <div id="rushmore-cryptic"></div>
   </div>
 
   <!-- LOGIC PUZZLE - RUSHMORE -->
   <div class="puzzle-card" data-num="Puzzle R-5 · Logic Puzzle">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>The Sculptor's Order: A Logic Puzzle</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Montague-style</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>The Sculptor's Order: A Logic Puzzle</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Montague-style</div>
     <p>Gutzon Borglum's four workers each carved a different part of a different president's face in a different year. Use the clues to match them all up!</p>
     <div id="rushmore-logic"></div>
   </div>
@@ -814,14 +751,8 @@
 
   <!-- SCAVENGER HUNT - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-1 · Scavenger Hunt">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Field Agent Hunt: Yellowstone Edition</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · 80 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Field Agent Hunt: Yellowstone Edition</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 80 pts possible</div>
     <p>Collect evidence throughout the park. Tap to mark as spotted!</p>
     <div class="hunt-grid" id="yellowstone-hunt"></div>
     <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
@@ -831,28 +762,16 @@
 
   <!-- TRIVIA - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-2 · Trivia">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Hot Springs, Cold Facts: Yellowstone Quiz</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Hot Springs, Cold Facts: Yellowstone Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
     <p>From Old Faithful to Lamar Valley wolves — test your Yellowstone knowledge.</p>
     <div id="yellowstone-trivia"></div>
   </div>
 
   <!-- WORD SEARCH - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-3 · Word Search">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Wonderland Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Wonderland Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
     <p>Find 14 Yellowstone words hidden in all directions.</p>
     <div class="word-search-wrap" id="yellowstone-ws-wrap"></div>
     <div class="word-list" id="yellowstone-ws-words"></div>
@@ -860,28 +779,16 @@
 
   <!-- CRYPTIC - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-4 · Cryptic Clues">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Geyser Code: Yellowstone Cryptics</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Geyser Code: Yellowstone Cryptics</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
     <p>Decode each two-part clue. The definition lurks inside the wordplay!</p>
     <div id="yellowstone-cryptic"></div>
   </div>
 
   <!-- SUDOKU - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-5 · Sudoku">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Old Faithful Sudoku</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · Medium difficulty</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Old Faithful Sudoku</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Medium difficulty</div>
     <p>A park as orderly as a geyser's schedule. Fill in the grid — every row, column, and 3×3 box must contain 1–9. Tap a cell, then tap a number.</p>
     <div class="sudoku-wrap" id="sudoku-wrap"></div>
     <div class="numpad" id="numpad"></div>
@@ -894,28 +801,16 @@
 
   <!-- LOGIC PUZZLE - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-6 · Logic Puzzle">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>The Day Planner: Yellowstone Logic</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Montague-style</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
-    <p>Five expedition members each have a favorite day and favorite Yellowstone feature from the itinerary. Can you match them all?</p>
+    <h3>The Day Planner: Yellowstone Logic</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Montague-style</div>
+    <p>Five Lee family members each have a favorite day and favorite Yellowstone feature from the itinerary. Can you match them all?</p>
     <div id="yellowstone-logic"></div>
   </div>
 
   <!-- SPOT THE DIFFERENCE -->
   <div class="puzzle-card" data-num="Puzzle Y-7 · Observation Challenge">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>The Ranger's Report: Spot the Differences</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · Eagle Eye</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>The Ranger's Report: Spot the Differences</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Eagle Eye</div>
     <p>Two geyser field reports have been filed — but one has been altered! Read both carefully and find the <strong>8 differences</strong> between Report A and Report B. Circle them on paper or tap below when you find each one!</p>
     <div id="spot-diff-content"></div>
   </div>
@@ -932,14 +827,8 @@
   </div>
 
   <div class="puzzle-card" data-num="Puzzle B-1 · Scavenger Hunt">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Fossil Finder: Badlands Scavenger Hunt</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · 65 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Fossil Finder: Badlands Scavenger Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 65 pts possible</div>
     <p>Hunt for clues across the Badlands. Tap each one as you find it!</p>
     <div class="hunt-grid" id="badlands-hunt"></div>
     <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
@@ -948,119 +837,44 @@
   </div>
 
   <div class="puzzle-card" data-num="Puzzle B-2 · Trivia">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Ancient Worlds: Badlands Quiz</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Ancient Worlds: Badlands Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
     <p>From mosasaurs to black-footed ferrets — how much do you know about the Badlands?</p>
     <div id="badlands-trivia"></div>
   </div>
 
   <div class="puzzle-card" data-num="Puzzle B-3 · Word Search">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Badlands Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Badlands Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
     <p>Find 12 Badlands words hidden in the grid.</p>
     <div class="word-search-wrap" id="badlands-ws-wrap"></div>
     <div class="word-list" id="badlands-ws-words"></div>
   </div>
 
   <div class="puzzle-card" data-num="Puzzle B-4 · Cryptic Clues">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Thunder Beast Riddles: Badlands Cryptics</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Thunder Beast Riddles: Badlands Cryptics</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
     <p>Decode the two-part clues to reveal ancient Badlands creatures and features.</p>
     <div id="badlands-cryptic"></div>
   </div>
 
   <div class="puzzle-card" data-num="Puzzle B-5 · True or False Blitz">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Fact or Fiction: Badlands Speed Round</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Fact or Fiction: Badlands Speed Round</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
     <p>10 rapid-fire statements. Is each one TRUE or FALSE? Tap your answer — no second chances!</p>
     <div id="badlands-tof"></div>
   </div>
 
   <div class="puzzle-card" data-num="Puzzle B-6 · Timeline Challenge">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Deep Time: Put It in Order</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · Brain Teaser</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
+    <h3>Deep Time: Put It in Order</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Brain Teaser</div>
     <p>Drag or tap the events below into the correct order from OLDEST to most RECENT. The Badlands tell 75 million years of history!</p>
     <div id="badlands-timeline"></div>
   </div>
 </div><!-- end badlands -->
 
 <script>
-// ===================== COLLAPSIBLE CARDS =====================
-function toggleCard(header) {
-  const card = header.closest('.puzzle-card');
-  card.classList.toggle('open');
-}
-
-// Open a card by its data-num label
-function openCard(dataNum) {
-  const card = document.querySelector(`.puzzle-card[data-num="${dataNum}"]`);
-  if (card && !card.classList.contains('open')) card.classList.add('open');
-}
-
-// Make dynamically injected cards also collapsible
-function makeCardCollapsible(card) {
-  if (card.querySelector('.card-header')) return; // already done
-  const h3 = card.querySelector('h3');
-  const diff = card.querySelector('.difficulty');
-  if (!h3 || !diff) return;
-
-  const header = document.createElement('div');
-  header.className = 'card-header';
-  header.onclick = () => toggleCard(header);
-
-  const left = document.createElement('div');
-  left.className = 'card-header-left';
-  left.appendChild(h3.cloneNode(true));
-  left.appendChild(diff.cloneNode(true));
-
-  const toggle = document.createElement('div');
-  toggle.className = 'card-toggle';
-  toggle.textContent = '▼';
-
-  header.appendChild(left);
-  header.appendChild(toggle);
-
-  // Collect everything else as body
-  const body = document.createElement('div');
-  body.className = 'card-body';
-  while (card.firstChild) body.appendChild(card.firstChild);
-  // Remove the cloned h3 and diff from body
-  body.querySelector('h3')?.remove();
-  body.querySelector('.difficulty')?.remove();
-
-  card.appendChild(header);
-  card.appendChild(body);
-}
+// ===================== STATE =====================
 let totalScore = 0;
 let sudokuSelected = null;
 
@@ -1245,7 +1059,7 @@ const yellowstoneTriviaData = [
     fact: "Heartbreaking but true — only 23 bison survived. Today the park is home to about 5,500, the largest herd that has existed continuously since prehistoric times."
   },
   {
-    q: "Which Yellowstone area is best for an early 5:30 AM visit at 5:30 AM for wolf and bison spotting?",
+    q: "Which Yellowstone area is the Lee family visiting at 5:30 AM for wolf and bison spotting?",
     opts: ["Norris Geyser Basin", "Lamar Valley", "West Thumb", "Mammoth Hot Springs"],
     ans: 1,
     fact: "Correct! Lamar Valley — the 'American Serengeti' — is the best spot in the park for wolf packs and large wildlife herds. Early morning is prime time!"
@@ -1382,8 +1196,9 @@ buildTrivia(badlandsTriviaData, 'badlands-trivia', 'bt');
   const firstCard = section.querySelector('.puzzle-card[data-num="Puzzle R-2 · Trivia"]');
   firstCard.after(card);
   buildTrivia(extra, 'rushmore-trivia2', 'rt2');
-  makeCardCollapsible(card);
 })();
+
+// ===================== EXTRA YELLOWSTONE TRIVIA ROUND 2 =====================
 (function() {
   const extra = [
     {
@@ -1411,7 +1226,7 @@ buildTrivia(badlandsTriviaData, 'badlands-trivia', 'bt');
       fact: "Correct! Osprey build nests on tall stone spires that jut up from the canyon floor — a dramatic location to raise chicks!"
     },
     {
-      q: "The Roosevelt Arch at Gardiner marks the park's North Entrance. Which president dedicated it?",
+      q: "The Roosevelt Arch at Gardiner — the Lee family's base — was dedicated by which president?",
       opts: ["Abraham Lincoln", "Ulysses S. Grant", "Theodore Roosevelt", "Woodrow Wilson"],
       ans: 2,
       fact: "Theodore Roosevelt himself laid the cornerstone of the Roosevelt Arch in 1903. Read the inscription when you pass through!"
@@ -1434,7 +1249,6 @@ buildTrivia(badlandsTriviaData, 'badlands-trivia', 'bt');
   const firstCard = section.querySelector('.puzzle-card[data-num="Puzzle Y-2 · Trivia"]');
   firstCard.after(card);
   buildTrivia(extra, 'yellowstone-trivia2', 'yt2');
-  makeCardCollapsible(card);
 })();
 
 // ===================== WORD SEARCH =====================
@@ -1876,7 +1690,7 @@ const yellowstoneCryptics = [
   },
   {
     num: 6,
-    clue: "Where expedition members soak on the last park day — BINGO VILER scrambled (7,5)",
+    clue: "Where the Lee family soaks on their last park day — BINGO VILER scrambled (7,5)",
     length: "(7,5 letters)",
     answer: "BOILING RIVER",
     hint: "Just 5 minutes from Gardiner — a hot spring flowing into the cool Gardner River."
@@ -2153,7 +1967,7 @@ buildLogicPuzzle(
 // ===================== SPOT THE DIFFERENCE =====================
 const reportA = `YELLOWSTONE FIELD REPORT — UPPER GEYSER BASIN
 Date: Day 5 of Expedition | Weather: Sunny, 68°F
-Agent: Expedition Field Team
+Agent: Lee Family Field Team
 
 Observations at Old Faithful:
 — Arrival time: 10:15 AM
@@ -2170,7 +1984,7 @@ Observations at Old Faithful:
 
 const reportB = `YELLOWSTONE FIELD REPORT — UPPER GEYSER BASIN
 Date: Day 5 of Expedition | Weather: Cloudy, 68°F
-Agent: Expedition Field Team
+Agent: Lee Family Field Team
 
 Observations at Old Faithful:
 — Arrival time: 10:15 AM
@@ -2245,330 +2059,6 @@ function buildSpotDiff() {
 }
 
 buildSpotDiff();
-
-// ===================== DEVIL'S TOWER DATA & PUZZLES =====================
-
-// Hunt
-const devilstowerHuntItems = [
-  { text: "Find the Tower's reflection or silhouette in the Belle Fourche River", pts: 7 },
-  { text: "Walk part of the 1.3-mile Tower Trail loop — count the hexagonal column formations you can see", pts: 6 },
-  { text: "Spot a prairie dog at the prairie dog town near the park entrance", pts: 6 },
-  { text: "Find a colorful prayer bundle or prayer flag tied in a tree near the trail — don't touch it", pts: 7 },
-  { text: "Read an interpretive sign about the Native American name for Devil's Tower and write it down", pts: 6 },
-  { text: "Look up: what year did the first two people climb the Tower? (hint: 1893)", pts: 6 },
-  { text: "Spot a white-tailed or mule deer near the trail", pts: 6 },
-  { text: "Find a peregrine falcon nesting sign or ask a ranger about spring trail closures", pts: 7 },
-  { text: "Identify the name of the river that flows around the base of Devil's Tower", pts: 6 },
-  { text: "Look for evidence of rock climbers on the Tower face — can you see any routes?", pts: 6 }
-];
-
-const devilstowerTriviaData = [
-  {
-    q: "Devil's Tower was designated America's first national monument in what year?",
-    opts: ["1872", "1890", "1906", "1916"],
-    ans: 2,
-    fact: "Correct! President Theodore Roosevelt proclaimed Devil's Tower the first U.S. National Monument on September 24, 1906 — the same year he created several other parks and monuments."
-  },
-  {
-    q: "How tall is Devil's Tower from its base to its summit?",
-    opts: ["467 feet", "667 feet", "867 feet", "1,067 feet"],
-    ans: 2,
-    fact: "Right! The Tower rises 867 feet from its base. It stands 1,267 feet above the Belle Fourche River and 5,112 feet above sea level."
-  },
-  {
-    q: "What is the Lakota Sioux name for Devil's Tower?",
-    opts: ["Mako Sica", "Matȟó Thípila (Bear Lodge)", "Paha Sapa", "Wakan Tanka"],
-    ans: 1,
-    fact: "Correct! Matȟó Thípila means 'Bear Lodge' in Lakota. Over 20 Native American tribes have cultural ties to the Tower, and many consider it a sacred place."
-  },
-  {
-    q: "The name 'Devils Tower' originated from a mistranslation. What did a U.S. Army colonel originally write it was called?",
-    opts: ["The Great Stone Pillar", "Bad God's Tower", "The Bear Tooth", "Sky Finger"],
-    ans: 1,
-    fact: "In 1876, Colonel Dodge wrote that Native Americans called it 'The Bad God's Tower' — a mistranslation that stuck. Many tribes still prefer Bear Lodge as the name."
-  },
-  {
-    q: "Devil's Tower is made of what type of rock, formed when magma cooled underground?",
-    opts: ["Sandstone", "Limestone", "Granite", "Igneous phonolite porphyry"],
-    ans: 3,
-    fact: "The Tower is igneous rock — specifically phonolite porphyry — that cooled slowly underground. As it cooled and contracted, it formed the famous hexagonal columns."
-  },
-  {
-    q: "What famous 1977 Steven Spielberg movie featured Devil's Tower prominently?",
-    opts: ["Star Wars", "Close Encounters of the Third Kind", "E.T.", "Raiders of the Lost Ark"],
-    ans: 1,
-    fact: "Right! Close Encounters of the Third Kind used Devil's Tower as the site of alien contact, dramatically boosting the monument's fame — visitation surged after the film."
-  },
-  {
-    q: "During which month is rock climbing voluntarily discouraged out of respect for Native American ceremonies?",
-    opts: ["May", "June", "July", "August"],
-    ans: 1,
-    fact: "June is a sacred time on the Northern Plains calendar. The NPS asks climbers to voluntarily avoid the Tower in June, and most do — compliance is over 80%."
-  },
-  {
-    q: "The first recorded climb of Devil's Tower was in 1893. What did the climbers use to get up?",
-    opts: ["Steel pitons", "A rope ladder", "A wooden stake ladder", "Their bare hands"],
-    ans: 2,
-    fact: "Local ranchers William Rogers and Willard Ripley hammered a wooden stake ladder into a crack in the rock and climbed it in 1893. Pieces of that original ladder can still be seen today!"
-  }
-];
-
-const devilstowerWSWords = ['DEVILSTOWER', 'BEARLODGE', 'PHONOLITE', 'COLUMNAR', 'BELLEFOURCH', 'WYOMING', 'ROOSEVELT', 'CLIMBERS', 'PRAIRIE', 'LAKOTA', 'MONUMENT', 'IGNEOUS'];
-
-const devilstowerCryptics = [
-  {
-    num: 1,
-    clue: "Sacred Lakota name: BEAR hidden inside LODGE — two words meaning the Tower's true name (4,5)",
-    length: "(4,5 letters)",
-    answer: "BEAR LODGE",
-    hint: "The preferred name used by the Lakota and over 20 other Native American tribes for the Tower."
-  },
-  {
-    num: 2,
-    clue: "First national monument president: ROOST insideEVELT — a conservation giant (9)",
-    length: "(9 letters)",
-    answer: "ROOSEVELT",
-    hint: "Theodore Roosevelt declared Devil's Tower the first U.S. National Monument in 1906 using the new Antiquities Act."
-  },
-  {
-    num: 3,
-    clue: "Type of rock with columns: PHONE anagram minus H, plus LITE (9)",
-    length: "(9 letters)",
-    answer: "PHONOLITE",
-    hint: "The igneous rock that forms Devil's Tower — it cooled slowly underground and contracted into the famous hexagonal column shapes."
-  },
-  {
-    num: 4,
-    clue: "The river circling the Tower: BELLE + FOURCHE — French for 'forked' (5,6)",
-    length: "(5,6 letters)",
-    answer: "BELLE FOURCHE",
-    hint: "The Tower rises 1,267 feet above this river, which is responsible for eroding the surrounding rock and exposing the Tower over millions of years."
-  },
-  {
-    num: 5,
-    clue: "What climbers grip on the Tower's sides — COLUMN + AR scrambled (8)",
-    length: "(8 letters)",
-    answer: "COLUMNAR",
-    hint: "Columnar jointing — the hexagonal rock columns formed as the igneous rock cooled and contracted — is what makes Devil's Tower climbable and visually unique."
-  },
-  {
-    num: 6,
-    clue: "1977 Spielberg film set here: two words meaning 'intimate meetings from space' (5,10,2,3,5)",
-    length: "(close + encounters + of + the + third + kind)",
-    answer: "CLOSE ENCOUNTERS OF THE THIRD KIND",
-    hint: "The aliens chose Devil's Tower as their landing spot. Visitation to the monument surged dramatically after the film's release."
-  }
-];
-
-const devilstowerTOF = [
-  { stmt: "Devil's Tower was the first national monument in the United States.", ans: true, fact: "True! Declared by President Theodore Roosevelt on September 24, 1906." },
-  { stmt: "The Tower is a dormant volcano that could erupt again.", ans: false, fact: "False! The Tower is not a volcano. It's a magma intrusion that cooled underground and was exposed by millions of years of erosion." },
-  { stmt: "Over 20 Native American tribes have cultural connections to Devil's Tower.", ans: true, fact: "True! Tribes including the Lakota, Cheyenne, Kiowa, and Crow all have sacred legends and ties to the Tower." },
-  { stmt: "The Tower's hexagonal columns were formed as lava cooled on the surface.", ans: false, fact: "False! The rock cooled slowly underground. The hexagonal (columnar) jointing formed as the rock contracted during cooling — similar to how mud cracks as it dries." },
-  { stmt: "Rock climbing on Devil's Tower is permanently banned in June.", ans: false, fact: "False! The June climbing closure is voluntary, not mandatory. The NPS asks climbers to respect Native American ceremonies — and most do comply." },
-  { stmt: "The first recorded climbers used a handmade wooden stake ladder to summit the Tower in 1893.", ans: true, fact: "True! Ranchers William Rogers and Willard Ripley drove wooden stakes into a crack and climbed it. Remnants of that wooden ladder are still visible on the Tower today." },
-  { stmt: "Devil's Tower appears in a famous Steven Spielberg science fiction film.", ans: true, fact: "True! Close Encounters of the Third Kind (1977) — the aliens chose it as their rendezvous point." },
-  { stmt: "The Tower's base diameter is approximately 1,000 feet.", ans: true, fact: "True! The base is about 1,000 feet across — nearly the length of three football fields." }
-];
-
-// Build Devil's Tower section dynamically
-(function() {
-  // HTML Section
-  const section = document.createElement('div');
-  section.className = 'section';
-  section.id = 'devilstower';
-  section.innerHTML = `
-    <div class="section-header">
-      <span class="section-tag">Devil's Tower National Monument, Wyoming — June 2026</span>
-      <h2>Devil's Tower<br>Expedition Files</h2>
-      <p>America's first national monument. 867 feet of ancient igneous columns. Sacred to 20+ tribes. Your mission: unlock its secrets.</p>
-    </div>
-
-    <div class="puzzle-card" data-num="Puzzle D-1 · Scavenger Hunt">
-  <div class="card-header" onclick="toggleCard(this)">
-    <div class="card-header-left">
-      <h3>Bear Lodge Hunt: Devil's Tower Scavenger Hunt</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · 63 pts possible</div>
-    </div>
-    <div class="card-toggle">▼</div>
-  </div>
-  <div class="card-body">
-    <p>Explore the Tower, the trail, and the river. Tap each item when you find it!</p>
-      <div class="hunt-grid" id="dt-hunt"></div>
-      <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
-        Found: <span id="dt-hunt-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="dt-hunt-pts">0</span>
-      </div>
-    </div>
-
-    <div class="puzzle-card" data-num="Puzzle D-2 · Trivia">
-      <h3>America's First Monument: Devil's Tower Quiz</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · 80 pts possible</div>
-      <p>Eight questions on geology, history, Native American culture, and a famous movie. No peeking!</p>
-      <div id="dt-trivia"></div>
-    </div>
-
-    <div class="puzzle-card" data-num="Puzzle D-3 · Word Search">
-      <h3>Tower Finder: Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
-      <p>Find 12 Devil's Tower words hidden in the grid.</p>
-      <div class="word-search-wrap" id="dt-ws-wrap"></div>
-      <div class="word-list" id="dt-ws-words"></div>
-    </div>
-
-    <div class="puzzle-card" data-num="Puzzle D-4 · Cryptic Clues">
-      <h3>Column Code: Devil's Tower Cryptics</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
-      <p>Six two-part clues about the Tower's geology, history, and legends. Decode both halves to find the answer!</p>
-      <div id="dt-cryptic"></div>
-    </div>
-
-    <div class="puzzle-card" data-num="Puzzle D-5 · True or False Blitz">
-      <h3>Sacred or Myth? Devil's Tower True/False</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
-      <p>Eight rapid-fire statements about America's first national monument. True or False?</p>
-      <div id="dt-tof"></div>
-    </div>
-
-    <div class="puzzle-card" data-num="Puzzle D-6 · Legends Challenge">
-      <h3>The Bear's Claws: Native American Legends</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
-      <p>Many tribes tell stories about how the Tower's columns were formed. Read the legend fragment below, then answer the questions!</p>
-      <div id="dt-legend"></div>
-    </div>
-  `;
-  // Insert before closing body
-  document.body.insertBefore(section, document.getElementById('fabHQ').nextSibling);
-
-  // Build all DT puzzles
-  buildHunt(devilstowerHuntItems, 'dt-hunt', 'dt-hunt-score', 'dt-hunt-pts', 'dt');
-  buildTrivia(devilstowerTriviaData, 'dt-trivia', 'dtt');
-  setTimeout(() => buildWordSearch(devilstowerWSWords, 'dt-ws-wrap', 'dt-ws-words'), 300);
-  buildCryptic(devilstowerCryptics, 'dt-cryptic');
-  buildTOF2(devilstowerTOF, 'dt-tof');
-  buildLegend('dt-legend');
-  // Make all DT cards collapsible
-  section.querySelectorAll('.puzzle-card').forEach(makeCardCollapsible);
-})();
-
-// Second TOF builder (reusable, uses different ID prefix)
-function buildTOF2(data, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  data.forEach((item, i) => {
-    const div = document.createElement('div');
-    div.className = 'trivia-q';
-    div.innerHTML = `
-      <div class="q-text"><span class="q-num">${i+1}.</span>${item.stmt}</div>
-      <div class="options" style="grid-template-columns:1fr 1fr; max-width:300px;">
-        <button class="opt-btn" id="tof2-t-${containerId}-${i}" onclick="answerTOF2('${containerId}',${i},true)">✓ TRUE</button>
-        <button class="opt-btn" id="tof2-f-${containerId}-${i}" onclick="answerTOF2('${containerId}',${i},false)">✗ FALSE</button>
-      </div>
-      <div class="trivia-feedback" id="tof2-fb-${containerId}-${i}"></div>
-    `;
-    container.appendChild(div);
-  });
-}
-
-function answerTOF2(cid, i, choice) {
-  const datasets = { 'dt-tof': devilstowerTOF };
-  const data = datasets[cid];
-  if (!data) return;
-  const item = data[i];
-  document.getElementById(`tof2-t-${cid}-${i}`).disabled = true;
-  document.getElementById(`tof2-f-${cid}-${i}`).disabled = true;
-  const correct = choice === item.ans;
-  document.getElementById(`tof2-${choice?'t':'f'}-${cid}-${i}`).classList.add(correct ? 'correct' : 'wrong');
-  if (!correct) document.getElementById(`tof2-${item.ans?'t':'f'}-${cid}-${i}`).classList.add('correct');
-  const fb = document.getElementById(`tof2-fb-${cid}-${i}`);
-  fb.textContent = (correct ? '✓ ' : '✗ ') + item.fact;
-  fb.className = `trivia-feedback show ${correct ? 'correct' : 'wrong'}`;
-  if (correct) addScore(8);
-}
-
-function buildLegend(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  const legendText = `<div style="background:var(--parchment); border-left:4px solid var(--gold); padding:16px 20px; margin-bottom:20px; font-size:13px; line-height:1.9; font-style:italic;">
-  "Long ago, seven young girls were playing in the forest when a great bear began to chase them. The girls climbed onto a low rock and prayed to the Great Spirit for help. The rock began to rise up from the earth, lifting the girls high into the sky, out of the bear's reach. As the bear clawed furiously at the sides of the rising rock, its claws left deep grooves carved into the stone. The rock rose so high that the girls became the seven stars of the Pleiades constellation. The grooves of the bear's claws remain on the Tower to this day."
-  <div style="font-style:normal; font-size:11px; color:var(--stone); margin-top:8px; font-family:'Special Elite',cursive;">— A version of the Kiowa legend of Devil's Tower</div>
-  </div>`;
-
-  const questions = [
-    { q: "According to the legend, what created the vertical grooves on the sides of Devil's Tower?", opts: ["Lightning strikes", "A great bear's claws", "Ancient rivers of lava", "The Great Spirit's fingers"], ans: 1, fact: "The bear's claw marks are the classic explanation in many Plains tribes' legends. The real grooves are caused by columnar jointing as the rock cooled." },
-    { q: "In the legend, the girls were transformed into what?", opts: ["Eagles", "The moon", "The Pleiades star cluster", "Butterflies"], ans: 2, fact: "The Pleiades! This star cluster (also called the Seven Sisters) is visible in winter skies — and several Plains tribes connect it to the Tower legend." },
-    { q: "What did the rock do to save the girls?", opts: ["It turned into water", "It burst into flames", "It rose up from the earth", "It became invisible"], ans: 2, fact: "The rock rose into the sky to lift the girls away from the bear — explaining the Tower's dramatic height above the surrounding plains." },
-    { q: "Geologists give a different explanation for the grooves. What actually caused them?", opts: ["Ancient earthquake faults", "Columnar jointing as igneous rock cooled and contracted", "Water erosion over millions of years", "Wind abrasion"], ans: 1, fact: "Columnar jointing! As the phonolite porphyry cooled slowly underground, it contracted and fractured into the distinctive hexagonal columns we see today." }
-  ];
-
-  container.innerHTML = legendText;
-  questions.forEach((item, i) => {
-    const div = document.createElement('div');
-    div.className = 'trivia-q';
-    const optsHtml = item.opts.map((o, j) =>
-      `<button class="opt-btn" onclick="answerLegend(${i},${j})" id="leg-opt-${i}-${j}">${String.fromCharCode(65+j)}) ${o}</button>`
-    ).join('');
-    div.innerHTML = `<div class="q-text"><span class="q-num">${i+1}.</span>${item.q}</div>
-      <div class="options">${optsHtml}</div>
-      <div class="trivia-feedback" id="leg-fb-${i}"></div>`;
-    container.appendChild(div);
-  });
-
-  window._legendQ = questions;
-}
-
-function answerLegend(qIdx, optIdx) {
-  const data = window._legendQ;
-  const item = data[qIdx];
-  for (let j = 0; j < item.opts.length; j++) {
-    const btn = document.getElementById(`leg-opt-${qIdx}-${j}`);
-    if (btn) btn.disabled = true;
-  }
-  document.getElementById(`leg-opt-${qIdx}-${optIdx}`).classList.add(optIdx === item.ans ? 'correct' : 'wrong');
-  if (optIdx !== item.ans) document.getElementById(`leg-opt-${qIdx}-${item.ans}`).classList.add('correct');
-  const fb = document.getElementById(`leg-fb-${qIdx}`);
-  fb.textContent = (optIdx === item.ans ? '✓ ' : '✗ ') + item.fact;
-  fb.className = `trivia-feedback show ${optIdx === item.ans ? 'correct' : 'wrong'}`;
-  if (optIdx === item.ans) addScore(10);
-}
-
-// ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.0';
-const VERSION_URL = 'https://medrosetta.github.io/FamilyExpeditions/version.json';
-
-async function checkForUpdate() {
-  try {
-    const res = await fetch(VERSION_URL + '?t=' + Date.now());
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data.version && data.version !== APP_VERSION) {
-      showUpdateBanner(data.version, data.notes || '');
-    }
-  } catch (e) {
-    // Offline or fetch failed — silent fail
-  }
-}
-
-function showUpdateBanner(newVersion, notes) {
-  const banner = document.createElement('div');
-  banner.style.cssText = `
-    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-    background: var(--forest); color: var(--parchment);
-    font-family: 'Special Elite', cursive; font-size: 13px;
-    padding: 12px 16px; display: flex; align-items: center;
-    justify-content: space-between; gap: 12px;
-    border-bottom: 2px solid var(--gold); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  `;
-  banner.innerHTML = `
-    <div>🗺️ Update available — v${newVersion}${notes ? ': ' + notes : ''}. Tap to reload.</div>
-    <div style="display:flex; gap:10px;">
-      <button onclick="location.reload(true)" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 14px; background:var(--gold); color:var(--ink); border:none; cursor:pointer; letter-spacing:1px;">RELOAD</button>
-      <button onclick="this.closest('div[style]').remove()" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 10px; background:transparent; color:var(--parchment); border:1px solid var(--parchment); cursor:pointer;">✕</button>
-    </div>
-  `;
-  document.body.prepend(banner);
-}
-
-window.addEventListener('load', checkForUpdate);
 
 // Register service worker for PWA / offline use
 if ('serviceWorker' in navigator) {
