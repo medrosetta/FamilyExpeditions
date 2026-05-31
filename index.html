@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#7a4a1e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Family Expeditions">
+<meta name="apple-mobile-web-app-title" content="FamilyExpeditions">
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap');
@@ -572,7 +572,38 @@
   }
   .numpad button:hover { background: var(--leather); color: var(--parchment); }
 
-  /* SCORE TRACKER */
+  /* FLOATING HQ BUTTON */
+  .fab-hq {
+    position: fixed;
+    bottom: 64px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    background: var(--leather);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 600;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    transition: background 0.2s, transform 0.15s;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .fab-hq:hover { background: var(--rust); transform: scale(1.08); }
+  .fab-hq.visible { display: flex; }
+
+  .fab-hq .fab-icon { font-size: 20px; line-height: 1; }
+  .fab-hq .fab-label {
+    font-family: 'Special Elite', cursive;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    color: var(--parchment);
+    text-transform: uppercase;
+  }
   .score-bar {
     position: fixed;
     bottom: 0;
@@ -630,27 +661,33 @@
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
+<!-- FLOATING HQ BUTTON -->
+<div class="fab-hq" id="fabHQ" onclick="showCover()">
+  <div class="fab-icon">🧭</div>
+  <div class="fab-label">HQ</div>
+</div>
+
 <!-- COVER -->
 <div class="cover" id="cover">
   <div class="cover-badge">Lee Family Expeditions — June 2026</div>
   <div class="cover-divider"></div>
   <h1>Great Plains<br><span>&amp; Peaks</span></h1>
-  <div class="cover-sub">Puzzle Kit — Black Hills &amp; Yellowstone</div>
+  <div class="cover-sub">Puzzle Kit — Black Hills, Badlands &amp; Yellowstone</div>
   <div class="cover-divider"></div>
   <div class="cover-details">
-    Mason &amp; Sophia Lee<br>
     Prepared for the Expedition of June 6–21, 2026<br>
     From the Desk of Lee Family Expeditions
   </div>
   <div class="cover-nav">
     <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
+    <button onclick="showSection('badlands')">🦕 Badlands</button>
     <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
   </div>
 </div>
 
 <!-- MT. RUSHMORE SECTION -->
 <div class="section" id="rushmore">
-  <button class="back-btn" onclick="showCover()">← Back to Expedition HQ</button>
+
   <div class="section-header">
     <span class="section-tag">Black Hills, South Dakota — June 6–10</span>
     <h2>Mount Rushmore<br>Expedition Files</h2>
@@ -688,7 +725,7 @@
   <!-- CRYPTIC - RUSHMORE -->
   <div class="puzzle-card" data-num="Puzzle R-4 · Cryptic Clues">
     <h3>Granite Riddles: Presidential Cryptics</h3>
-    <div class="difficulty">⭐⭐⭐ Explorer Level · Mason's Challenge</div>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
     <p>Each clue hides two pathways to the same answer — a wordplay definition and a direct definition. Unravel both to find the word!</p>
     <div id="rushmore-cryptic"></div>
   </div>
@@ -705,7 +742,7 @@
 
 <!-- YELLOWSTONE SECTION -->
 <div class="section" id="yellowstone">
-  <button class="back-btn" onclick="showCover()">← Back to Expedition HQ</button>
+
   <div class="section-header">
     <span class="section-tag">Yellowstone National Park — June 12–21, Gardiner MT Base</span>
     <h2>Yellowstone<br>Field Journal Puzzles</h2>
@@ -743,7 +780,7 @@
   <!-- CRYPTIC - YELLOWSTONE -->
   <div class="puzzle-card" data-num="Puzzle Y-4 · Cryptic Clues">
     <h3>Geyser Code: Yellowstone Cryptics</h3>
-    <div class="difficulty">⭐⭐⭐ Explorer Level · Mason's Challenge</div>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
     <p>Decode each two-part clue. The definition lurks inside the wordplay!</p>
     <div id="yellowstone-cryptic"></div>
   </div>
@@ -773,12 +810,68 @@
   <!-- SPOT THE DIFFERENCE -->
   <div class="puzzle-card" data-num="Puzzle Y-7 · Observation Challenge">
     <h3>The Ranger's Report: Spot the Differences</h3>
-    <div class="difficulty">⭐⭐ Ranger Level · Sophia's Challenge</div>
+    <div class="difficulty">⭐⭐ Ranger Level · Eagle Eye</div>
     <p>Two geyser field reports have been filed — but one has been altered! Read both carefully and find the <strong>8 differences</strong> between Report A and Report B. Circle them on paper or tap below when you find each one!</p>
     <div id="spot-diff-content"></div>
   </div>
 
 </div><!-- end yellowstone -->
+
+<!-- BADLANDS SECTION -->
+<div class="section" id="badlands">
+
+  <div class="section-header">
+    <span class="section-tag">Badlands National Park, South Dakota — June 2026</span>
+    <h2>Badlands<br>Expedition Files</h2>
+    <p>75 million years of fossils, ancient seas, and thunder beasts. Dig in.</p>
+  </div>
+
+  <div class="puzzle-card" data-num="Puzzle B-1 · Scavenger Hunt">
+    <h3>Fossil Finder: Badlands Scavenger Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 65 pts possible</div>
+    <p>Hunt for clues across the Badlands. Tap each one as you find it!</p>
+    <div class="hunt-grid" id="badlands-hunt"></div>
+    <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+      Found: <span id="badlands-hunt-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="badlands-hunt-pts">0</span>
+    </div>
+  </div>
+
+  <div class="puzzle-card" data-num="Puzzle B-2 · Trivia">
+    <h3>Ancient Worlds: Badlands Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
+    <p>From mosasaurs to black-footed ferrets — how much do you know about the Badlands?</p>
+    <div id="badlands-trivia"></div>
+  </div>
+
+  <div class="puzzle-card" data-num="Puzzle B-3 · Word Search">
+    <h3>Badlands Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Find 12 Badlands words hidden in the grid.</p>
+    <div class="word-search-wrap" id="badlands-ws-wrap"></div>
+    <div class="word-list" id="badlands-ws-words"></div>
+  </div>
+
+  <div class="puzzle-card" data-num="Puzzle B-4 · Cryptic Clues">
+    <h3>Thunder Beast Riddles: Badlands Cryptics</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
+    <p>Decode the two-part clues to reveal ancient Badlands creatures and features.</p>
+    <div id="badlands-cryptic"></div>
+  </div>
+
+  <div class="puzzle-card" data-num="Puzzle B-5 · True or False Blitz">
+    <h3>Fact or Fiction: Badlands Speed Round</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
+    <p>10 rapid-fire statements. Is each one TRUE or FALSE? Tap your answer — no second chances!</p>
+    <div id="badlands-tof"></div>
+  </div>
+
+  <div class="puzzle-card" data-num="Puzzle B-6 · Timeline Challenge">
+    <h3>Deep Time: Put It in Order</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Brain Teaser</div>
+    <p>Drag or tap the events below into the correct order from OLDEST to most RECENT. The Badlands tell 75 million years of history!</p>
+    <div id="badlands-timeline"></div>
+  </div>
+</div><!-- end badlands -->
 
 <script>
 // ===================== STATE =====================
@@ -795,12 +888,14 @@ function showSection(id) {
   document.getElementById('cover').style.display = 'none';
   document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
   document.getElementById(id).classList.add('visible');
+  document.getElementById('fabHQ').classList.add('visible');
   window.scrollTo(0,0);
 }
 
 function showCover() {
   document.getElementById('cover').style.display = 'flex';
   document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.getElementById('fabHQ').classList.remove('visible');
   window.scrollTo(0,0);
 }
 
@@ -864,6 +959,21 @@ function buildHunt(items, containerId, scoreId, ptsId, prefix) {
 
 buildHunt(rushmoreHuntItems, 'rushmore-hunt', 'rushmore-hunt-score', 'rushmore-hunt-pts', 'r');
 buildHunt(yellowstoneHuntItems, 'yellowstone-hunt', 'yellowstone-hunt-score', 'yellowstone-hunt-pts', 'y');
+
+// ===================== BADLANDS HUNT =====================
+const badlandsHuntItems = [
+  { text: "Find a rock layer that is a different color from the ones above and below it — name the color", pts: 6 },
+  { text: "Spot a prairie dog standing upright outside its burrow", pts: 7 },
+  { text: "Find a bighorn sheep OR evidence of one (tracks, ranger photo board)", pts: 7 },
+  { text: "Read a sign about a fossil found in the Badlands — write down what animal it was", pts: 6 },
+  { text: "Find a viewpoint where you can see layered buttes in at least 3 different colors", pts: 6 },
+  { text: "Count how many layers of rock you can see on a single butte face", pts: 6 },
+  { text: "Spot a pronghorn antelope in the grassland", pts: 7 },
+  { text: "Find something that shows how erosion is still shaping the Badlands TODAY", pts: 6 },
+  { text: "Ask a ranger: how fast do the Badlands erode each year?", pts: 7 },
+  { text: "Find the name of one extinct animal whose fossils have been found here", pts: 7 }
+];
+buildHunt(badlandsHuntItems, 'badlands-hunt', 'badlands-hunt-score', 'badlands-hunt-pts', 'b');
 
 // ===================== TRIVIA =====================
 const rushmoreTriviaData = [
@@ -998,6 +1108,148 @@ function answerTrivia(prefix, qIdx, optIdx) {
 
 buildTrivia(rushmoreTriviaData, 'rushmore-trivia', 'rt');
 buildTrivia(yellowstoneTriviaData, 'yellowstone-trivia', 'yt');
+
+// ===================== BADLANDS TRIVIA =====================
+const badlandsTriviaData = [
+  {
+    q: "The Badlands fossil record stretches back roughly how many million years?",
+    opts: ["5 million", "35 million", "75 million", "200 million"],
+    ans: 2,
+    fact: "Correct! Fossils in the Badlands date back about 75 million years, when a shallow inland sea covered the area."
+  },
+  {
+    q: "What ancient sea creature once swam where the Badlands now stand?",
+    opts: ["Megalodon shark", "Mosasaur", "Plesiosaur", "Giant squid"],
+    ans: 1,
+    fact: "Right! Mosasaurs were marine reptiles that lived in the shallow sea covering this region during the Late Cretaceous period."
+  },
+  {
+    q: "The Brontothere, the largest fossil mammal found in the Badlands, earned what nickname?",
+    opts: ["Bone beast", "Thunder beast", "Stone giant", "Prairie dragon"],
+    ans: 1,
+    fact: "Correct! Brontothere means 'thunder beast' — these massive rhino-like mammals roamed the Badlands roughly 35 million years ago."
+  },
+  {
+    q: "Which of these is a keystone species of the Badlands prairie — meaning many other animals depend on it?",
+    opts: ["Bighorn sheep", "Prairie rattlesnake", "Prairie dog", "Pronghorn"],
+    ans: 2,
+    fact: "That's right! Prairie dogs are a keystone species — black-footed ferrets, burrowing owls, and many other animals depend on their colonies to survive."
+  },
+  {
+    q: "How many bird species have been identified in Badlands National Park?",
+    opts: ["64", "106", "206", "306"],
+    ans: 2,
+    fact: "Correct! 206 bird species call the Badlands home, including golden eagles, northern harriers, and short-eared owls."
+  },
+  {
+    q: "What holds up the tall Badlands peaks from the inside, like a natural skeleton?",
+    opts: ["Iron ore veins", "Clastic dikes", "Granite columns", "Fossil bones"],
+    ans: 1,
+    fact: "Right! Clastic dikes — vertical slabs of resistant rock — form the internal structure that keeps Badlands peaks standing while softer rock erodes around them."
+  },
+  {
+    q: "The black-footed ferret is one of the most endangered mammals in North America. What do they mainly eat?",
+    opts: ["Rabbits", "Prairie dogs", "Mice", "Birds"],
+    ans: 1,
+    fact: "Correct! Black-footed ferrets depend almost entirely on prairie dogs for food AND shelter — they even live in abandoned prairie dog burrows!"
+  }
+];
+buildTrivia(badlandsTriviaData, 'badlands-trivia', 'bt');
+
+// ===================== EXTRA RUSHMORE TRIVIA ROUND 2 =====================
+// Inject extra trivia cards into rushmore section
+(function() {
+  const extra = [
+    {
+      q: "The total cost of carving Mount Rushmore was approximately how much?",
+      opts: ["$250,000", "$989,992", "$5 million", "$12 million"],
+      ans: 1,
+      fact: "Remarkably cheap for such a massive project! The total cost was just under $990,000 — about $20 million in today's money."
+    },
+    {
+      q: "How many workers helped carve Mount Rushmore?",
+      opts: ["About 40", "About 400", "About 4,000", "About 14"],
+      ans: 1,
+      fact: "Nearly 400 workers — mostly miners from the Black Hills — helped carve the memorial, and amazingly not a single worker died during construction."
+    },
+    {
+      q: "The carving scale used a ratio where 1 inch on the model equaled how much on the mountain?",
+      opts: ["1 foot", "1 yard", "10 feet", "12 feet"],
+      ans: 0,
+      fact: "Correct! Borglum built models at 1:12 scale — one inch equaled one foot on the mountain — then used a 'pointing system' to transfer measurements precisely."
+    },
+    {
+      q: "At what rate is Mount Rushmore estimated to erode?",
+      opts: ["1 inch per 100 years", "1 inch per 1,000 years", "1 inch per 10,000 years", "It does not erode"],
+      ans: 2,
+      fact: "Granite is incredibly hard! The erosion rate is about one inch every 10,000 years — so the faces will be recognizable for millions of years."
+    }
+  ];
+  const card = document.createElement('div');
+  card.className = 'puzzle-card';
+  card.setAttribute('data-num', 'Puzzle R-2b · Trivia Round 2');
+  card.innerHTML = `<h3>More Stone Cold Facts: Rushmore Round 2</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 40 pts possible</div>
+    <p>Four more questions sourced straight from the NPS student guide. How many can you get?</p>
+    <div id="rushmore-trivia2"></div>`;
+  const section = document.getElementById('rushmore');
+  const firstCard = section.querySelector('.puzzle-card[data-num="Puzzle R-2 · Trivia"]');
+  firstCard.after(card);
+  buildTrivia(extra, 'rushmore-trivia2', 'rt2');
+})();
+
+// ===================== EXTRA YELLOWSTONE TRIVIA ROUND 2 =====================
+(function() {
+  const extra = [
+    {
+      q: "How many states does Yellowstone National Park span?",
+      opts: ["1", "2", "3", "4"],
+      ans: 2,
+      fact: "Three! Wyoming has 96%, Montana has 3%, and Idaho has 1%. Almost all of the park is in Wyoming."
+    },
+    {
+      q: "The world's TALLEST active geyser is in Yellowstone. What is it called?",
+      opts: ["Old Faithful", "Beehive Geyser", "Steamboat Geyser", "Giant Geyser"],
+      ans: 2,
+      fact: "Steamboat Geyser at Norris Geyser Basin has been recorded erupting over 300 feet — nearly twice Old Faithful's height! It's far less predictable though."
+    },
+    {
+      q: "How many earthquakes does Yellowstone experience in a typical year?",
+      opts: ["About 10", "About 100", "1,000–3,000", "Over 10,000"],
+      ans: 2,
+      fact: "1,000 to 3,000 earthquakes every year! Most are too small to feel, but they're a reminder of the active volcano beneath your feet."
+    },
+    {
+      q: "Osprey nest in the Grand Canyon of Yellowstone on what unusual structures?",
+      opts: ["Dead tree stumps", "Stone spires", "Visitor center rooftops", "Cliff ledges"],
+      ans: 1,
+      fact: "Correct! Osprey build nests on tall stone spires that jut up from the canyon floor — a dramatic location to raise chicks!"
+    },
+    {
+      q: "The Roosevelt Arch at Gardiner — the Lee family's base — was dedicated by which president?",
+      opts: ["Abraham Lincoln", "Ulysses S. Grant", "Theodore Roosevelt", "Woodrow Wilson"],
+      ans: 2,
+      fact: "Theodore Roosevelt himself laid the cornerstone of the Roosevelt Arch in 1903. Read the inscription when you pass through!"
+    },
+    {
+      q: "Yellowstone Lake is the largest high-elevation lake in the USA. How high up is it?",
+      opts: ["4,200 ft", "5,800 ft", "7,731 ft", "9,500 ft"],
+      ans: 2,
+      fact: "Yellowstone Lake sits at 7,731 feet above sea level — higher than most Colorado ski resorts. The lake freezes every winter."
+    }
+  ];
+  const card = document.createElement('div');
+  card.className = 'puzzle-card';
+  card.setAttribute('data-num', 'Puzzle Y-2b · Trivia Round 2');
+  card.innerHTML = `<h3>Ranger Questions: Yellowstone Round 2</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 60 pts possible</div>
+    <p>Six more questions straight from the NPS Ask-a-Ranger page. These are the real ones visitors ask!</p>
+    <div id="yellowstone-trivia2"></div>`;
+  const section = document.getElementById('yellowstone');
+  const firstCard = section.querySelector('.puzzle-card[data-num="Puzzle Y-2 · Trivia"]');
+  firstCard.after(card);
+  buildTrivia(extra, 'yellowstone-trivia2', 'yt2');
+})();
 
 // ===================== WORD SEARCH =====================
 function buildWordSearch(words, containerId, wordListId) {
@@ -1175,7 +1427,186 @@ setTimeout(() => {
   buildWordSearch(yellowstoneWSWords.map(w=>w.replace(' ','')), 'yellowstone-ws-wrap', 'yellowstone-ws-words');
 }, 100);
 
-// ===================== CRYPTIC CLUES =====================
+// ===================== BADLANDS WORD SEARCH =====================
+const badlandsWSWords = ['FOSSIL','BRONTOTHERE','MOSASAUR','PRAIRIEDOG','BIGHORN','PRONGHORN','BUTTE','EROSION','FERRET','PALEONTOLOGY','BADLANDS','OREODONT'];
+setTimeout(() => {
+  buildWordSearch(badlandsWSWords.map(w=>w.replace(' ','')), 'badlands-ws-wrap', 'badlands-ws-words');
+}, 200);
+
+// ===================== BADLANDS CRYPTICS =====================
+const badlandsCryptics = [
+  {
+    num: 1,
+    clue: "Ancient sea reptile from SAUROM A scramble — swam where prairies are now (8)",
+    length: "(8 letters)",
+    answer: "MOSASAUR",
+    hint: "A marine reptile that swam a shallow inland sea covering the Badlands 75 million years ago."
+  },
+  {
+    num: 2,
+    clue: "Keystone prairie creature: DOG hidden inside a compound word with PRAIRIE (6,3)",
+    length: "(6,3 letters — two words)",
+    answer: "PRAIRIE DOG",
+    hint: "Not actually a dog — it's a ground squirrel whose colonies support dozens of other species."
+  },
+  {
+    num: 3,
+    clue: "Thunder beast — the largest Badlands fossil: ROBE scrambled + THRONE scrambled (11)",
+    length: "(11 letters)",
+    answer: "BRONTOTHERE",
+    hint: "A massive rhino-like mammal. 'Bronto' means thunder, 'there' means beast."
+  },
+  {
+    num: 4,
+    clue: "Eroded flat-topped hill: sounds like BUTT with an E added (5)",
+    length: "(5 letters)",
+    answer: "BUTTE",
+    hint: "An isolated hill with steep sides and a flat top — the iconic shape of the Badlands landscape."
+  },
+  {
+    num: 5,
+    clue: "Most endangered North American mammal: hidden in BLACK FOOTED FERRET anagram (6)",
+    length: "(6 letters)",
+    answer: "FERRET",
+    hint: "The black-footed ferret was thought extinct until a small colony was found in Wyoming in 1981."
+  },
+  {
+    num: 6,
+    clue: "Study of ancient life through fossils: PALE + ONTO + LOGY (12)",
+    length: "(12 letters)",
+    answer: "PALEONTOLOGY",
+    hint: "The Badlands is one of the richest paleontology sites in the world — over 19,000 fossils recovered from one dig alone."
+  }
+];
+buildCryptic(badlandsCryptics, 'badlands-cryptic');
+
+// ===================== TRUE / FALSE BLITZ =====================
+const badlandsTOF = [
+  { stmt: "The Badlands were once covered by a shallow inland sea.", ans: true, fact: "True! About 75 million years ago this region was submerged under the Western Interior Seaway." },
+  { stmt: "Brontotheres were carnivores that hunted other mammals.", ans: false, fact: "False! Brontotheres were plant-eaters — massive herbivores that grazed the ancient Badlands landscape." },
+  { stmt: "Black-footed ferrets live in abandoned prairie dog burrows.", ans: true, fact: "True! They depend on prairie dogs for both food AND shelter, sleeping in their burrows." },
+  { stmt: "Badlands rock layers erode quickly — about 1 inch per year.", ans: false, fact: "False! The rock erodes about 1 inch per year on soft layers — but the total erosion rate for the landscape is roughly 1 inch per century. It's fast for geology!" },
+  { stmt: "Pronghorn are the fastest land animals in North America.", ans: true, fact: "True! Pronghorn can run up to 55 mph — second fastest land animal on Earth after the cheetah." },
+  { stmt: "The Badlands has recorded fossilized remains of ancient camels.", ans: true, fact: "True! Camels evolved in North America and fossil camel remains have been found in the Badlands." },
+  { stmt: "Prairie rattlesnakes are harmless to humans.", ans: false, fact: "False! Prairie rattlesnakes are venomous. Give them space — they're important predators in the ecosystem." },
+  { stmt: "206 bird species have been identified in Badlands National Park.", ans: true, fact: "True! From golden eagles to burrowing owls — the Badlands skies are busy." },
+  { stmt: "Clastic dikes are vertical rock formations that hold up Badlands peaks.", ans: true, fact: "True! These resistant vertical slabs act like a natural skeleton inside the buttes." },
+  { stmt: "The Oreodont was a carnivore that preyed on early horses.", ans: false, fact: "False! Oreodonts were sheep-like herbivores. Millions of them grazed the ancient Badlands grasslands." }
+];
+
+function buildTOF(data, containerId) {
+  const container = document.getElementById(containerId);
+  data.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'trivia-q';
+    div.innerHTML = `
+      <div class="q-text"><span class="q-num">${i+1}.</span>${item.stmt}</div>
+      <div class="options" style="grid-template-columns:1fr 1fr; max-width:300px;">
+        <button class="opt-btn" id="tof-t-${i}" onclick="answerTOF(${i}, true)">✓ TRUE</button>
+        <button class="opt-btn" id="tof-f-${i}" onclick="answerTOF(${i}, false)">✗ FALSE</button>
+      </div>
+      <div class="trivia-feedback" id="tof-fb-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function answerTOF(i, choice) {
+  const item = badlandsTOF[i];
+  document.getElementById(`tof-t-${i}`).disabled = true;
+  document.getElementById(`tof-f-${i}`).disabled = true;
+  const correct = choice === item.ans;
+  const chosenId = choice ? `tof-t-${i}` : `tof-f-${i}`;
+  const correctId = item.ans ? `tof-t-${i}` : `tof-f-${i}`;
+  document.getElementById(chosenId).classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) document.getElementById(correctId).classList.add('correct');
+  const fb = document.getElementById(`tof-fb-${i}`);
+  fb.textContent = (correct ? '✓ ' : '✗ ') + item.fact;
+  fb.className = `trivia-feedback show ${correct ? 'correct' : 'wrong'}`;
+  if (correct) addScore(8);
+}
+buildTOF(badlandsTOF, 'badlands-tof');
+
+// ===================== TIMELINE CHALLENGE =====================
+const timelineEvents = [
+  { label: "Shallow inland sea covers the Badlands region", year: "~75 million years ago", order: 0 },
+  { label: "Sea recedes; Brontotheres and Oreodonts roam the land", year: "~35 million years ago", order: 1 },
+  { label: "Erosion begins sculpting the Badlands buttes and spires", year: "~500,000 years ago", order: 2 },
+  { label: "First humans arrive in the Badlands region", year: "~12,000 years ago", order: 3 },
+  { label: "Lakota Sioux name the region 'mako sica' (bad lands)", year: "~1700s", order: 4 },
+  { label: "First scientific fossil expedition documents the Badlands", year: "1846", order: 5 },
+  { label: "Badlands designated as a National Monument", year: "1939", order: 6 },
+  { label: "Badlands upgraded to full National Park status", year: "1978", order: 7 },
+  { label: "The Big Pig Dig excavation begins, eventually recovering 19,000+ fossils", year: "1993", order: 8 }
+];
+
+function buildTimeline(containerId) {
+  const container = document.getElementById(containerId);
+  let shuffled = [...timelineEvents].sort(() => Math.random() - 0.5);
+  let userOrder = [...shuffled];
+
+  const instrP = document.createElement('p');
+  instrP.style.cssText = 'font-size:13px; margin-bottom:14px; color:var(--stone); font-style:italic;';
+  instrP.textContent = 'Tap two events to swap their positions. Get them oldest → newest!';
+  container.appendChild(instrP);
+
+  const listEl = document.createElement('div');
+  listEl.id = 'timeline-list';
+  listEl.style.cssText = 'display:flex; flex-direction:column; gap:8px; margin-bottom:16px;';
+  container.appendChild(listEl);
+
+  let selected = null;
+
+  function render() {
+    listEl.innerHTML = '';
+    userOrder.forEach((evt, i) => {
+      const item = document.createElement('div');
+      item.style.cssText = `display:flex; align-items:center; gap:12px; padding:10px 14px; background:var(--parchment); border:2px solid ${selected===i?'var(--rust)':'var(--leather)'}; cursor:pointer; font-size:13px; transition:all 0.15s;`;
+      item.innerHTML = `<span style="font-family:'Playfair Display',serif; font-size:18px; font-style:italic; color:var(--rust); min-width:24px;">${i+1}.</span><span style="flex:1">${evt.label}</span>`;
+      item.onclick = () => {
+        if (selected === null) { selected = i; render(); }
+        else if (selected === i) { selected = null; render(); }
+        else {
+          const tmp = userOrder[selected];
+          userOrder[selected] = userOrder[i];
+          userOrder[i] = tmp;
+          selected = null;
+          render();
+        }
+      };
+      listEl.appendChild(item);
+    });
+  }
+  render();
+
+  const checkBtn = document.createElement('button');
+  checkBtn.textContent = 'Check My Order';
+  checkBtn.style.cssText = "font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; letter-spacing:1px; margin-right:10px;";
+  container.appendChild(checkBtn);
+
+  const msgEl = document.createElement('div');
+  msgEl.style.cssText = "font-family:'Special Elite',cursive; font-size:13px; margin-top:12px; padding:10px 14px; display:none;";
+  container.appendChild(msgEl);
+
+  checkBtn.onclick = () => {
+    let correct = 0;
+    const result = userOrder.map((evt, i) => {
+      const right = evt.order === i;
+      if (right) correct++;
+      return `<div style="padding:6px 0; border-bottom:1px dashed var(--parchment-dark); font-size:12px; color:${right?'var(--forest)':'var(--rust)'}">${right?'✓':'✗'} ${i+1}. ${evt.label} <em style="color:var(--stone)">(${evt.year})</em></div>`;
+    }).join('');
+    msgEl.style.display = 'block';
+    if (correct === timelineEvents.length) {
+      msgEl.style.background = '#e0f0d8';
+      msgEl.innerHTML = `<strong>🎉 Perfect order! +40 points!</strong>${result}`;
+      addScore(40);
+    } else {
+      msgEl.style.background = '#f8e8d8';
+      msgEl.innerHTML = `<strong>${correct}/${timelineEvents.length} correct positions.</strong> Correct answers shown below — try again!<br><br>${result}`;
+    }
+  };
+}
+buildTimeline('badlands-timeline');
 const rushmoreCryptics = [
   {
     num: 1,
@@ -1518,17 +1949,17 @@ buildLogicPuzzle(
 // Yellowstone Logic
 buildLogicPuzzle(
   'yellowstone-logic',
-  ['Mason', 'Sophia', 'Hanh', 'Wai-Kiu', 'Betty'],
+  ['Traveler A', 'Traveler B', 'Traveler C', 'Traveler D', 'Traveler E'],
   ['June 13', 'June 14', 'June 17', 'June 18', 'June 19', 'Mammoth', 'Lamar Valley', 'Old Faithful', 'Yellowstone Lake', 'Boiling River'],
   [
-    "The family member who loved Mammoth Hot Springs most appreciated it as a gentle, accessible start to the trip.",
-    "Mason's favorite day involved the longest drive of the week from Gardiner.",
-    "Sophia's favorite feature involves a thrilling 184-foot eruption of boiling water.",
-    "The family member who loved Lamar Valley woke up at 5:30 AM on their favorite day.",
-    "Wai-Kiu's favorite day was the one with the most wildlife variety.",
-    "Betty's favorite stop required the least walking of any major Yellowstone attraction.",
-    "The Yellowstone Lake day was a favorite for the family member who also loves Kauai beaches.",
-    "Mason's favorite day is earlier in the trip than Sophia's."
+    "The traveler who loved Mammoth Hot Springs most appreciated it as a gentle, accessible start — minimal walking required.",
+    "Traveler A's favorite day involved the longest drive of the week from Gardiner (about 2 hours each way).",
+    "Traveler B's favorite feature involves a thrilling eruption that can reach 184 feet into the air.",
+    "The traveler who loved Lamar Valley woke up at 5:30 AM on their favorite day to spot wildlife.",
+    "Traveler C's favorite day was the one with the most wildlife variety seen from the road.",
+    "The traveler whose favorite stop required the least walking is not Traveler A or Traveler B.",
+    "The Yellowstone Lake day was a favorite for the traveler who prefers beaches over mountains.",
+    "Traveler A's favorite day falls earlier in the trip than Traveler B's favorite day."
   ],
   'yellowstone-logic-grid'
 );
