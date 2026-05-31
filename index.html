@@ -714,7 +714,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">v1.0</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.3</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -2836,7 +2836,7 @@ async function checkForUpdate() {
     const data = await res.json();
     // Always update displayed version to match what's in version.json
     const vEl = document.getElementById('versionDisplay');
-    if (vEl && data.version) vEl.textContent = 'v' + data.version;
+    if (vEl && data.version) vEl.textContent = data.version;
     if (data.version && data.version !== APP_VERSION) {
       showUpdateBanner(data.version, data.notes || '');
     }
@@ -2858,13 +2858,24 @@ function showUpdateBanner(newVersion, notes) {
     border-bottom: 2px solid var(--gold); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   `;
   banner.innerHTML = `
-    <div>🗺️ Update available — v${newVersion}${notes ? ': ' + notes : ''}. Tap to reload.</div>
+    <div>🗺️ v${newVersion} available${notes ? ': ' + notes : ''}. Tap to update.</div>
     <div style="display:flex; gap:10px;">
-      <button onclick="location.reload(true)" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 14px; background:var(--gold); color:var(--ink); border:none; cursor:pointer; letter-spacing:1px;">RELOAD</button>
-      <button onclick="this.closest('div[style]').remove()" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 10px; background:transparent; color:var(--parchment); border:1px solid var(--parchment); cursor:pointer;">✕</button>
+      <button onclick="doUpdate()" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 14px; background:var(--gold); color:var(--ink); border:none; cursor:pointer; letter-spacing:1px;">UPDATE</button>
+      <button onclick="this.closest('div').remove()" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 10px; background:transparent; color:var(--parchment); border:1px solid var(--parchment); cursor:pointer;">✕</button>
     </div>
   `;
   document.body.prepend(banner);
+}
+
+function doUpdate() {
+  // Clear service worker cache then reload
+  if ('caches' in window) {
+    caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))).then(() => {
+      window.location.href = window.location.href.split('?')[0] + '?v=' + Date.now();
+    });
+  } else {
+    window.location.href = window.location.href.split('?')[0] + '?v=' + Date.now();
+  }
 }
 
 window.addEventListener('load', checkForUpdate);
