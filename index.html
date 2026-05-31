@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lee Family Expeditions — Great Plains & Peaks Puzzle Kit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap');
+
+  :root {
+    --ink: #1a1008;
+    --parchment: #f5edd8;
+    --parchment-dark: #e8d9b8;
+    --leather: #7a4a1e;
+    --rust: #b5401a;
+    --forest: #2d5a27;
+    --gold: #c9941a;
+    --stone: #8a7a6a;
+    --sky: #3a6b8a;
+    --shadow: rgba(26,16,8,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    min-height: 100vh;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* COVER PAGE */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at center, #f5edd8 0%, #d4c49a 100%);
+    border-bottom: 4px double var(--leather);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 2px solid var(--leather);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    font-family: 'Special Elite', cursive;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--leather);
+    background: var(--parchment-dark);
+    border: 1px solid var(--leather);
+    padding: 6px 18px;
+    margin-bottom: 24px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .cover h1 span { color: var(--rust); }
+
+  .cover-sub {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(13px, 2vw, 18px);
+    color: var(--leather);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .cover-divider {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 16px auto;
+  }
+
+  .cover-details {
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    color: var(--stone);
+    letter-spacing: 1px;
+    line-height: 2;
+  }
+
+  .cover-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  .cover-nav button {
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    padding: 10px 20px;
+    border: 2px solid var(--leather);
+    background: transparent;
+    color: var(--leather);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .cover-nav button:hover,
+  .cover-nav button.active {
+    background: var(--leather);
+    color: var(--parchment);
+  }
+
+  /* SECTION WRAPPER */
+  .section {
+    display: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .section.visible { display: block; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 3px double var(--leather);
+  }
+
+  .section-tag {
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .section-header p {
+    margin-top: 12px;
+    font-style: italic;
+    color: var(--stone);
+    font-size: 14px;
+  }
+
+  .back-btn {
+    font-family: 'Special Elite', cursive;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--stone);
+    color: var(--stone);
+    padding: 6px 16px;
+    cursor: pointer;
+    margin-bottom: 24px;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .back-btn:hover { background: var(--stone); color: var(--parchment); }
+
+  /* PUZZLE CARD */
+  .puzzle-card {
+    background: var(--parchment-dark);
+    border: 1px solid var(--leather);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    box-shadow: 4px 4px 0 var(--shadow);
+    position: relative;
+  }
+
+  .puzzle-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--leather);
+    color: var(--parchment);
+    padding: 3px 12px;
+  }
+
+  .puzzle-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--rust);
+    margin-bottom: 12px;
+  }
+
+  .puzzle-card .difficulty {
+    font-family: 'Special Elite', cursive;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .puzzle-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  /* SCAVENGER HUNT */
+  .hunt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .hunt-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-dark);
+    font-size: 13px;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .hunt-item:hover { border-color: var(--leather); }
+  .hunt-item.found { background: #e8f0e0; border-color: var(--forest); }
+  .hunt-item.found .check { background: var(--forest); }
+
+  .check {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid var(--stone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    transition: all 0.2s;
+  }
+
+  .hunt-points {
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    color: var(--gold);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  /* WORD SEARCH */
+  .word-search-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+
+  .word-grid {
+    display: inline-grid;
+    gap: 0;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(12px, 2vw, 16px);
+    line-height: 1;
+    border: 2px solid var(--leather);
+  }
+
+  .word-row { display: flex; }
+
+  .word-cell {
+    width: clamp(24px, 3vw, 32px);
+    height: clamp(24px, 3vw, 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--parchment-dark);
+    cursor: pointer;
+    transition: background 0.15s;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--parchment);
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+
+  @media (max-width: 600px) {
+    .word-cell { width: 22px; height: 22px; font-size: 11px; }
+    .word-grid { font-size: 11px; }
+  }
+
+  .word-cell:hover { background: #e8d9b8; }
+  .word-cell.selected { background: var(--gold); color: white; }
+  .word-cell.found-word { background: var(--forest); color: white; }
+  .word-cell.found-word.selected { background: var(--rust); }
+
+  .word-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .word-tag {
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 1px solid var(--leather);
+    background: var(--parchment);
+    letter-spacing: 1px;
+    cursor: default;
+    transition: all 0.2s;
+  }
+
+  .word-tag.found { background: var(--forest); color: white; border-color: var(--forest); text-decoration: line-through; }
+
+  /* TRIVIA */
+  .trivia-q {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--parchment-dark);
+  }
+
+  .trivia-q:last-child { border-bottom: none; }
+
+  .trivia-q .q-text {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .trivia-q .q-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--rust);
+    margin-right: 8px;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 500px) { .options { grid-template-columns: 1fr; } }
+
+  .opt-btn {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 12px;
+    padding: 10px 14px;
+    background: var(--parchment);
+    border: 1px solid var(--stone);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+
+  .opt-btn:hover { border-color: var(--leather); background: var(--parchment-dark); }
+  .opt-btn.correct { background: #e0f0d8; border-color: var(--forest); color: var(--forest); }
+  .opt-btn.wrong { background: #f8e0d8; border-color: var(--rust); color: var(--rust); }
+
+  .trivia-feedback {
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    margin-top: 8px;
+    padding: 6px 12px;
+    display: none;
+  }
+
+  .trivia-feedback.show { display: block; }
+  .trivia-feedback.correct { background: #e0f0d8; color: var(--forest); }
+  .trivia-feedback.wrong { background: #f8e0d8; color: var(--rust); }
+
+  /* LOGIC PUZZLE */
+  .logic-grid-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--parchment-dark);
+    position: relative;
+  }
+
+  .logic-grid-wrap::after {
+    content: '← scroll →';
+    display: none;
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--stone);
+    text-align: center;
+    padding: 4px;
+    background: var(--parchment-dark);
+  }
+
+  @media (max-width: 600px) {
+    .logic-grid-wrap::after { display: block; }
+  }
+
+  .logic-grid {
+    border-collapse: collapse;
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    min-width: 500px;
+  }
+
+  .logic-grid th, .logic-grid td {
+    border: 1px solid var(--leather);
+    padding: 8px 10px;
+    text-align: center;
+    min-width: 54px;
+  }
+
+  @media (max-width: 600px) {
+    .logic-grid th, .logic-grid td { padding: 6px 7px; min-width: 44px; font-size: 11px; }
+  }
+
+  .logic-grid th {
+    background: var(--leather);
+    color: var(--parchment);
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .logic-grid td { background: var(--parchment); cursor: pointer; transition: background 0.15s; }
+  .logic-grid td:hover { background: var(--parchment-dark); }
+  .logic-grid td.mark-yes { background: #e0f0d8; color: var(--forest); font-weight: bold; }
+  .logic-grid td.mark-no { background: #f8e0d8; color: var(--rust); }
+  .logic-grid .row-label { text-align: left; font-weight: bold; background: var(--parchment-dark); cursor: default; }
+
+  /* CRYPTIC */
+  .cryptic-clue {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--parchment-dark);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .clue-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--rust);
+    min-width: 28px;
+  }
+
+  .clue-text { font-size: 14px; line-height: 1.7; flex: 1; }
+  .clue-length { font-family: 'Special Elite', cursive; font-size: 11px; color: var(--stone); margin-top: 4px; }
+
+  .answer-reveal {
+    font-family: 'Special Elite', cursive;
+    font-size: 11px;
+    color: var(--gold);
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 6px;
+    display: inline-block;
+  }
+
+  .answer-text {
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    color: var(--forest);
+    display: none;
+    margin-top: 4px;
+    padding: 4px 10px;
+    background: #e0f0d8;
+    border-left: 3px solid var(--forest);
+  }
+  .answer-text.show { display: block; }
+
+  /* SUDOKU */
+  .sudoku-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(9, 1fr);
+    border: 3px solid var(--ink);
+    margin: 16px 0;
+  }
+
+  .sudoku-cell {
+    width: clamp(32px, 5vw, 46px);
+    height: clamp(32px, 5vw, 46px);
+    border: 1px solid var(--stone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(14px, 2vw, 18px);
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .sudoku-cell.given { background: var(--parchment-dark); cursor: default; color: var(--ink); font-weight: bold; }
+  .sudoku-cell.editable { background: var(--parchment); color: var(--sky); }
+  .sudoku-cell.editable:hover { background: #e0f0d8; }
+  .sudoku-cell.selected-s { background: #d0e8f8; }
+  .sudoku-cell.error { color: var(--rust) !important; }
+
+  .sudoku-cell:nth-child(3n) { border-right: 2px solid var(--ink); }
+  .sudoku-cell:nth-child(9n) { border-right: none; }
+
+  .sudoku-row-3 { border-bottom: 2px solid var(--ink); }
+  .sudoku-row-6 { border-bottom: 2px solid var(--ink); }
+
+  .sudoku-wrap { overflow-x: auto; }
+
+  .numpad {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .numpad button {
+    font-family: 'Special Elite', cursive;
+    font-size: 16px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--leather);
+    background: var(--parchment);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .numpad button:hover { background: var(--leather); color: var(--parchment); }
+
+  /* SCORE TRACKER */
+  .score-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--leather);
+    color: var(--parchment);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    letter-spacing: 1px;
+    z-index: 500;
+    border-top: 2px solid var(--gold);
+  }
+
+  .score-bar span { color: var(--gold); font-size: 16px; }
+
+  /* RESPONSIVE */
+  @media print {
+    .score-bar, .back-btn { display: none; }
+    .section { display: block !important; }
+    .cover { page-break-after: always; }
+    .puzzle-card { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .puzzle-card { padding: 20px 16px; }
+    .section { padding: 24px 14px 80px; }
+  }
+
+  /* INTRO ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cover > * { animation: fadeUp 0.6s ease both; }
+  .cover > *:nth-child(1) { animation-delay: 0.1s; }
+  .cover > *:nth-child(2) { animation-delay: 0.2s; }
+  .cover > *:nth-child(3) { animation-delay: 0.3s; }
+  .cover > *:nth-child(4) { animation-delay: 0.4s; }
+  .cover > *:nth-child(5) { animation-delay: 0.5s; }
+  .cover > *:nth-child(6) { animation-delay: 0.6s; }
+  .cover > *:nth-child(7) { animation-delay: 0.7s; }
+</style>
+</head>
+<body>
+
+<!-- SCORE BAR -->
+<div class="score-bar">
+  <div>LEE FAMILY EXPEDITIONS</div>
+  <div>Score: <span id="totalScore">0</span> pts</div>
+</div>
+
+<!-- COVER -->
+<div class="cover" id="cover">
+  <div class="cover-badge">Lee Family Expeditions — June 2026</div>
+  <div class="cover-divider"></div>
+  <h1>Great Plains<br><span>&amp; Peaks</span></h1>
+  <div class="cover-sub">Puzzle Kit — Black Hills &amp; Yellowstone</div>
+  <div class="cover-divider"></div>
+  <div class="cover-details">
+    Mason &amp; Sophia Lee<br>
+    Prepared for the Expedition of June 6–21, 2026<br>
+    From the Desk of Lee Family Expeditions
+  </div>
+  <div class="cover-nav">
+    <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
+    <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
+  </div>
+</div>
+
+<!-- MT. RUSHMORE SECTION -->
+<div class="section" id="rushmore">
+  <button class="back-btn" onclick="showCover()">← Back to Expedition HQ</button>
+  <div class="section-header">
+    <span class="section-tag">Black Hills, South Dakota — June 6–10</span>
+    <h2>Mount Rushmore<br>Expedition Files</h2>
+    <p>Four faces. Four presidents. One mountain. Your mission: master them all.</p>
+  </div>
+
+  <!-- SCAVENGER HUNT - RUSHMORE -->
+  <div class="puzzle-card" data-num="Puzzle R-1 · Scavenger Hunt">
+    <h3>Presidents on Patrol: Black Hills Scavenger Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 50 pts possible</div>
+    <p>Check off each item as you find or complete it during your Black Hills visit. Tap to mark as found!</p>
+    <div class="hunt-grid" id="rushmore-hunt"></div>
+    <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+      Found: <span id="rushmore-hunt-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="rushmore-hunt-pts">0</span>
+    </div>
+  </div>
+
+  <!-- TRIVIA - RUSHMORE -->
+  <div class="puzzle-card" data-num="Puzzle R-2 · Trivia">
+    <h3>Stone Cold Facts: Mount Rushmore Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
+    <p>Seven questions about the mountain, the presidents, and the people who built it. No peeking!</p>
+    <div id="rushmore-trivia"></div>
+  </div>
+
+  <!-- WORD SEARCH - RUSHMORE -->
+  <div class="puzzle-card" data-num="Puzzle R-3 · Word Search">
+    <h3>Black Hills Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Find all 12 hidden words. They run across, down, and diagonally.</p>
+    <div class="word-search-wrap" id="rushmore-ws-wrap"></div>
+    <div class="word-list" id="rushmore-ws-words"></div>
+  </div>
+
+  <!-- CRYPTIC - RUSHMORE -->
+  <div class="puzzle-card" data-num="Puzzle R-4 · Cryptic Clues">
+    <h3>Granite Riddles: Presidential Cryptics</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Mason's Challenge</div>
+    <p>Each clue hides two pathways to the same answer — a wordplay definition and a direct definition. Unravel both to find the word!</p>
+    <div id="rushmore-cryptic"></div>
+  </div>
+
+  <!-- LOGIC PUZZLE - RUSHMORE -->
+  <div class="puzzle-card" data-num="Puzzle R-5 · Logic Puzzle">
+    <h3>The Sculptor's Order: A Logic Puzzle</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Montague-style</div>
+    <p>Gutzon Borglum's four workers each carved a different part of a different president's face in a different year. Use the clues to match them all up!</p>
+    <div id="rushmore-logic"></div>
+  </div>
+
+</div><!-- end rushmore -->
+
+<!-- YELLOWSTONE SECTION -->
+<div class="section" id="yellowstone">
+  <button class="back-btn" onclick="showCover()">← Back to Expedition HQ</button>
+  <div class="section-header">
+    <span class="section-tag">Yellowstone National Park — June 12–21, Gardiner MT Base</span>
+    <h2>Yellowstone<br>Field Journal Puzzles</h2>
+    <p>The world's first national park holds 10,000 secrets. How many can you crack?</p>
+  </div>
+
+  <!-- SCAVENGER HUNT - YELLOWSTONE -->
+  <div class="puzzle-card" data-num="Puzzle Y-1 · Scavenger Hunt">
+    <h3>Field Agent Hunt: Yellowstone Edition</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 80 pts possible</div>
+    <p>Collect evidence throughout the park. Tap to mark as spotted!</p>
+    <div class="hunt-grid" id="yellowstone-hunt"></div>
+    <div style="margin-top:16px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+      Found: <span id="yellowstone-hunt-score">0</span> / 12 &nbsp;|&nbsp; Points: <span id="yellowstone-hunt-pts">0</span>
+    </div>
+  </div>
+
+  <!-- TRIVIA - YELLOWSTONE -->
+  <div class="puzzle-card" data-num="Puzzle Y-2 · Trivia">
+    <h3>Hot Springs, Cold Facts: Yellowstone Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
+    <p>From Old Faithful to Lamar Valley wolves — test your Yellowstone knowledge.</p>
+    <div id="yellowstone-trivia"></div>
+  </div>
+
+  <!-- WORD SEARCH - YELLOWSTONE -->
+  <div class="puzzle-card" data-num="Puzzle Y-3 · Word Search">
+    <h3>Wonderland Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Find 14 Yellowstone words hidden in all directions.</p>
+    <div class="word-search-wrap" id="yellowstone-ws-wrap"></div>
+    <div class="word-list" id="yellowstone-ws-words"></div>
+  </div>
+
+  <!-- CRYPTIC - YELLOWSTONE -->
+  <div class="puzzle-card" data-num="Puzzle Y-4 · Cryptic Clues">
+    <h3>Geyser Code: Yellowstone Cryptics</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Mason's Challenge</div>
+    <p>Decode each two-part clue. The definition lurks inside the wordplay!</p>
+    <div id="yellowstone-cryptic"></div>
+  </div>
+
+  <!-- SUDOKU - YELLOWSTONE -->
+  <div class="puzzle-card" data-num="Puzzle Y-5 · Sudoku">
+    <h3>Old Faithful Sudoku</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Medium difficulty</div>
+    <p>A park as orderly as a geyser's schedule. Fill in the grid — every row, column, and 3×3 box must contain 1–9. Tap a cell, then tap a number.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap"></div>
+    <div class="numpad" id="numpad"></div>
+    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudoku()" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; letter-spacing:1px;">Check Solution</button>
+      <button onclick="clearSudoku()" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 18px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer; letter-spacing:1px;">Clear My Answers</button>
+    </div>
+    <div id="sudoku-msg" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:10px; display:none;"></div>
+  </div>
+
+  <!-- LOGIC PUZZLE - YELLOWSTONE -->
+  <div class="puzzle-card" data-num="Puzzle Y-6 · Logic Puzzle">
+    <h3>The Day Planner: Yellowstone Logic</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · Montague-style</div>
+    <p>Five Lee family members each have a favorite day and favorite Yellowstone feature from the itinerary. Can you match them all?</p>
+    <div id="yellowstone-logic"></div>
+  </div>
+
+  <!-- SPOT THE DIFFERENCE -->
+  <div class="puzzle-card" data-num="Puzzle Y-7 · Observation Challenge">
+    <h3>The Ranger's Report: Spot the Differences</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Sophia's Challenge</div>
+    <p>Two geyser field reports have been filed — but one has been altered! Read both carefully and find the <strong>8 differences</strong> between Report A and Report B. Circle them on paper or tap below when you find each one!</p>
+    <div id="spot-diff-content"></div>
+  </div>
+
+</div><!-- end yellowstone -->
+
+<script>
+// ===================== STATE =====================
+let totalScore = 0;
+let sudokuSelected = null;
+
+function addScore(pts) {
+  totalScore += pts;
+  document.getElementById('totalScore').textContent = totalScore;
+}
+
+// ===================== NAVIGATION =====================
+function showSection(id) {
+  document.getElementById('cover').style.display = 'none';
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.getElementById(id).classList.add('visible');
+  window.scrollTo(0,0);
+}
+
+function showCover() {
+  document.getElementById('cover').style.display = 'flex';
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  window.scrollTo(0,0);
+}
+
+// ===================== SCAVENGER HUNTS =====================
+const rushmoreHuntItems = [
+  { text: "Spot all four presidents' faces from the Grand View Terrace", pts: 5 },
+  { text: "Read the name of the sculptor off a sign (hint: starts with 'B')", pts: 5 },
+  { text: "Find a flag from a state that starts with the same letter as your first name on the Avenue of Flags", pts: 5 },
+  { text: "Count the number of pine trees visible from the main viewing area (estimate to nearest 10)", pts: 5 },
+  { text: "Find a photo op where you line up your hand to 'touch' a president's nose", pts: 5 },
+  { text: "Spot a chipmunk, squirrel, or bird near the visitor center", pts: 5 },
+  { text: "Read one fact from the Lincoln Borglum Museum and quiz another family member on it later", pts: 5 },
+  { text: "Look up: which president's face was originally carved in the wrong spot? (Ask a ranger!)", pts: 5 },
+  { text: "Find something at the site that was made in South Dakota", pts: 5 },
+  { text: "Write down what the mountain's original Lakota Sioux name was (research or ask!)", pts: 5 }
+];
+
+const yellowstoneHuntItems = [
+  { text: "Watch Old Faithful erupt — time it! (record the eruption duration in seconds)", pts: 7 },
+  { text: "Spot a bison within 100 yards of the road", pts: 7 },
+  { text: "Find and photograph Artist Point overlooking the Grand Canyon of Yellowstone", pts: 6 },
+  { text: "Name the color of the water at a hot spring or thermal pool you see up close", pts: 6 },
+  { text: "Spot any large predator OR fresh tracks/scat (wolf, grizzly, coyote)", pts: 7 },
+  { text: "Find the Roosevelt Arch in Gardiner — read the inscription and write it down", pts: 6 },
+  { text: "Watch for a bird of prey (osprey, hawk, or eagle) in Lamar Valley or Hayden Valley", pts: 7 },
+  { text: "See a mud pot bubbling at Norris Geyser Basin", pts: 6 },
+  { text: "Spot a thermal feature that's a color other than clear/white (yellow, orange, green, red)", pts: 6 },
+  { text: "Find a sign that explains how geysers work — summarize it in one sentence", pts: 6 },
+  { text: "Dip a hand (carefully!) in the Boiling River hot spring — describe the temperature", pts: 6 },
+  { text: "Photograph or sketch the Lower Falls of the Grand Canyon of Yellowstone", pts: 6 }
+];
+
+function buildHunt(items, containerId, scoreId, ptsId, prefix) {
+  const container = document.getElementById(containerId);
+  let found = 0;
+  items.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'hunt-item';
+    div.id = `${prefix}-hunt-${i}`;
+    div.innerHTML = `
+      <div class="check" id="${prefix}-check-${i}"></div>
+      <div style="flex:1; font-size:13px; line-height:1.5">${item.text}</div>
+      <div class="hunt-points">${item.pts} pts</div>
+    `;
+    div.onclick = () => {
+      const isFound = div.classList.toggle('found');
+      document.getElementById(`${prefix}-check-${i}`).textContent = isFound ? '✓' : '';
+      addScore(isFound ? item.pts : -item.pts);
+      let f = document.querySelectorAll(`#${containerId} .hunt-item.found`).length;
+      document.getElementById(scoreId).textContent = f;
+      let p = 0;
+      document.querySelectorAll(`#${containerId} .hunt-item.found`).forEach(el => {
+        const idx = parseInt(el.id.split('-').pop());
+        p += items[idx].pts;
+      });
+      document.getElementById(ptsId).textContent = p;
+    };
+    container.appendChild(div);
+  });
+}
+
+buildHunt(rushmoreHuntItems, 'rushmore-hunt', 'rushmore-hunt-score', 'rushmore-hunt-pts', 'r');
+buildHunt(yellowstoneHuntItems, 'yellowstone-hunt', 'yellowstone-hunt-score', 'yellowstone-hunt-pts', 'y');
+
+// ===================== TRIVIA =====================
+const rushmoreTriviaData = [
+  {
+    q: "Which president's face was moved because of unstable rock during construction?",
+    opts: ["Washington", "Jefferson", "Roosevelt", "Lincoln"],
+    ans: 1,
+    fact: "Correct! Jefferson's face was originally started to Washington's left but had to be blasted away and recarved on his right due to cracked rock."
+  },
+  {
+    q: "Carving of Mount Rushmore began in 1927 and was completed in what year?",
+    opts: ["1935", "1938", "1941", "1945"],
+    ans: 2,
+    fact: "Right! Carving finished in 1941, the same year sculptor Gutzon Borglum died. His son Lincoln completed the work."
+  },
+  {
+    q: "Each face on Mount Rushmore is approximately how tall?",
+    opts: ["20 feet", "40 feet", "60 feet", "100 feet"],
+    ans: 2,
+    fact: "Exactly! Each face is about 60 feet tall — roughly the height of a 6-story building."
+  },
+  {
+    q: "What was Doane Robinson's original idea for the Black Hills monument BEFORE it became Mount Rushmore?",
+    opts: ["Native American chiefs and pioneers", "Civil War generals", "Dinosaurs", "The Statue of Liberty"],
+    ans: 0,
+    fact: "Correct! Robinson originally envisioned sculpting Western heroes including Native American chiefs, but sculptor Borglum pushed for presidents instead."
+  },
+  {
+    q: "Which of these tools was primarily used to remove 90% of the rock at Mount Rushmore?",
+    opts: ["Jackhammers", "Chisels", "Dynamite", "Water jets"],
+    ans: 2,
+    fact: "That's right! Dynamite removed the bulk of the rock. Workers then used jackhammers and chisels for the fine detail work."
+  },
+  {
+    q: "Mount Rushmore sits in what mountain range?",
+    opts: ["Rocky Mountains", "Black Hills", "Badlands", "Appalachians"],
+    ans: 1,
+    fact: "Correct! The Black Hills of South Dakota — a sacred region to the Lakota Sioux people."
+  },
+  {
+    q: "Theodore Roosevelt represents which theme on the monument?",
+    opts: ["The founding of the nation", "Expansion of American territory", "Conservation and development", "Preserving the Union"],
+    ans: 2,
+    fact: "Right! Roosevelt represents the early 20th century period of conservation and industrial development. He created many of America's national parks!"
+  }
+];
+
+const yellowstoneTriviaData = [
+  {
+    q: "Yellowstone became the world's first national park in what year?",
+    opts: ["1856", "1872", "1890", "1916"],
+    ans: 1,
+    fact: "Correct! Yellowstone was established on March 1, 1872 — the world's first national park."
+  },
+  {
+    q: "Old Faithful erupts on average about how often?",
+    opts: ["Every 20 minutes", "Every 45 minutes", "Every 90 minutes", "Every 3 hours"],
+    ans: 2,
+    fact: "Right! Old Faithful erupts roughly every 90 minutes, though it can range from 50 to 127 minutes between eruptions."
+  },
+  {
+    q: "How tall can Old Faithful's eruption reach at its highest?",
+    opts: ["50 feet", "90 feet", "184 feet", "300 feet"],
+    ans: 2,
+    fact: "Correct! Old Faithful can shoot water 106–184 feet into the air. Each eruption expels up to 8,400 gallons of boiling water!"
+  },
+  {
+    q: "The Grand Canyon of Yellowstone's Lower Falls drops how far?",
+    opts: ["108 feet", "308 feet", "508 feet", "208 feet"],
+    ans: 1,
+    fact: "That's right! At 308 feet, the Lower Falls is the tallest waterfall in Yellowstone — nearly twice the height of Niagara Falls!"
+  },
+  {
+    q: "Yellowstone contains roughly what fraction of all the world's geysers?",
+    opts: ["One quarter", "One third", "One half", "Two thirds"],
+    ans: 2,
+    fact: "Amazing but true! Yellowstone's 500+ geysers represent about half of all geysers on Earth."
+  },
+  {
+    q: "In the 19th century, Yellowstone's bison herd was hunted down to how many animals?",
+    opts: ["23", "230", "2,300", "50"],
+    ans: 0,
+    fact: "Heartbreaking but true — only 23 bison survived. Today the park is home to about 5,500, the largest herd that has existed continuously since prehistoric times."
+  },
+  {
+    q: "Which Yellowstone area is the Lee family visiting at 5:30 AM for wolf and bison spotting?",
+    opts: ["Norris Geyser Basin", "Lamar Valley", "West Thumb", "Mammoth Hot Springs"],
+    ans: 1,
+    fact: "Correct! Lamar Valley — the 'American Serengeti' — is the best spot in the park for wolf packs and large wildlife herds. Early morning is prime time!"
+  }
+];
+
+function buildTrivia(data, containerId, prefix) {
+  const container = document.getElementById(containerId);
+  data.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'trivia-q';
+    const optsHtml = item.opts.map((o, j) => 
+      `<button class="opt-btn" onclick="answerTrivia('${prefix}',${i},${j})" id="${prefix}-opt-${i}-${j}">${String.fromCharCode(65+j)}) ${o}</button>`
+    ).join('');
+    div.innerHTML = `
+      <div class="q-text"><span class="q-num">${i+1}.</span>${item.q}</div>
+      <div class="options">${optsHtml}</div>
+      <div class="trivia-feedback" id="${prefix}-fb-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function answerTrivia(prefix, qIdx, optIdx) {
+  const data = prefix === 'rt' ? rushmoreTriviaData : yellowstoneTriviaData;
+  const item = data[qIdx];
+  for (let j = 0; j < item.opts.length; j++) {
+    const btn = document.getElementById(`${prefix}-opt-${qIdx}-${j}`);
+    if (btn) { btn.disabled = true; }
+  }
+  const chosen = document.getElementById(`${prefix}-opt-${qIdx}-${optIdx}`);
+  const correct = document.getElementById(`${prefix}-opt-${qIdx}-${item.ans}`);
+  const fb = document.getElementById(`${prefix}-fb-${qIdx}`);
+  if (optIdx === item.ans) {
+    chosen.classList.add('correct');
+    fb.textContent = '✓ ' + item.fact;
+    fb.className = 'trivia-feedback show correct';
+    addScore(10);
+  } else {
+    chosen.classList.add('wrong');
+    correct.classList.add('correct');
+    fb.textContent = '✗ Not quite. ' + item.fact;
+    fb.className = 'trivia-feedback show wrong';
+  }
+}
+
+buildTrivia(rushmoreTriviaData, 'rushmore-trivia', 'rt');
+buildTrivia(yellowstoneTriviaData, 'yellowstone-trivia', 'yt');
+
+// ===================== WORD SEARCH =====================
+function buildWordSearch(words, containerId, wordListId) {
+  const SIZE = 15;
+  const grid = Array.from({length:SIZE}, () => Array(SIZE).fill(''));
+  const placed = [];
+
+  const directions = [
+    [0,1],[1,0],[1,1],[0,-1],[-1,0],[-1,-1],[1,-1],[-1,1]
+  ];
+
+  function placeWord(word) {
+    const w = word.toUpperCase();
+    for (let attempt = 0; attempt < 200; attempt++) {
+      const dir = directions[Math.floor(Math.random() * directions.length)];
+      const r = Math.floor(Math.random() * SIZE);
+      const c = Math.floor(Math.random() * SIZE);
+      const cells = [];
+      let ok = true;
+      for (let i = 0; i < w.length; i++) {
+        const nr = r + dir[0]*i, nc = c + dir[1]*i;
+        if (nr<0||nr>=SIZE||nc<0||nc>=SIZE) { ok=false; break; }
+        if (grid[nr][nc] !== '' && grid[nr][nc] !== w[i]) { ok=false; break; }
+        cells.push([nr,nc]);
+      }
+      if (ok) {
+        cells.forEach(([nr,nc], i) => grid[nr][nc] = w[i]);
+        placed.push({word:w, cells});
+        return true;
+      }
+    }
+    return false;
+  }
+
+  words.forEach(w => placeWord(w));
+
+  // Fill blanks
+  const alpha = 'ABCDEFGHIJKLMNOPRSTUVWXY';
+  for (let r=0;r<SIZE;r++) for (let c=0;c<SIZE;c++) {
+    if (!grid[r][c]) grid[r][c] = alpha[Math.floor(Math.random()*alpha.length)];
+  }
+
+  // Render
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  const gridDiv = document.createElement('div');
+  gridDiv.className = 'word-grid';
+  gridDiv.style.gridTemplateColumns = `repeat(${SIZE}, 1fr)`;
+
+  let selectedCells = [];
+  let foundWords = new Set();
+
+  const cellEls = [];
+
+  for (let r=0;r<SIZE;r++) {
+    for (let c=0;c<SIZE;c++) {
+      const cell = document.createElement('div');
+      cell.className = 'word-cell';
+      cell.textContent = grid[r][c];
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+
+      cell.addEventListener('mousedown', () => startSelect(r,c));
+      cell.addEventListener('mouseover', (e) => { if(e.buttons===1) extendSelect(r,c); });
+
+      cellEls.push({el:cell, r, c});
+      gridDiv.appendChild(cell);
+    }
+  }
+
+  // Touch support: use touchmove + elementFromPoint to track drag path properly
+  gridDiv.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (el && el.dataset.r !== undefined) {
+      startSelect(parseInt(el.dataset.r), parseInt(el.dataset.c));
+    }
+  }, {passive: false});
+
+  gridDiv.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (el && el.dataset.r !== undefined) {
+      extendSelect(parseInt(el.dataset.r), parseInt(el.dataset.c));
+    }
+  }, {passive: false});
+
+  gridDiv.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    finishSelect();
+  }, {passive: false});
+
+  document.addEventListener('mouseup', finishSelect);
+
+  container.appendChild(gridDiv);
+
+  // Word list
+  const wlContainer = document.getElementById(wordListId);
+  wlContainer.innerHTML = '';
+  words.forEach(w => {
+    const tag = document.createElement('div');
+    tag.className = 'word-tag';
+    tag.id = `wt-${containerId}-${w.toUpperCase()}`;
+    tag.textContent = w.toUpperCase();
+    wlContainer.appendChild(tag);
+  });
+
+  function getCellEl(r,c) {
+    return cellEls.find(x => x.r===r && x.c===c)?.el;
+  }
+
+  function startSelect(r,c) {
+    selectedCells = [{r,c}];
+    updateHighlight();
+  }
+
+  function extendSelect(r,c) {
+    if (!selectedCells.length) return;
+    const start = selectedCells[0];
+    const dr = r - start.r, dc = c - start.c;
+    const steps = Math.max(Math.abs(dr), Math.abs(dc));
+    if (steps === 0) { selectedCells = [{r,c}]; updateHighlight(); return; }
+    const sr = dr===0?0:(dr/Math.abs(dr)), sc = dc===0?0:(dc/Math.abs(dc));
+    if (Math.abs(dr)!==Math.abs(dc) && dr!==0 && dc!==0) return;
+    selectedCells = [];
+    for (let i=0;i<=steps;i++) selectedCells.push({r:start.r+sr*i, c:start.c+sc*i});
+    updateHighlight();
+  }
+
+  function updateHighlight() {
+    cellEls.forEach(({el, r, c}) => {
+      if (foundWords.size > 0) { /* keep found highlights */ }
+      const isSel = selectedCells.some(s=>s.r===r&&s.c===c);
+      if (!el.classList.contains('found-word')) {
+        el.classList.toggle('selected', isSel);
+      }
+    });
+  }
+
+  function finishSelect() {
+    if (!selectedCells.length) return;
+    const attempt = selectedCells.map(({r,c})=>grid[r][c]).join('');
+    const attemptRev = attempt.split('').reverse().join('');
+    let matched = placed.find(p => p.word===attempt || p.word===attemptRev);
+    if (matched && !foundWords.has(matched.word)) {
+      foundWords.add(matched.word);
+      matched.cells.forEach(([r,c]) => {
+        const el = getCellEl(r,c);
+        if (el) { el.classList.add('found-word'); el.classList.remove('selected'); }
+      });
+      const tag = document.getElementById(`wt-${containerId}-${matched.word}`);
+      if (tag) tag.classList.add('found');
+      addScore(5);
+      if (foundWords.size === words.length) {
+        setTimeout(()=>alert('🎉 All words found! +' + (words.length*5) + ' bonus pts!'), 100);
+        addScore(words.length * 5);
+      }
+    } else {
+      selectedCells.forEach(({r,c}) => {
+        const el = getCellEl(r,c);
+        if (el && !el.classList.contains('found-word')) el.classList.remove('selected');
+      });
+    }
+    selectedCells = [];
+  }
+}
+
+const rushmoreWSWords = ['RUSHMORE','BORGLUM','GRANITE','LINCOLN','JEFFERSON','ROOSEVELT','WASHINGTON','KEYSTONE','DYNAMITE','DAKOTA','LAKOTA','SCULPTOR'];
+const yellowstoneWSWords = ['YELLOWSTONE','OLDFAITHFUL','GEYSER','BISON','MAMMOTH','LAMARVALLEY','GARDINER','VOLCANIC','HOTSPRING','THERMAL','GRIZZLY','WOLFPACK','CANYON','BOILINGRIVER'];
+
+setTimeout(() => {
+  buildWordSearch(rushmoreWSWords.map(w=>w.replace(' ','')), 'rushmore-ws-wrap', 'rushmore-ws-words');
+  buildWordSearch(yellowstoneWSWords.map(w=>w.replace(' ','')), 'yellowstone-ws-wrap', 'yellowstone-ws-words');
+}, 100);
+
+// ===================== CRYPTIC CLUES =====================
+const rushmoreCryptics = [
+  {
+    num: 1,
+    clue: "Granite giant carved by Borglum's son in eleven steps — revolutionary start (10)",
+    length: "(10 letters)",
+    answer: "WASHINGTON",
+    hint: "The first president — and the first face carved on the mountain."
+  },
+  {
+    num: 2,
+    clue: "Author of freedom's document hid in JEFF'S SON after returning (9)",
+    length: "(9 letters)",
+    answer: "JEFFERSON",
+    hint: "He wrote the Declaration of Independence and doubled America's size."
+  },
+  {
+    num: 3,
+    clue: "Teddy's conservation spirit: ROOS anagram follows ELT arrangement (9)",
+    length: "(9 letters)",
+    answer: "ROOSEVELT",
+    hint: "The Rough Rider who loved national parks — and his face came third in order."
+  },
+  {
+    num: 4,
+    clue: "The great emancipator's name LINKS ON, scrambled (7)",
+    length: "(7 letters)",
+    answer: "LINCOLN",
+    hint: "He preserved the Union during America's greatest crisis. His son's name is also hidden in the sculptor's story..."
+  },
+  {
+    num: 5,
+    clue: "Rock-eating tool used to shape faces: a TIMED YEAN scramble (8)",
+    length: "(8 letters)",
+    answer: "DYNAMITE",
+    hint: "90% of the mountain was removed using this explosive method."
+  },
+  {
+    num: 6,
+    clue: "Sacred Sioux land in South Dakota range: BLACK ____ (5)",
+    length: "(5 letters)",
+    answer: "HILLS",
+    hint: "The two words that complete the range name — and the region the Lakota called Paha Sapa."
+  }
+];
+
+const yellowstoneCryptics = [
+  {
+    num: 1,
+    clue: "Faithful old friend erupts on schedule: LADE LOFI scrambled, then add THUS (10+3 hint — two words)",
+    length: "(3,8 letters)",
+    answer: "OLD FAITHFUL",
+    hint: "The most famous geyser in the world — erupts every 44–120 minutes since the park opened in 1872."
+  },
+  {
+    num: 2,
+    clue: "Valley of wolves and bison: LARA M sounds like the animal alarm (5,6)",
+    length: "(5,6 letters)",
+    answer: "LAMAR VALLEY",
+    hint: "Your 5:30 AM destination on Day 2 — the American Serengeti."
+  },
+  {
+    num: 3,
+    clue: "Hot water trap that expels steam: found in GREYS REA scrambled (6)",
+    length: "(6 letters)",
+    answer: "GEYSER",
+    hint: "Yellowstone has over 500 of them — about half of all geysers on Earth."
+  },
+  {
+    num: 4,
+    clue: "Biggest animal in Yellowstone, nearly hunted to 23 — a SON BI (5)",
+    length: "(5 letters)",
+    answer: "BISON",
+    hint: "The park's herd has survived continuously since prehistoric times."
+  },
+  {
+    num: 5,
+    clue: "Canyon painter's spot above the falls: ARTIST _____ (5)",
+    length: "(5 letters)",
+    answer: "POINT",
+    hint: "Artist _____ — the most photographed viewpoint over the Grand Canyon of Yellowstone."
+  },
+  {
+    num: 6,
+    clue: "Where the Lee family soaks on their last park day — BINGO VILER scrambled (7,5)",
+    length: "(7,5 letters)",
+    answer: "BOILING RIVER",
+    hint: "Just 5 minutes from Gardiner — a hot spring flowing into the cool Gardner River."
+  }
+];
+
+function buildCryptic(data, containerId) {
+  const container = document.getElementById(containerId);
+  data.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'cryptic-clue';
+    div.innerHTML = `
+      <div class="clue-num">${item.num}.</div>
+      <div>
+        <div class="clue-text">${item.clue}</div>
+        <div class="clue-length">${item.length}</div>
+        <div class="answer-reveal" onclick="toggleAnswer('crypt-${containerId}-${i}')">▶ Reveal Answer</div>
+        <div class="answer-text" id="crypt-${containerId}-${i}">
+          <strong>${item.answer}</strong> — ${item.hint}
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function toggleAnswer(id) {
+  const el = document.getElementById(id);
+  const isShown = el.classList.toggle('show');
+  if (isShown) addScore(0); // no pts for reveals, just for fun
+}
+
+buildCryptic(rushmoreCryptics, 'rushmore-cryptic');
+buildCryptic(yellowstoneCryptics, 'yellowstone-cryptic');
+
+// ===================== SUDOKU =====================
+const sudokuPuzzle = [
+  [5,3,0, 0,7,0, 0,0,0],
+  [6,0,0, 1,9,5, 0,0,0],
+  [0,9,8, 0,0,0, 0,6,0],
+
+  [8,0,0, 0,6,0, 0,0,3],
+  [4,0,0, 8,0,3, 0,0,1],
+  [7,0,0, 0,2,0, 0,0,6],
+
+  [0,6,0, 0,0,0, 2,8,0],
+  [0,0,0, 4,1,9, 0,0,5],
+  [0,0,0, 0,8,0, 0,7,9]
+];
+
+const sudokuSolution = [
+  [5,3,4, 6,7,8, 9,1,2],
+  [6,7,2, 1,9,5, 3,4,8],
+  [1,9,8, 3,4,2, 5,6,7],
+  [8,5,9, 7,6,1, 4,2,3],
+  [4,2,6, 8,5,3, 7,9,1],
+  [7,1,3, 9,2,4, 8,5,6],
+  [9,6,1, 5,3,7, 2,8,4],
+  [2,8,7, 4,1,9, 6,3,5],
+  [3,4,5, 2,8,6, 1,7,9]
+];
+
+let sudokuState = sudokuPuzzle.map(r => [...r]);
+
+function buildSudoku() {
+  const wrap = document.getElementById('sudoku-wrap');
+  wrap.innerHTML = '';
+  const gridDiv = document.createElement('div');
+  gridDiv.className = 'sudoku-grid';
+  
+  for (let r=0;r<9;r++) {
+    for (let c=0;c<9;c++) {
+      const cell = document.createElement('div');
+      cell.className = 'sudoku-cell';
+      cell.id = `sc-${r}-${c}`;
+      if (r===2||r===5) cell.classList.add(`sudoku-row-${r}`);
+      if (sudokuPuzzle[r][c] !== 0) {
+        cell.classList.add('given');
+        cell.textContent = sudokuPuzzle[r][c];
+      } else {
+        cell.classList.add('editable');
+        cell.textContent = sudokuState[r][c] || '';
+        cell.addEventListener('click', () => selectSudokuCell(r,c));
+      }
+      gridDiv.appendChild(cell);
+    }
+  }
+  wrap.appendChild(gridDiv);
+
+  // Numpad
+  const numpad = document.getElementById('numpad');
+  numpad.innerHTML = '';
+  for (let n=1;n<=9;n++) {
+    const btn = document.createElement('button');
+    btn.textContent = n;
+    btn.onclick = () => enterSudokuNum(n);
+    numpad.appendChild(btn);
+  }
+  const clrBtn = document.createElement('button');
+  clrBtn.textContent = '✕';
+  clrBtn.onclick = () => enterSudokuNum(0);
+  numpad.appendChild(clrBtn);
+}
+
+function selectSudokuCell(r,c) {
+  if (sudokuPuzzle[r][c] !== 0) return;
+  document.querySelectorAll('.sudoku-cell').forEach(el => el.classList.remove('selected-s'));
+  document.getElementById(`sc-${r}-${c}`).classList.add('selected-s');
+  sudokuSelected = {r,c};
+}
+
+function enterSudokuNum(n) {
+  if (!sudokuSelected) return;
+  const {r,c} = sudokuSelected;
+  if (sudokuPuzzle[r][c] !== 0) return;
+  sudokuState[r][c] = n;
+  const el = document.getElementById(`sc-${r}-${c}`);
+  el.textContent = n || '';
+  el.classList.remove('error');
+}
+
+function clearSudoku() {
+  sudokuState = sudokuPuzzle.map(row => [...row]);
+  document.getElementById('sudoku-msg').style.display='none';
+  buildSudoku();
+}
+
+function checkSudoku() {
+  let errors = 0;
+  for (let r=0;r<9;r++) for (let c=0;c<9;c++) {
+    const el = document.getElementById(`sc-${r}-${c}`);
+    if (sudokuPuzzle[r][c]===0) {
+      if (sudokuState[r][c] !== sudokuSolution[r][c] && sudokuState[r][c]!==0) {
+        el.classList.add('error');
+        errors++;
+      } else {
+        el.classList.remove('error');
+      }
+    }
+  }
+  const msg = document.getElementById('sudoku-msg');
+  msg.style.display = 'block';
+  if (errors === 0) {
+    const filled = sudokuState.flat().filter((v,i)=>sudokuPuzzle.flat()[i]===0 && v!==0).length;
+    const total = sudokuPuzzle.flat().filter(v=>v===0).length;
+    if (filled === total) {
+      msg.textContent = '🎉 Solved! Perfect solution! +50 points!';
+      msg.style.color = 'var(--forest)';
+      addScore(50);
+    } else {
+      msg.textContent = `✓ No errors so far — keep going! (${filled}/${total} cells filled)`;
+      msg.style.color = 'var(--sky)';
+    }
+  } else {
+    msg.textContent = `✗ ${errors} error(s) found — marked in red. Fix them!`;
+    msg.style.color = 'var(--rust)';
+  }
+}
+
+buildSudoku();
+
+// ===================== LOGIC PUZZLES =====================
+function buildLogicPuzzle(containerId, rows, cols, clues, gridId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+
+  // Clues
+  const clueDiv = document.createElement('div');
+  clueDiv.style.marginBottom = '20px';
+  clueDiv.innerHTML = '<strong style="font-family:\'Special Elite\',cursive; font-size:13px; letter-spacing:1px; text-transform:uppercase;">Clues:</strong>';
+  const ol = document.createElement('ol');
+  ol.style.cssText = 'margin-top:10px; padding-left:20px; font-size:13px; line-height:2';
+  clues.forEach(c => {
+    const li = document.createElement('li');
+    li.textContent = c;
+    ol.appendChild(li);
+  });
+  clueDiv.appendChild(ol);
+  container.appendChild(clueDiv);
+
+  // Grid
+  const wrap = document.createElement('div');
+  wrap.className = 'logic-grid-wrap';
+  const table = document.createElement('table');
+  table.className = 'logic-grid';
+
+  // Header row
+  const thead = document.createElement('thead');
+  const hrow = document.createElement('tr');
+  hrow.appendChild(Object.assign(document.createElement('th'), {textContent: ''}));
+  cols.forEach(col => {
+    const th = document.createElement('th');
+    th.textContent = col;
+    hrow.appendChild(th);
+  });
+  thead.appendChild(hrow);
+  table.appendChild(thead);
+
+  // Body
+  const tbody = document.createElement('tbody');
+  rows.forEach(row => {
+    const tr = document.createElement('tr');
+    const rowTd = document.createElement('td');
+    rowTd.className = 'row-label';
+    rowTd.textContent = row;
+    tr.appendChild(rowTd);
+    cols.forEach(col => {
+      const td = document.createElement('td');
+      td.textContent = '·';
+      td.onclick = () => {
+        if (td.classList.contains('mark-yes')) {
+          td.classList.remove('mark-yes');
+          td.classList.add('mark-no');
+          td.textContent = '✗';
+        } else if (td.classList.contains('mark-no')) {
+          td.classList.remove('mark-no');
+          td.textContent = '·';
+        } else {
+          td.classList.add('mark-yes');
+          td.textContent = '✓';
+          addScore(2);
+        }
+      };
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  container.appendChild(wrap);
+
+  const hint = document.createElement('p');
+  hint.style.cssText = 'font-size:12px; color:var(--stone); margin-top:12px; font-style:italic;';
+  hint.textContent = 'Click a cell to mark ✓ (yes), click again for ✗ (no), click again to clear.';
+  container.appendChild(hint);
+}
+
+// Rushmore Logic
+buildLogicPuzzle(
+  'rushmore-logic',
+  ['Carlos', 'Mae', 'Jack', 'Ruth'],
+  ['Washington', 'Jefferson', 'Roosevelt', 'Lincoln', '1927', '1930', '1934', '1939', 'Nose', 'Eyes', 'Chin', 'Forehead'],
+  [
+    "Carlos finished his section before any other worker started theirs.",
+    "Mae carved the face that took the shortest time overall — Roosevelt, whose face took only 5 years.",
+    "The worker who carved Lincoln finished last, in 1939.",
+    "Jack did not carve any facial feature above the eyes.",
+    "The worker who started in 1930 carved the eyes of the largest president on the memorial (by body size in real life).",
+    "Ruth was assigned Jefferson, but her section was moved once due to unstable granite.",
+    "Carlos carved the nose — the trickiest feature requiring the most precision.",
+    "The worker who started in 1927 carved the founding father's face first."
+  ],
+  'rushmore-logic-grid'
+);
+
+// Yellowstone Logic
+buildLogicPuzzle(
+  'yellowstone-logic',
+  ['Mason', 'Sophia', 'Hanh', 'Wai-Kiu', 'Betty'],
+  ['June 13', 'June 14', 'June 17', 'June 18', 'June 19', 'Mammoth', 'Lamar Valley', 'Old Faithful', 'Yellowstone Lake', 'Boiling River'],
+  [
+    "The family member who loved Mammoth Hot Springs most appreciated it as a gentle, accessible start to the trip.",
+    "Mason's favorite day involved the longest drive of the week from Gardiner.",
+    "Sophia's favorite feature involves a thrilling 184-foot eruption of boiling water.",
+    "The family member who loved Lamar Valley woke up at 5:30 AM on their favorite day.",
+    "Wai-Kiu's favorite day was the one with the most wildlife variety.",
+    "Betty's favorite stop required the least walking of any major Yellowstone attraction.",
+    "The Yellowstone Lake day was a favorite for the family member who also loves Kauai beaches.",
+    "Mason's favorite day is earlier in the trip than Sophia's."
+  ],
+  'yellowstone-logic-grid'
+);
+
+// ===================== SPOT THE DIFFERENCE =====================
+const reportA = `YELLOWSTONE FIELD REPORT — UPPER GEYSER BASIN
+Date: Day 5 of Expedition | Weather: Sunny, 68°F
+Agent: Lee Family Field Team
+
+Observations at Old Faithful:
+— Arrival time: 10:15 AM
+— Eruption observed: 10:42 AM
+— Eruption height: approximately 140 feet
+— Duration: 3 minutes 20 seconds
+— Crowd size: approximately 200 visitors
+— Wind direction: southwest
+— Water temperature at vent: reported at 204°F
+— Steam column visible for approx. 8 minutes post-eruption
+— Adjacent feature: Beehive Geyser inactive during visit
+— Wildlife spotted: 2 bison grazing 300 yards north of boardwalk
+— Notes: Boardwalk surface in good condition; rangers present`;
+
+const reportB = `YELLOWSTONE FIELD REPORT — UPPER GEYSER BASIN
+Date: Day 5 of Expedition | Weather: Cloudy, 68°F
+Agent: Lee Family Field Team
+
+Observations at Old Faithful:
+— Arrival time: 10:15 AM
+— Eruption observed: 10:42 AM
+— Eruption height: approximately 160 feet
+— Duration: 3 minutes 20 seconds
+— Crowd size: approximately 200 visitors
+— Wind direction: northwest
+— Water temperature at vent: reported at 204°F
+— Steam column visible for approx. 12 minutes post-eruption
+— Adjacent feature: Beehive Geyser inactive during visit
+— Wildlife spotted: 3 bison grazing 300 yards north of boardwalk
+— Notes: Boardwalk surface needs repair; rangers present`;
+
+const differences = [
+  "Weather changed from 'Sunny' to 'Cloudy'",
+  "Eruption height changed from '140 feet' to '160 feet'",
+  "Wind direction changed from 'southwest' to 'northwest'",
+  "Steam column duration changed from '8 minutes' to '12 minutes'",
+  "Wildlife count changed from '2 bison' to '3 bison'",
+  "Boardwalk condition changed from 'good condition' to 'needs repair'"
+];
+
+function buildSpotDiff() {
+  const container = document.getElementById('spot-diff-content');
+  let found = new Set();
+
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;';
+  // Stack on mobile
+  const styleEl = document.createElement('style');
+  styleEl.textContent = '@media(max-width:600px){#spot-diff-grid{grid-template-columns:1fr!important;}}';
+  document.head.appendChild(styleEl);
+  wrap.id = 'spot-diff-grid';
+
+  [reportA, reportB].forEach((report, idx) => {
+    const div = document.createElement('div');
+    div.style.cssText = 'background:var(--parchment); border:1px solid var(--leather); padding:14px; font-family:"Special Elite",cursive; font-size:11px; line-height:1.9; white-space:pre-wrap;';
+    const label = document.createElement('div');
+    label.style.cssText = 'font-weight:bold; font-size:13px; color:var(--rust); margin-bottom:8px; letter-spacing:1px;';
+    label.textContent = `REPORT ${idx===0?'A':'B'}`;
+    div.appendChild(label);
+    const pre = document.createElement('pre');
+    pre.style.cssText = 'white-space:pre-wrap; font-family:inherit; font-size:inherit; line-height:inherit; margin:0;';
+    pre.textContent = report;
+    div.appendChild(pre);
+    wrap.appendChild(div);
+  });
+
+  container.appendChild(wrap);
+
+  const instrP = document.createElement('p');
+  instrP.style.cssText = 'font-size:13px; margin-bottom:14px; font-style:italic; color:var(--stone);';
+  instrP.textContent = 'Tap each difference below when you find it:';
+  container.appendChild(instrP);
+
+  differences.forEach((diff, i) => {
+    const btn = document.createElement('div');
+    btn.className = 'hunt-item';
+    btn.innerHTML = `
+      <div class="check" id="diff-check-${i}"></div>
+      <div style="font-size:13px; flex:1">${diff}</div>
+      <div class="hunt-points">8 pts</div>
+    `;
+    btn.onclick = () => {
+      const wasfound = btn.classList.toggle('found');
+      document.getElementById(`diff-check-${i}`).textContent = wasfound ? '✓' : '';
+      addScore(wasfound ? 8 : -8);
+    };
+    container.appendChild(btn);
+  });
+}
+
+buildSpotDiff();
+</script>
+</body>
+</html>
