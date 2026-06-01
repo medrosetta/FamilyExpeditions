@@ -82,15 +82,16 @@
 
   /* 6×6 SUDOKU */
   .sudoku6-grid { display: inline-grid; grid-template-columns: repeat(6, 1fr); border: 3px solid var(--ink); margin: 12px 0; }
-  .sudoku6-cell { width: clamp(36px, 7vw, 48px); height: clamp(36px, 7vw, 48px); border: 1px solid var(--stone); display: flex; align-items: center; justify-content: center; font-family: 'Special Elite', cursive; font-size: clamp(15px, 3vw, 20px); cursor: pointer; transition: background 0.15s; }
+  .sudoku6-cell { width: clamp(36px, 7vw, 48px); height: clamp(36px, 7vw, 48px); border: 1px solid #bbb; display: flex; align-items: center; justify-content: center; font-family: 'Special Elite', cursive; font-size: clamp(15px, 3vw, 20px); cursor: pointer; transition: background 0.15s; }
   .sudoku6-cell.given { background: var(--parchment-dark); cursor: default; font-weight: bold; color: var(--ink); }
   .sudoku6-cell.editable { background: var(--parchment); color: var(--sky); }
   .sudoku6-cell.editable:hover { background: #e0f0d8; }
   .sudoku6-cell.selected-s { background: #d0e8f8; }
   .sudoku6-cell.error { color: var(--rust) !important; }
-  .sudoku6-cell:nth-child(3n) { border-right: 2px solid var(--ink); }
-  .sudoku6-cell:nth-child(6n) { border-right: none; }
-  .sudoku6-row3 { border-bottom: 2px solid var(--ink); }
+  /* Right border after columns 3 and 6 (thick box dividers) */
+  .sudoku6-cell:nth-child(6n+3) { border-right: 3px solid var(--ink); }
+  /* Bottom border after row 2 (thick box divider) */
+  .sudoku6-row2 { border-bottom: 3px solid var(--ink); }
 
   /* COVER PAGE */
   .cover {
@@ -927,9 +928,9 @@
   </div>
 
   <div class="puzzle-card" id="pz-r9" data-num="Puzzle R-9 · Sudoku 6×6 · Easy">
-    <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+    <h3>Compact Sudoku</h3>
     <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
-    <p>Fill every row, column, and 2×3 box with the numbers 1–6. Great for all ages!</p>
+    <p>Fill every row, column, and 2×3 box with 1–6.</p>
     <div class="sudoku-wrap" id="sudoku-wrap-r6"></div>
     <div class="numpad" id="numpad-r6"></div>
     <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -1062,7 +1063,7 @@
   </div>
 
   <div class="puzzle-card" id="pz-y11" data-num="Puzzle Y-11 · Sudoku 6×6 · Easy">
-    <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+    <h3>Compact Sudoku</h3>
     <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Fill every row, column, and 2×3 box with 1–6.</p>
     <div class="sudoku-wrap" id="sudoku-wrap-y6"></div>
@@ -1174,7 +1175,7 @@
   </div>
 
   <div class="puzzle-card" id="pz-b10" data-num="Puzzle B-10 · Sudoku 6×6 · Easy">
-    <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+    <h3>Compact Sudoku</h3>
     <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Fill every row, column, and 2×3 box with 1–6.</p>
     <div class="sudoku-wrap" id="sudoku-wrap-b6"></div>
@@ -3040,7 +3041,7 @@ const devilstowerTOF = [
     </div>
 
     <div class="puzzle-card" id="pz-d10" data-num="Puzzle D-10 · Sudoku 6×6 · Easy">
-      <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+      <h3>Compact Sudoku</h3>
       <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
       <p>Fill every row, column, and 2×3 box with 1–6.</p>
       <div class="sudoku-wrap" id="sudoku-wrap-d6"></div>
@@ -3079,6 +3080,63 @@ const devilstowerTOF = [
 })();
 
 // Second TOF builder (reusable, uses different ID prefix)
+function buildLegend(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const legendDiv = document.createElement('div');
+  legendDiv.style.cssText = 'background:var(--parchment); border-left:4px solid var(--gold); padding:16px 20px; margin-bottom:20px; font-size:13px; line-height:1.9; font-style:italic;';
+  legendDiv.textContent = '\u201cLong ago, seven young girls were playing in the forest when a great bear began to chase them. The girls climbed onto a low rock and prayed to the Great Spirit for help. The rock began to rise up from the earth, lifting the girls high into the sky, out of the bear\u2019s reach. As the bear clawed furiously at the sides of the rising rock, its claws left deep grooves carved into the stone. The rock rose so high that the girls became the seven stars of the Pleiades constellation. The grooves of the bear\u2019s claws remain on the Tower to this day.\u201d';
+  const srcDiv = document.createElement('div');
+  srcDiv.style.cssText = 'font-style:normal; font-size:11px; color:var(--stone); margin-top:8px; font-family:\'Special Elite\',cursive;';
+  srcDiv.textContent = '\u2014 A version of the Kiowa legend of Devil\u2019s Tower';
+  legendDiv.appendChild(srcDiv);
+  container.appendChild(legendDiv);
+
+  const questions = [
+    { q: "According to the legend, what created the vertical grooves on the sides of Devil's Tower?", opts: ["Lightning strikes", "A great bear's claws", "Ancient rivers of lava", "The Great Spirit's fingers"], ans: 1, fact: "The bear's claw marks are the classic explanation in many Plains tribes' legends. The real grooves are caused by columnar jointing as the rock cooled." },
+    { q: "In the legend, the girls were transformed into what?", opts: ["Eagles", "The moon", "The Pleiades star cluster", "Butterflies"], ans: 2, fact: "The Pleiades! This star cluster (also called the Seven Sisters) is visible in winter skies — and several Plains tribes connect it to the Tower legend." },
+    { q: "What did the rock do to save the girls?", opts: ["It turned into water", "It burst into flames", "It rose up from the earth", "It became invisible"], ans: 2, fact: "The rock rose into the sky to lift the girls away from the bear — explaining the Tower's dramatic height above the surrounding plains." },
+    { q: "Geologists give a different explanation for the grooves. What actually caused them?", opts: ["Ancient earthquake faults", "Columnar jointing as igneous rock cooled and contracted", "Water erosion over millions of years", "Wind abrasion"], ans: 1, fact: "Columnar jointing! As the phonolite porphyry cooled slowly underground, it contracted and fractured into the distinctive hexagonal columns we see today." }
+  ];
+
+  questions.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'trivia-q';
+    const qDiv = document.createElement('div');
+    qDiv.className = 'q-text';
+    qDiv.innerHTML = '<span class="q-num">' + (i+1) + '.</span>' + item.q;
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    item.opts.forEach((o, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn'; btn.id = 'leg-opt-' + i + '-' + j;
+      btn.textContent = String.fromCharCode(65+j) + ') ' + o;
+      btn.onclick = () => answerLegend(i, j);
+      optDiv.appendChild(btn);
+    });
+    const fb = document.createElement('div');
+    fb.className = 'trivia-feedback'; fb.id = 'leg-fb-' + i;
+    div.appendChild(qDiv); div.appendChild(optDiv); div.appendChild(fb);
+    container.appendChild(div);
+  });
+  window._legendQ = questions;
+}
+
+function answerLegend(qIdx, optIdx) {
+  const data = window._legendQ;
+  const item = data[qIdx];
+  for (let j = 0; j < item.opts.length; j++) {
+    const btn = document.getElementById('leg-opt-' + qIdx + '-' + j);
+    if (btn) btn.disabled = true;
+  }
+  document.getElementById('leg-opt-' + qIdx + '-' + optIdx).classList.add(optIdx === item.ans ? 'correct' : 'wrong');
+  if (optIdx !== item.ans) document.getElementById('leg-opt-' + qIdx + '-' + item.ans).classList.add('correct');
+  const fb = document.getElementById('leg-fb-' + qIdx);
+  fb.textContent = (optIdx === item.ans ? '\u2713 ' : '\u2717 ') + item.fact;
+  fb.className = 'trivia-feedback show ' + (optIdx === item.ans ? 'correct' : 'wrong');
+  if (optIdx === item.ans) addScore(10);
+}
+
 function buildTOF2(data, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -3164,21 +3222,6 @@ function answerTOF2(cid, i, choice) {
   });
 
   window._legendQ = questions;
-}
-
-function answerLegend(qIdx, optIdx) {
-  const data = window._legendQ;
-  const item = data[qIdx];
-  for (let j = 0; j < item.opts.length; j++) {
-    const btn = document.getElementById('leg-opt-' + qIdx + '-' + j);
-    if (btn) btn.disabled = true;
-  }
-  document.getElementById('leg-opt-' + qIdx + '-' + optIdx).classList.add(optIdx === item.ans ? 'correct' : 'wrong');
-  if (optIdx !== item.ans) document.getElementById('leg-opt-' + qIdx + '-' + item.ans).classList.add('correct');
-  const fb = document.getElementById('leg-fb-' + qIdx);
-  fb.textContent = (optIdx === item.ans ? '✓ ' : '✗ ') + item.fact;
-  fb.className = 'trivia-feedback show ' + (optIdx === item.ans ? 'correct' : 'wrong');
-  if (optIdx === item.ans) addScore(10);
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
@@ -3739,7 +3782,7 @@ function buildSudoku6(id) {
   const grid=document.createElement('div'); grid.className='sudoku6-grid'; grid.id='s6g-' + (id);
   for(let r=0;r<6;r++) for(let c=0;c<6;c++) {
     const cell=document.createElement('div'); cell.className='sudoku6-cell'; cell.id='s6-' + (id) + '-' + (r) + '-' + (c);
-    if(r===2) cell.classList.add('sudoku6-row3');
+    if(r===1) cell.classList.add('sudoku6-row2');
     if(board.puzzle[r][c]!==0) { cell.classList.add('given'); cell.textContent=board.puzzle[r][c]; }
     else {
       cell.classList.add('editable'); cell.textContent=s6States[id][r][c]||'';
