@@ -50,23 +50,19 @@
   .tier-panel {
     background: rgba(122,74,30,0.12);
     border: 1px solid var(--leather);
-    padding: 14px 20px 10px;
-    margin: 8px 0 12px;
+    padding: 10px 16px;
+    margin: 6px 0 8px;
     width: min(340px, 90vw);
-    text-align: center;
   }
-  .tier-animal { font-size: 40px; line-height: 1; margin-bottom: 4px; }
-  .tier-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--rust); letter-spacing: 1px; margin-bottom: 8px; }
-  .tier-bar-wrap { height: 8px; background: var(--parchment-dark); border: 1px solid var(--leather); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
-  .tier-bar { height: 100%; background: linear-gradient(to right, var(--gold), var(--rust)); border-radius: 4px; width: 0%; transition: width 0.6s ease; }
-  .tier-pts { font-family: 'Special Elite', cursive; font-size: 11px; color: var(--stone); letter-spacing: 1px; }
-  .cover-score-row { display: flex; gap: 10px; margin: 4px 0 10px; width: min(340px, 90vw); }
-  .cover-score-box { flex: 1; background: rgba(122,74,30,0.08); border: 1px solid var(--leather); padding: 8px 4px; text-align: center; }
-  .cover-score-num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--ink); }
-  .cover-score-label { font-family: 'Special Elite', cursive; font-size: 9px; letter-spacing: 1px; color: var(--stone); text-transform: uppercase; margin-top: 2px; }
-  .expedition-day-btn { font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 18px; border: 2px solid var(--gold); background: transparent; color: var(--leather); cursor: pointer; margin: 6px 0 4px; transition: all 0.2s; width: min(300px, 85vw); }
-  .expedition-day-btn:hover { background: var(--gold); color: var(--ink); }
-  .expedition-day-btn:disabled { opacity: 0.4; cursor: default; }
+  .tier-animal { font-size: 32px; line-height: 1; }
+  .tier-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--rust); }
+  .tier-bar-wrap { height: 6px; background: var(--parchment-dark); border: 1px solid var(--leather); border-radius: 3px; overflow: hidden; }
+  .tier-bar { height: 100%; background: linear-gradient(to right, var(--gold), var(--rust)); border-radius: 3px; width: 0%; transition: width 0.6s ease; }
+  .tier-pts { font-family: 'Special Elite', cursive; font-size: 10px; color: var(--stone); letter-spacing: 0.5px; margin-top: 2px; }
+  .cover-score-row { display: flex; gap: 8px; margin: 4px 0 6px; width: min(340px, 90vw); }
+  .cover-score-box { flex: 1; background: rgba(122,74,30,0.08); border: 1px solid var(--leather); padding: 6px 4px; text-align: center; }
+  .cover-score-num { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--ink); }
+  .cover-score-label { font-family: 'Special Elite', cursive; font-size: 8px; letter-spacing: 1px; color: var(--stone); text-transform: uppercase; margin-top: 1px; }
 
   /* SECTION COMPLETE */
   .section-complete-banner { background: var(--forest); color: var(--parchment); font-family: 'Special Elite', cursive; font-size: 13px; letter-spacing: 1px; padding: 12px 16px; text-align: center; margin-bottom: 20px; border: 1px solid var(--gold); }
@@ -785,17 +781,31 @@
   <div class="cover-badge">Family Expeditions — June 2026</div>
   <div class="cover-divider"></div>
   <h1>Great Plains<br><span>&amp; Peaks</span></h1>
-  <div class="cover-sub">Puzzle Kit — Black Hills, Badlands, Yellowstone &amp; Devil's Tower</div>
+  <div class="cover-sub">Black Hills · Badlands · Yellowstone · Devil's Tower</div>
+  <div class="cover-divider"></div>
+
+  <!-- SECTION BUTTONS — visible without scrolling -->
+  <div class="cover-nav">
+    <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
+    <button onclick="showSection('badlands')">🦕 Badlands</button>
+    <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
+    <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
+  </div>
+
   <div class="cover-divider"></div>
 
   <!-- TIER DISPLAY -->
   <div class="tier-panel" id="tierPanel">
-    <div class="tier-animal" id="tierAnimal">🐜</div>
-    <div class="tier-name" id="tierName">Ant</div>
-    <div class="tier-bar-wrap">
+    <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
+      <div class="tier-animal" id="tierAnimal">🐜</div>
+      <div>
+        <div class="tier-name" id="tierName">Ant</div>
+        <div class="tier-pts" id="tierPts">0 pts · Next: Prairie Dog at 50 pts</div>
+      </div>
+    </div>
+    <div class="tier-bar-wrap" style="margin-top:8px;">
       <div class="tier-bar" id="tierBar"></div>
     </div>
-    <div class="tier-pts" id="tierPts">0 pts · Next rank: <span id="tierNext">50 pts</span></div>
   </div>
 
   <!-- SCORE ROW -->
@@ -814,22 +824,11 @@
     </div>
   </div>
 
-  <!-- EXPEDITION DAY TAP -->
-  <button class="expedition-day-btn" id="expeditionDayBtn" onclick="logExpeditionDay()">
-    📅 Log Today's Expedition Day
-  </button>
-  <div id="dayLogMsg" style="font-family:'Special Elite',cursive; font-size:11px; color:var(--gold); letter-spacing:1px; min-height:16px;"></div>
+  <!-- AUTO DAY LOG STATUS (no button needed) -->
+  <div id="dayLogMsg" style="font-family:'Special Elite',cursive; font-size:11px; color:var(--gold); letter-spacing:1px; min-height:16px; text-align:center;"></div>
 
-  <div class="cover-divider"></div>
-  <div class="cover-details">
-    Prepared for the Expedition of June 6–21, 2026<br>
-    From the Desk of Family Expeditions
-  </div>
-  <div class="cover-nav">
-    <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
-    <button onclick="showSection('badlands')">🦕 Badlands</button>
-    <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
-    <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
+  <div class="cover-details" style="font-size:11px; margin-top:8px;">
+    Expedition of June 6–21, 2026 · Family Expeditions
   </div>
 </div>
 
@@ -940,9 +939,6 @@
     <div id="sudoku6-msg-r6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
-  <div style="text-align:center; padding:20px 0 10px;">
-    <button id="claim-btn-rushmore" onclick="claimSectionBonus('rushmore')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Mt. Rushmore Completion Bonus (+100 pts)</button>
-  </div>
 </div><!-- end rushmore -->
 
 <!-- YELLOWSTONE SECTION -->
@@ -1078,9 +1074,6 @@
     <div id="sudoku6-msg-y6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
-  <div style="text-align:center; padding:20px 0 10px;">
-    <button id="claim-btn-yellowstone" onclick="claimSectionBonus('yellowstone')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Yellowstone Completion Bonus (+100 pts)</button>
-  </div>
 </div><!-- end yellowstone -->
 
 <!-- BADLANDS SECTION -->
@@ -1193,9 +1186,6 @@
     <div id="sudoku6-msg-b6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
-  <div style="text-align:center; padding:20px 0 10px;">
-    <button id="claim-btn-badlands" onclick="claimSectionBonus('badlands')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Badlands Completion Bonus (+100 pts)</button>
-  </div>
 </div><!-- end badlands -->
 
 <script>
@@ -1212,6 +1202,9 @@ let sudokuSelected = null;
 function addScore(pts) {
   totalScore += pts;
   document.getElementById('totalScore').textContent = totalScore;
+  updateTierDisplay();
+  const sec = document.querySelector('.section.visible');
+  if (sec) checkSectionComplete(sec.id);
 }
 
 // ===================== NAVIGATION =====================
@@ -1600,6 +1593,7 @@ function buildHunt(items, containerId, scoreId, ptsId, prefix) {
       const isFound = div.classList.toggle('found');
       document.getElementById('' + (prefix) + '-check-' + (i) + '').textContent = isFound ? '✓' : '';
       addScore(isFound ? item.pts : -item.pts);
+      if (isFound) recordPuzzleScore(getSectionFromId(prefix), 'hunt');
       let f = document.querySelectorAll('#' + (containerId) + ' .hunt-item.found').length;
       document.getElementById(scoreId).textContent = f;
       let p = 0;
@@ -1767,6 +1761,7 @@ function answerTrivia(prefix, qIdx, optIdx) {
     fb.textContent = '✓ ' + item.fact;
     fb.className = 'trivia-feedback show correct';
     addScore(10);
+    recordPuzzleScore(getSectionFromId(prefix), 'trivia');
   } else {
     chosen.classList.add('wrong');
     correct.classList.add('correct');
@@ -2090,6 +2085,7 @@ function buildWordSearch(words, containerId, wordListId) {
       const tag = document.getElementById('wt-' + (containerId) + '-' + (matched.word) + '');
       if (tag) tag.classList.add('found');
       addScore(5);
+      recordPuzzleScore(getSectionFromId(containerId), 'words');
       if (foundWords.size === words.length) {
         setTimeout(()=>alert('🎉 All words found! +' + (words.length*5) + ' bonus pts!'), 100);
         addScore(words.length * 5);
@@ -2216,7 +2212,7 @@ function answerTOF(i, choice) {
   const fb = document.getElementById('tof-fb-' + (i) + '');
   fb.textContent = (correct ? '✓ ' : '✗ ') + item.fact;
   fb.className = 'trivia-feedback show ' + (correct ? 'correct' : 'wrong') + '';
-  if (correct) addScore(8);
+  if (correct) { addScore(8); recordPuzzleScore('badlands', 'tof'); }
 }
 buildTOF(badlandsTOF, 'badlands-tof');
 
@@ -2617,6 +2613,7 @@ function buildLogicPuzzle(containerId, rows, cols, clues, gridId) {
           td.classList.add('mark-yes');
           td.textContent = '✓';
           addScore(2);
+          recordPuzzleScore(getSectionFromId(containerId), 'logic');
         }
       };
       tr.appendChild(td);
@@ -2625,7 +2622,6 @@ function buildLogicPuzzle(containerId, rows, cols, clues, gridId) {
   });
   table.appendChild(tbody);
   wrap.appendChild(table);
-  container.appendChild(wrap);
 
   const hint = document.createElement('p');
   hint.style.cssText = 'font-size:12px; color:var(--stone); margin-top:12px; font-style:italic;';
@@ -3009,9 +3005,6 @@ const devilstowerTOF = [
       <div id="sudoku6-msg-d6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
     </div>
 
-    <div style="text-align:center; padding:20px 0 10px;">
-      <button id="claim-btn-devilstower" onclick="claimSectionBonus('devilstower')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Devil's Tower Completion Bonus (+100 pts)</button>
-    </div>
   `;
   document.body.insertBefore(section, document.getElementById('fabHQ').nextSibling);
 
@@ -3083,10 +3076,7 @@ function answerTOF2(cid, i, choice) {
   const fb = document.getElementById(fbId);
   fb.textContent = (correct ? '✓ ' : '✗ ') + item.fact;
   fb.className = 'trivia-feedback show ' + (correct ? 'correct' : 'wrong');
-  if (correct) addScore(8);
-}
-
-function buildLegend(containerId) {
+  if (correct) { addScore(8); recordPuzzleScore(getSectionFromId(cid), 'tof'); }
   const container = document.getElementById(containerId);
   if (!container) return;
   const legendDiv = document.createElement('div');
@@ -3530,43 +3520,86 @@ function updateTierDisplay() {
   saveState();
 }
 
-// Wrap addScore to also refresh tier
+// Wrap addScore to also refresh tier and check section completion
 const _origAdd = addScore;
-function addScore(pts) { _origAdd(pts); updateTierDisplay(); }
+function addScore(pts) {
+  _origAdd(pts);
+  updateTierDisplay();
+  // Check if current visible section is now complete
+  const sec = document.querySelector('.section.visible');
+  if (sec) checkSectionComplete(sec.id);
+}
 
-function claimSectionBonus(sid) {
-  if (!window._sectionsCompleted) window._sectionsCompleted=[];
-  if (window._sectionsCompleted.includes(sid)) { alert('Already claimed!'); return; }
-  window._sectionsCompleted.push(sid);
-  addScore(100);
-  const btn=document.getElementById('claim-btn-'+sid);
-  if (btn) { btn.textContent='✓ +100 pts claimed!'; btn.disabled=true; btn.style.opacity='0.5'; }
-  const b=document.createElement('div'); b.className='section-complete-banner';
-  b.textContent='🎉 Section complete bonus! +100 pts!';
-  const sec=document.querySelector('.section.visible'); if(sec) sec.prepend(b);
-  setTimeout(()=>b.remove(), 4000);
+// Track which puzzle IDs have been scored per section
+window._sectionPuzzleProgress = window._sectionPuzzleProgress || {};
+
+function recordPuzzleScore(sectionId, puzzleKey) {
+  if (!window._sectionPuzzleProgress[sectionId]) window._sectionPuzzleProgress[sectionId] = new Set();
+  window._sectionPuzzleProgress[sectionId].add(puzzleKey);
+  checkSectionComplete(sectionId);
+}
+
+// Minimum puzzle types needed to count a section complete
+const SECTION_REQUIRED = {
+  rushmore:    ['hunt','trivia','words','cipher','logic'],
+  yellowstone: ['hunt','trivia','words','cipher','logic'],
+  badlands:    ['hunt','trivia','words','cipher','tof'],
+  devilstower: ['hunt','trivia','words','cipher','tof']
+};
+
+function checkSectionComplete(sectionId) {
+  if (!sectionId) return;
+  if (!window._sectionsCompleted) window._sectionsCompleted = [];
+  if (window._sectionsCompleted.includes(sectionId)) return;
+
+  const required = SECTION_REQUIRED[sectionId];
+  if (!required) return;
+  const progress = window._sectionPuzzleProgress[sectionId] || new Set();
+  const allDone = required.every(key => progress.has(key));
+
+  if (allDone) {
+    window._sectionsCompleted.push(sectionId);
+    addScore(100);
+    const banner = document.createElement('div');
+    banner.className = 'section-complete-banner';
+    const names = { rushmore: 'Mt. Rushmore', yellowstone: 'Yellowstone', badlands: 'Badlands', devilstower: "Devil's Tower" };
+    banner.textContent = '🏅 ' + (names[sectionId]||sectionId) + ' complete! Bonus +100 pts!';
+    const sec = document.getElementById(sectionId);
+    if (sec) sec.prepend(banner);
+    setTimeout(() => banner.remove(), 5000);
+    updateTierDisplay();
+  }
 }
 
 function logExpeditionDay() {
   const today = new Date().toDateString();
   const msg = document.getElementById('dayLogMsg');
-  const btn = document.getElementById('expeditionDayBtn');
-  if (window._lastDay === today) { if(msg) msg.textContent="Already logged today!"; return; }
+  if (window._lastDay === today) {
+    if (msg) msg.textContent = '📅 Day ' + (window._streak||1) + ' of expedition' + (window._streak > 1 ? ' · ' + window._streak + '🔥 streak!' : '');
+    return;
+  }
   const yesterday = new Date(Date.now()-86400000).toDateString();
   window._streak = (window._lastDay===yesterday) ? (window._streak||0)+1 : 1;
   window._lastDay = today;
   const idx = Math.min((window._streak)-1, STREAK_MULT.length-1);
   const earned = Math.round(DAY_BASE * STREAK_MULT[idx]);
   addScore(earned);
-  if(btn) btn.disabled=true;
-  if(msg) msg.textContent='Day ' + (window._streak) + ' logged! +' + (earned) + ' pts (' + (STREAK_MULT[idx]) + '× streak bonus)';
+  if (msg) msg.textContent = '📅 Day ' + window._streak + ' logged! +' + earned + ' pts' + (window._streak > 1 ? ' · ' + window._streak + '🔥 streak!' : '');
 }
 
-// Load persisted state on start
+function getSectionFromId(id) {
+  if (!id) return null;
+  if (id.startsWith('r') || id.includes('rushmore')) return 'rushmore';
+  if (id.startsWith('y') || id.includes('yellowstone')) return 'yellowstone';
+  if (id.startsWith('b') || id.includes('badlands')) return 'badlands';
+  if (id.startsWith('d') || id.startsWith('dt') || id.includes('devilstower') || id.includes('devil')) return 'devilstower';
+  return null;
+}
+
+// Load persisted state on start and auto-log today's expedition day
 loadState();
 updateTierDisplay();
-// Check if today already logged
-(function(){ const today=new Date().toDateString(); if(window._lastDay===today){ const btn=document.getElementById('expeditionDayBtn'); if(btn) btn.disabled=true; const msg=document.getElementById('dayLogMsg'); if(msg) msg.textContent='Today\'s expedition already logged!'; }})();
+logExpeditionDay(); // auto-logs silently — awards points if new day, shows streak if returning
 
 // ===================== CIPHER DECODER =====================
 const CIPHER_KEY = {
@@ -3680,10 +3713,7 @@ function checkCipher(containerId, pi, puzzle) {
     window[key]=true;
     if(fb) { fb.textContent='✓ Decoded! +15 pts'; fb.style.color='var(--forest)'; }
     addScore(15);
-  }
-}
-
-buildCipherDecoder('rushmore-cipher','rushmore');
+    recordPuzzleScore(getSectionFromId(containerId), 'cipher');
 buildCipherDecoder('yellowstone-cipher','yellowstone');
 buildCipherDecoder('badlands-cipher','badlands');
 buildCipherDecoder('dt-cipher','devilstower');
