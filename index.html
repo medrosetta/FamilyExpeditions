@@ -1207,6 +1207,53 @@ function addScore(pts) {
   if (sec) checkSectionComplete(sec.id);
 }
 
+window._sectionPuzzleProgress = window._sectionPuzzleProgress || {};
+
+const SECTION_REQUIRED = {
+  rushmore:    ['hunt','trivia','words','cipher','logic'],
+  yellowstone: ['hunt','trivia','words','cipher','logic'],
+  badlands:    ['hunt','trivia','words','cipher','tof'],
+  devilstower: ['hunt','trivia','words','cipher','tof']
+};
+
+function getSectionFromId(id) {
+  if (!id) return null;
+  if (id.startsWith('r') || id.includes('rushmore')) return 'rushmore';
+  if (id.startsWith('y') || id.includes('yellowstone')) return 'yellowstone';
+  if (id.startsWith('b') || id.includes('badlands')) return 'badlands';
+  if (id.startsWith('d') || id.startsWith('dt') || id.includes('devilstower') || id.includes('devil')) return 'devilstower';
+  return null;
+}
+
+function recordPuzzleScore(sectionId, puzzleKey) {
+  if (!window._sectionPuzzleProgress[sectionId]) window._sectionPuzzleProgress[sectionId] = new Set();
+  window._sectionPuzzleProgress[sectionId].add(puzzleKey);
+  checkSectionComplete(sectionId);
+}
+
+function checkSectionComplete(sectionId) {
+  if (!sectionId) return;
+  if (!window._sectionsCompleted) window._sectionsCompleted = [];
+  if (window._sectionsCompleted.includes(sectionId)) return;
+  const required = SECTION_REQUIRED[sectionId];
+  if (!required) return;
+  const progress = window._sectionPuzzleProgress[sectionId] || new Set();
+  const allDone = required.every(key => progress.has(key));
+  if (allDone) {
+    window._sectionsCompleted.push(sectionId);
+    totalScore += 100;
+    document.getElementById('totalScore').textContent = totalScore;
+    const banner = document.createElement('div');
+    banner.className = 'section-complete-banner';
+    const names = { rushmore: 'Mt. Rushmore', yellowstone: 'Yellowstone', badlands: 'Badlands', devilstower: "Devil's Tower" };
+    banner.textContent = '🏅 ' + (names[sectionId]||sectionId) + ' complete! Bonus +100 pts!';
+    const sec = document.getElementById(sectionId);
+    if (sec) sec.prepend(banner);
+    setTimeout(() => banner.remove(), 5000);
+    updateTierDisplay();
+  }
+}
+
 // ===================== NAVIGATION =====================
 function showSection(id) {
   document.getElementById('cover').style.display = 'none';
@@ -3520,57 +3567,6 @@ function updateTierDisplay() {
   saveState();
 }
 
-// Wrap addScore to also refresh tier and check section completion
-const _origAdd = addScore;
-function addScore(pts) {
-  _origAdd(pts);
-  updateTierDisplay();
-  // Check if current visible section is now complete
-  const sec = document.querySelector('.section.visible');
-  if (sec) checkSectionComplete(sec.id);
-}
-
-// Track which puzzle IDs have been scored per section
-window._sectionPuzzleProgress = window._sectionPuzzleProgress || {};
-
-function recordPuzzleScore(sectionId, puzzleKey) {
-  if (!window._sectionPuzzleProgress[sectionId]) window._sectionPuzzleProgress[sectionId] = new Set();
-  window._sectionPuzzleProgress[sectionId].add(puzzleKey);
-  checkSectionComplete(sectionId);
-}
-
-// Minimum puzzle types needed to count a section complete
-const SECTION_REQUIRED = {
-  rushmore:    ['hunt','trivia','words','cipher','logic'],
-  yellowstone: ['hunt','trivia','words','cipher','logic'],
-  badlands:    ['hunt','trivia','words','cipher','tof'],
-  devilstower: ['hunt','trivia','words','cipher','tof']
-};
-
-function checkSectionComplete(sectionId) {
-  if (!sectionId) return;
-  if (!window._sectionsCompleted) window._sectionsCompleted = [];
-  if (window._sectionsCompleted.includes(sectionId)) return;
-
-  const required = SECTION_REQUIRED[sectionId];
-  if (!required) return;
-  const progress = window._sectionPuzzleProgress[sectionId] || new Set();
-  const allDone = required.every(key => progress.has(key));
-
-  if (allDone) {
-    window._sectionsCompleted.push(sectionId);
-    addScore(100);
-    const banner = document.createElement('div');
-    banner.className = 'section-complete-banner';
-    const names = { rushmore: 'Mt. Rushmore', yellowstone: 'Yellowstone', badlands: 'Badlands', devilstower: "Devil's Tower" };
-    banner.textContent = '🏅 ' + (names[sectionId]||sectionId) + ' complete! Bonus +100 pts!';
-    const sec = document.getElementById(sectionId);
-    if (sec) sec.prepend(banner);
-    setTimeout(() => banner.remove(), 5000);
-    updateTierDisplay();
-  }
-}
-
 function logExpeditionDay() {
   const today = new Date().toDateString();
   const msg = document.getElementById('dayLogMsg');
@@ -3585,15 +3581,6 @@ function logExpeditionDay() {
   const earned = Math.round(DAY_BASE * STREAK_MULT[idx]);
   addScore(earned);
   if (msg) msg.textContent = '📅 Day ' + window._streak + ' logged! +' + earned + ' pts' + (window._streak > 1 ? ' · ' + window._streak + '🔥 streak!' : '');
-}
-
-function getSectionFromId(id) {
-  if (!id) return null;
-  if (id.startsWith('r') || id.includes('rushmore')) return 'rushmore';
-  if (id.startsWith('y') || id.includes('yellowstone')) return 'yellowstone';
-  if (id.startsWith('b') || id.includes('badlands')) return 'badlands';
-  if (id.startsWith('d') || id.startsWith('dt') || id.includes('devilstower') || id.includes('devil')) return 'devilstower';
-  return null;
 }
 
 // Load persisted state on start and auto-log today's expedition day
@@ -3714,6 +3701,10 @@ function checkCipher(containerId, pi, puzzle) {
     if(fb) { fb.textContent='✓ Decoded! +15 pts'; fb.style.color='var(--forest)'; }
     addScore(15);
     recordPuzzleScore(getSectionFromId(containerId), 'cipher');
+  }
+}
+
+buildCipherDecoder('rushmore-cipher','rushmore');
 buildCipherDecoder('yellowstone-cipher','yellowstone');
 buildCipherDecoder('badlands-cipher','badlands');
 buildCipherDecoder('dt-cipher','devilstower');
