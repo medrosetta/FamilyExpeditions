@@ -88,10 +88,8 @@
   .sudoku6-cell.editable:hover { background: #e0f0d8; }
   .sudoku6-cell.selected-s { background: #d0e8f8; }
   .sudoku6-cell.error { color: var(--rust) !important; }
-  /* Right border after columns 3 and 6 (thick box dividers) */
-  .sudoku6-cell:nth-child(6n+3) { border-right: 3px solid var(--ink); }
-  /* Bottom border after row 2 (thick box divider) */
-  .sudoku6-row2 { border-bottom: 3px solid var(--ink); }
+  .sudoku6-col3 { border-right: 3px solid var(--ink) !important; }
+  .sudoku6-row2 { border-bottom: 3px solid var(--ink) !important; }
 
   /* COVER PAGE */
   .cover {
@@ -623,11 +621,9 @@
   .sudoku-cell.selected-s { background: #d0e8f8; }
   .sudoku-cell.error { color: var(--rust) !important; }
 
-  .sudoku-cell:nth-child(3n) { border-right: 2px solid var(--ink); }
-  .sudoku-cell:nth-child(9n) { border-right: none; }
-
-  .sudoku-row-3 { border-bottom: 2px solid var(--ink); }
-  .sudoku-row-6 { border-bottom: 2px solid var(--ink); }
+  .sudoku-cell:nth-child(3n) { border-right: 1px solid var(--stone); }
+  .sudoku-cell.box-right { border-right: 3px solid var(--ink) !important; }
+  .sudoku-cell.box-bottom { border-bottom: 3px solid var(--ink) !important; }
 
   .sudoku-wrap { overflow-x: auto; }
 
@@ -2514,7 +2510,8 @@ function buildSudoku() {
       const cell = document.createElement('div');
       cell.className = 'sudoku-cell';
       cell.id = 'sc-' + (r) + '-' + (c) + '';
-      if (r===2||r===5) cell.classList.add('sudoku-row-' + (r) + '');
+      if (r===2||r===5) cell.classList.add('box-bottom');
+      if (c===2||c===5) cell.classList.add('box-right');
       if (sudokuPuzzle[r][c] !== 0) {
         cell.classList.add('given');
         cell.textContent = sudokuPuzzle[r][c];
@@ -2670,6 +2667,7 @@ function buildLogicPuzzle(containerId, rows, cols, clues, gridId) {
   });
   table.appendChild(tbody);
   wrap.appendChild(table);
+  container.appendChild(wrap);
 
   const hint = document.createElement('p');
   hint.style.cssText = 'font-size:12px; color:var(--stone); margin-top:12px; font-style:italic;';
@@ -3426,7 +3424,8 @@ function buildSudokuBoard(id) {
       const cell = document.createElement('div');
       cell.className = 'sudoku-cell';
       cell.id = 'sc-' + (id) + '-' + (r) + '-' + (c) + '';
-      if (r === 2 || r === 5) cell.classList.add('sudoku-row-' + (r) + '');
+      if (r === 2 || r === 5) cell.classList.add('box-bottom');
+      if (c === 2 || c === 5) cell.classList.add('box-right');
       if (board.puzzle[r][c] !== 0) {
         cell.classList.add('given');
         cell.textContent = board.puzzle[r][c];
@@ -3782,7 +3781,8 @@ function buildSudoku6(id) {
   const grid=document.createElement('div'); grid.className='sudoku6-grid'; grid.id='s6g-' + (id);
   for(let r=0;r<6;r++) for(let c=0;c<6;c++) {
     const cell=document.createElement('div'); cell.className='sudoku6-cell'; cell.id='s6-' + (id) + '-' + (r) + '-' + (c);
-    if(r===1) cell.classList.add('sudoku6-row2');
+    if(r===1||r===3) cell.classList.add('sudoku6-row2');
+    if(c===2) cell.classList.add('sudoku6-col3');
     if(board.puzzle[r][c]!==0) { cell.classList.add('given'); cell.textContent=board.puzzle[r][c]; }
     else {
       cell.classList.add('editable'); cell.textContent=s6States[id][r][c]||'';
