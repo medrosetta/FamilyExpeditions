@@ -852,7 +852,7 @@
     <button class="pp-btn" onclick="jumpTo('pz-r6')">✏️ Fill Blanks</button>
     <button class="pp-btn" onclick="jumpTo('pz-r7')">🔢 Sudoku</button>
     <button class="pp-btn" onclick="jumpTo('pz-r8')">🧠 Logic</button>
-    <button class="pp-btn" onclick="jumpTo('pz-r9')">🎲 Easy Sudoku</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r9')">🎲 Compact Sudoku</button>
   </div>
 
 
@@ -879,7 +879,7 @@
   <!-- WORD SEARCH - RUSHMORE -->
   <div class="puzzle-card" id="pz-r3" data-num="Puzzle R-3 · Word Search">
     <h3>Black Hills Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
+      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Find all 12 hidden words. They run across, down, and diagonally.</p>
     <div class="word-search-wrap" id="rushmore-ws-wrap"></div>
     <div class="word-list" id="rushmore-ws-words"></div>
@@ -928,8 +928,8 @@
   </div>
 
   <div class="puzzle-card" id="pz-r9" data-num="Puzzle R-9 · Sudoku 6×6 · Easy">
-    <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
-    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+    <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Fill every row, column, and 2×3 box with the numbers 1–6. Great for all ages!</p>
     <div class="sudoku-wrap" id="sudoku-wrap-r6"></div>
     <div class="numpad" id="numpad-r6"></div>
@@ -966,7 +966,7 @@
     <button class="pp-btn" onclick="jumpTo('pz-y8')">✏️ Fill Blanks</button>
     <button class="pp-btn" onclick="jumpTo('pz-y9')">🔢 Sudoku 2</button>
     <button class="pp-btn" onclick="jumpTo('pz-y10')">🧠 Logic 2</button>
-    <button class="pp-btn" onclick="jumpTo('pz-y11')">🎲 Easy Sudoku</button>
+    <button class="pp-btn" onclick="jumpTo('pz-y11')">🎲 Compact Sudoku</button>
   </div>
 
 
@@ -994,7 +994,7 @@
   <!-- WORD SEARCH - YELLOWSTONE -->
   <div class="puzzle-card" id="pz-y3" data-num="Puzzle Y-3 · Word Search">
     <h3>Wonderland Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
+      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Find 14 Yellowstone words hidden in all directions.</p>
     <div class="word-search-wrap" id="yellowstone-ws-wrap"></div>
     <div class="word-list" id="yellowstone-ws-words"></div>
@@ -1066,8 +1066,8 @@
   </div>
 
   <div class="puzzle-card" id="pz-y11" data-num="Puzzle Y-11 · Sudoku 6×6 · Easy">
-    <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
-    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+    <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Fill every row, column, and 2×3 box with 1–6.</p>
     <div class="sudoku-wrap" id="sudoku-wrap-y6"></div>
     <div class="numpad" id="numpad-y6"></div>
@@ -1102,7 +1102,7 @@
     <button class="pp-btn" onclick="jumpTo('pz-b7')">✏️ Fill Blanks</button>
     <button class="pp-btn" onclick="jumpTo('pz-b8')">🔢 Sudoku</button>
     <button class="pp-btn" onclick="jumpTo('pz-b9')">🧠 Logic</button>
-    <button class="pp-btn" onclick="jumpTo('pz-b10')">🎲 Easy Sudoku</button>
+    <button class="pp-btn" onclick="jumpTo('pz-b10')">🎲 Compact Sudoku</button>
   </div>
 
 
@@ -1127,7 +1127,7 @@
 
   <div class="puzzle-card" id="pz-b3" data-num="Puzzle B-3 · Word Search">
     <h3>Badlands Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
+      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Find 12 Badlands words hidden in the grid.</p>
     <div class="word-search-wrap" id="badlands-ws-wrap"></div>
     <div class="word-list" id="badlands-ws-words"></div>
@@ -1181,8 +1181,8 @@
   </div>
 
   <div class="puzzle-card" id="pz-b10" data-num="Puzzle B-10 · Sudoku 6×6 · Easy">
-    <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
-    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+    <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
     <p>Fill every row, column, and 2×3 box with 1–6.</p>
     <div class="sudoku-wrap" id="sudoku-wrap-b6"></div>
     <div class="numpad" id="numpad-b6"></div>
@@ -2559,6 +2559,7 @@ buildSudoku();
 // ===================== LOGIC PUZZLES =====================
 function buildLogicPuzzle(containerId, rows, cols, clues, gridId) {
   const container = document.getElementById(containerId);
+  if (!container) return; // element not in DOM yet
   container.innerHTML = '';
 
   // Clues
@@ -2926,7 +2927,7 @@ const devilstowerTOF = [
       <button class="pp-btn" onclick="jumpTo('pz-d6')">📖 Legend</button>
       <button class="pp-btn" onclick="jumpTo('pz-d8')">🔢 Sudoku</button>
       <button class="pp-btn" onclick="jumpTo('pz-d9')">🧠 Logic</button>
-      <button class="pp-btn" onclick="jumpTo('pz-d10')">🎲 Easy Sudoku</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d10')">🎲 Compact Sudoku</button>
     </div>
 
     <div class="puzzle-card" id="pz-d1" data-num="Puzzle D-1 · Scavenger Hunt">
@@ -2948,7 +2949,7 @@ const devilstowerTOF = [
 
     <div class="puzzle-card" id="pz-d3" data-num="Puzzle D-3 · Word Search">
       <h3>Tower Finder: Word Search</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
+      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
       <p>Find 12 Devil's Tower words hidden in the grid.</p>
       <div class="word-search-wrap" id="dt-ws-wrap"></div>
       <div class="word-list" id="dt-ws-words"></div>
@@ -2996,8 +2997,8 @@ const devilstowerTOF = [
     </div>
 
     <div class="puzzle-card" id="pz-d10" data-num="Puzzle D-10 · Sudoku 6×6 · Easy">
-      <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
-      <div class="difficulty">⭐ Scout Level · All ages</div>
+      <h3>Junior Ranger Grid: Compact 6×6 Sudoku</h3>
+      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
       <p>Fill every row, column, and 2×3 box with 1–6.</p>
       <div class="sudoku-wrap" id="sudoku-wrap-d6"></div>
       <div class="numpad" id="numpad-d6"></div>
@@ -3020,6 +3021,21 @@ const devilstowerTOF = [
   buildTOF2(devilstowerTOF, 'dt-tof');
   buildLegend('dt-legend');
   setTimeout(() => { buildSudokuBoard('d'); buildSudoku6('d6'); }, 100);
+  // Build DT logic puzzle here — after section is in the DOM
+  buildLogicPuzzle('devilstower-logic',
+    ['Rogers', 'Ripley', 'Fritz', 'Durrance', 'Wiessner'],
+    ['1893', '1927', '1937', '1938', '1941', 'Stake Ladder', 'South Face', 'Durrance Route', 'East Face', 'North Face', 'Wyoming', 'Colorado', 'Montana', 'New York', 'Vermont'],
+    [
+      "Rogers and Ripley were the first to summit in 1893 using a wooden stake ladder they built themselves.",
+      "Fritz Wiessner completed the first true rock climb of the Tower in 1937.",
+      "The Durrance Route — now the most popular — was established in 1938 by its namesake.",
+      "The climber from New York pioneered the East Face route.",
+      "Wiessner was originally from Germany but represented Vermont.",
+      "The 1927 climber used the South Face approach and was from Wyoming.",
+      "Jack Durrance was from Colorado.",
+      "The North Face route was the last of the five to be established, in 1941."
+    ]
+  );
 })();
 
 // Second TOF builder (reusable, uses different ID prefix)
@@ -3081,6 +3097,14 @@ function buildLegend(containerId) {
   srcDiv.textContent = '— A version of the Kiowa legend of Devil\'s Tower';
   legendDiv.appendChild(srcDiv);
   container.appendChild(legendDiv);
+
+  const questions = [
+    { q: "According to the legend, what created the vertical grooves on the sides of Devil's Tower?", opts: ["Lightning strikes", "A great bear's claws", "Ancient rivers of lava", "The Great Spirit's fingers"], ans: 1, fact: "The bear's claw marks are the classic explanation in many Plains tribes' legends. The real grooves are caused by columnar jointing as the rock cooled." },
+    { q: "In the legend, the girls were transformed into what?", opts: ["Eagles", "The moon", "The Pleiades star cluster", "Butterflies"], ans: 2, fact: "The Pleiades! This star cluster (also called the Seven Sisters) is visible in winter skies — and several Plains tribes connect it to the Tower legend." },
+    { q: "What did the rock do to save the girls?", opts: ["It turned into water", "It burst into flames", "It rose up from the earth", "It became invisible"], ans: 2, fact: "The rock rose into the sky to lift the girls away from the bear — explaining the Tower's dramatic height above the surrounding plains." },
+    { q: "Geologists give a different explanation for the grooves. What actually caused them?", opts: ["Ancient earthquake faults", "Columnar jointing as igneous rock cooled and contracted", "Water erosion over millions of years", "Wind abrasion"], ans: 1, fact: "Columnar jointing! As the phonolite porphyry cooled slowly underground, it contracted and fractured into the distinctive hexagonal columns we see today." }
+  ];
+
   questions.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'trivia-q';
@@ -3459,22 +3483,6 @@ buildLogicPuzzle('badlands-logic2',
     "The Big Pig Dig in 1993 uncovered the Ancient Horse remains.",
     "Dr. Hatcher found his specimen in Layer 2, just above the oldest layer.",
     "The Brontothere — the thunder beast — was found in Layer 4 in 1922."
-  ]
-);
-
-// Devil's Tower: Climbers' Register
-buildLogicPuzzle('devilstower-logic',
-  ['Rogers', 'Ripley', 'Fritz', 'Durrance', 'Wiessner'],
-  ['1893', '1927', '1937', '1938', '1941', 'Stake Ladder', 'South Face', 'Durrance Route', 'East Face', 'North Face', 'Wyoming', 'Colorado', 'Montana', 'New York', 'Vermont'],
-  [
-    "Rogers and Ripley were the first to summit in 1893 using a wooden stake ladder they built themselves.",
-    "Fritz Wiessner completed the first true rock climb of the Tower in 1937.",
-    "The Durrance Route — now the most popular — was established in 1938 by its namesake.",
-    "The climber from New York pioneered the East Face route.",
-    "Wiessner was originally from Germany but represented Vermont.",
-    "The 1927 climber used the South Face approach and was from Wyoming.",
-    "Jack Durrance was from Colorado.",
-    "The North Face route was the last of the five to be established, in 1941."
   ]
 );
 
