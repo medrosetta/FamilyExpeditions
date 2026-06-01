@@ -46,6 +46,56 @@
     opacity: 0.5;
   }
 
+  /* TIER PANEL */
+  .tier-panel {
+    background: rgba(122,74,30,0.12);
+    border: 1px solid var(--leather);
+    padding: 14px 20px 10px;
+    margin: 8px 0 12px;
+    width: min(340px, 90vw);
+    text-align: center;
+  }
+  .tier-animal { font-size: 40px; line-height: 1; margin-bottom: 4px; }
+  .tier-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--rust); letter-spacing: 1px; margin-bottom: 8px; }
+  .tier-bar-wrap { height: 8px; background: var(--parchment-dark); border: 1px solid var(--leather); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
+  .tier-bar { height: 100%; background: linear-gradient(to right, var(--gold), var(--rust)); border-radius: 4px; width: 0%; transition: width 0.6s ease; }
+  .tier-pts { font-family: 'Special Elite', cursive; font-size: 11px; color: var(--stone); letter-spacing: 1px; }
+  .cover-score-row { display: flex; gap: 10px; margin: 4px 0 10px; width: min(340px, 90vw); }
+  .cover-score-box { flex: 1; background: rgba(122,74,30,0.08); border: 1px solid var(--leather); padding: 8px 4px; text-align: center; }
+  .cover-score-num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--ink); }
+  .cover-score-label { font-family: 'Special Elite', cursive; font-size: 9px; letter-spacing: 1px; color: var(--stone); text-transform: uppercase; margin-top: 2px; }
+  .expedition-day-btn { font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 18px; border: 2px solid var(--gold); background: transparent; color: var(--leather); cursor: pointer; margin: 6px 0 4px; transition: all 0.2s; width: min(300px, 85vw); }
+  .expedition-day-btn:hover { background: var(--gold); color: var(--ink); }
+  .expedition-day-btn:disabled { opacity: 0.4; cursor: default; }
+
+  /* SECTION COMPLETE */
+  .section-complete-banner { background: var(--forest); color: var(--parchment); font-family: 'Special Elite', cursive; font-size: 13px; letter-spacing: 1px; padding: 12px 16px; text-align: center; margin-bottom: 20px; border: 1px solid var(--gold); }
+
+  /* CIPHER PUZZLE */
+  .cipher-key { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 4px; margin: 12px 0; padding: 12px; background: var(--parchment); border: 1px solid var(--parchment-dark); }
+  .cipher-pair { text-align: center; font-size: 11px; }
+  .cipher-symbol { font-size: 20px; line-height: 1.3; display: block; }
+  .cipher-letter { font-family: 'Special Elite', cursive; font-size: 11px; color: var(--stone); }
+  .cipher-msg { font-size: 20px; letter-spacing: 4px; line-height: 2.2; padding: 8px 0; word-break: break-all; }
+  .cipher-input-row { display: flex; gap: 3px; flex-wrap: wrap; margin: 8px 0 4px; align-items: center; }
+  .cipher-char-box { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .cipher-char-box input { width: 30px; height: 34px; text-align: center; font-family: 'Special Elite', cursive; font-size: 13px; border: 1px solid var(--leather); background: var(--parchment); text-transform: uppercase; outline: none; -webkit-appearance: none; }
+  .cipher-char-box input.correct { border-color: var(--forest); background: #e8f4e0; color: var(--forest); }
+  .cipher-char-box input.wrong { border-color: var(--rust); }
+  .cipher-symbol-hint { font-size: 14px; }
+
+  /* 6×6 SUDOKU */
+  .sudoku6-grid { display: inline-grid; grid-template-columns: repeat(6, 1fr); border: 3px solid var(--ink); margin: 12px 0; }
+  .sudoku6-cell { width: clamp(36px, 7vw, 48px); height: clamp(36px, 7vw, 48px); border: 1px solid var(--stone); display: flex; align-items: center; justify-content: center; font-family: 'Special Elite', cursive; font-size: clamp(15px, 3vw, 20px); cursor: pointer; transition: background 0.15s; }
+  .sudoku6-cell.given { background: var(--parchment-dark); cursor: default; font-weight: bold; color: var(--ink); }
+  .sudoku6-cell.editable { background: var(--parchment); color: var(--sky); }
+  .sudoku6-cell.editable:hover { background: #e0f0d8; }
+  .sudoku6-cell.selected-s { background: #d0e8f8; }
+  .sudoku6-cell.error { color: var(--rust) !important; }
+  .sudoku6-cell:nth-child(3n) { border-right: 2px solid var(--ink); }
+  .sudoku6-cell:nth-child(6n) { border-right: none; }
+  .sudoku6-row3 { border-bottom: 2px solid var(--ink); }
+
   /* COVER PAGE */
   .cover {
     min-height: 100vh;
@@ -714,7 +764,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.3</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.4</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -736,6 +786,40 @@
   <div class="cover-divider"></div>
   <h1>Great Plains<br><span>&amp; Peaks</span></h1>
   <div class="cover-sub">Puzzle Kit — Black Hills, Badlands, Yellowstone &amp; Devil's Tower</div>
+  <div class="cover-divider"></div>
+
+  <!-- TIER DISPLAY -->
+  <div class="tier-panel" id="tierPanel">
+    <div class="tier-animal" id="tierAnimal">🐜</div>
+    <div class="tier-name" id="tierName">Ant</div>
+    <div class="tier-bar-wrap">
+      <div class="tier-bar" id="tierBar"></div>
+    </div>
+    <div class="tier-pts" id="tierPts">0 pts · Next rank: <span id="tierNext">50 pts</span></div>
+  </div>
+
+  <!-- SCORE ROW -->
+  <div class="cover-score-row">
+    <div class="cover-score-box">
+      <div class="cover-score-num" id="coverScore">0</div>
+      <div class="cover-score-label">Total Points</div>
+    </div>
+    <div class="cover-score-box">
+      <div class="cover-score-num" id="coverStreak">0🔥</div>
+      <div class="cover-score-label">Day Streak</div>
+    </div>
+    <div class="cover-score-box">
+      <div class="cover-score-num" id="coverSections">0/4</div>
+      <div class="cover-score-label">Sections Done</div>
+    </div>
+  </div>
+
+  <!-- EXPEDITION DAY TAP -->
+  <button class="expedition-day-btn" id="expeditionDayBtn" onclick="logExpeditionDay()">
+    📅 Log Today's Expedition Day
+  </button>
+  <div id="dayLogMsg" style="font-family:'Special Elite',cursive; font-size:11px; color:var(--gold); letter-spacing:1px; min-height:16px;"></div>
+
   <div class="cover-divider"></div>
   <div class="cover-details">
     Prepared for the Expedition of June 6–21, 2026<br>
@@ -763,11 +847,12 @@
     <button class="pp-btn" onclick="jumpTo('pz-r2')">❓ Trivia</button>
     <button class="pp-btn" onclick="jumpTo('pz-r2b')">❓ Trivia 2</button>
     <button class="pp-btn" onclick="jumpTo('pz-r3')">🔤 Words</button>
-    <button class="pp-btn" onclick="jumpTo('pz-r4')">🧩 Cryptic</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r4')">🔐 Cipher</button>
     <button class="pp-btn" onclick="jumpTo('pz-r5')">🧠 Logic</button>
     <button class="pp-btn" onclick="jumpTo('pz-r6')">✏️ Fill Blanks</button>
     <button class="pp-btn" onclick="jumpTo('pz-r7')">🔢 Sudoku</button>
     <button class="pp-btn" onclick="jumpTo('pz-r8')">🧠 Logic</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r9')">🎲 Easy Sudoku</button>
   </div>
 
 
@@ -842,6 +927,22 @@
     <div id="rushmore-logic2"></div>
   </div>
 
+  <div class="puzzle-card" id="pz-r9" data-num="Puzzle R-9 · Sudoku 6×6 · Easy">
+    <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Fill every row, column, and 2×3 box with the numbers 1–6. Great for all ages!</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-r6"></div>
+    <div class="numpad" id="numpad-r6"></div>
+    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudoku6('r6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudoku6('r6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+    </div>
+    <div id="sudoku6-msg-r6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+  </div>
+
+  <div style="text-align:center; padding:20px 0 10px;">
+    <button id="claim-btn-rushmore" onclick="claimSectionBonus('rushmore')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Mt. Rushmore Completion Bonus (+100 pts)</button>
+  </div>
 </div><!-- end rushmore -->
 
 <!-- YELLOWSTONE SECTION -->
@@ -858,13 +959,14 @@
     <button class="pp-btn" onclick="jumpTo('pz-y2')">❓ Trivia</button>
     <button class="pp-btn" onclick="jumpTo('pz-y2b')">❓ Trivia 2</button>
     <button class="pp-btn" onclick="jumpTo('pz-y3')">🔤 Words</button>
-    <button class="pp-btn" onclick="jumpTo('pz-y4')">🧩 Cryptic</button>
+    <button class="pp-btn" onclick="jumpTo('pz-y4')">🔐 Cipher</button>
     <button class="pp-btn" onclick="jumpTo('pz-y5')">🔢 Sudoku</button>
     <button class="pp-btn" onclick="jumpTo('pz-y6')">🧠 Logic</button>
     <button class="pp-btn" onclick="jumpTo('pz-y7')">👁 Spot Diff</button>
     <button class="pp-btn" onclick="jumpTo('pz-y8')">✏️ Fill Blanks</button>
     <button class="pp-btn" onclick="jumpTo('pz-y9')">🔢 Sudoku 2</button>
     <button class="pp-btn" onclick="jumpTo('pz-y10')">🧠 Logic 2</button>
+    <button class="pp-btn" onclick="jumpTo('pz-y11')">🎲 Easy Sudoku</button>
   </div>
 
 
@@ -963,6 +1065,22 @@
     <div id="yellowstone-logic2"></div>
   </div>
 
+  <div class="puzzle-card" id="pz-y11" data-num="Puzzle Y-11 · Sudoku 6×6 · Easy">
+    <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Fill every row, column, and 2×3 box with 1–6.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-y6"></div>
+    <div class="numpad" id="numpad-y6"></div>
+    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudoku6('y6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudoku6('y6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+    </div>
+    <div id="sudoku6-msg-y6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+  </div>
+
+  <div style="text-align:center; padding:20px 0 10px;">
+    <button id="claim-btn-yellowstone" onclick="claimSectionBonus('yellowstone')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Yellowstone Completion Bonus (+100 pts)</button>
+  </div>
 </div><!-- end yellowstone -->
 
 <!-- BADLANDS SECTION -->
@@ -978,12 +1096,13 @@
     <button class="pp-btn" onclick="jumpTo('pz-b1')">🔍 Hunt</button>
     <button class="pp-btn" onclick="jumpTo('pz-b2')">❓ Trivia</button>
     <button class="pp-btn" onclick="jumpTo('pz-b3')">🔤 Words</button>
-    <button class="pp-btn" onclick="jumpTo('pz-b4')">🧩 Cryptic</button>
+    <button class="pp-btn" onclick="jumpTo('pz-b4')">🔐 Cipher</button>
     <button class="pp-btn" onclick="jumpTo('pz-b5')">✓/✗ True/False</button>
     <button class="pp-btn" onclick="jumpTo('pz-b6')">⏱ Timeline</button>
     <button class="pp-btn" onclick="jumpTo('pz-b7')">✏️ Fill Blanks</button>
     <button class="pp-btn" onclick="jumpTo('pz-b8')">🔢 Sudoku</button>
     <button class="pp-btn" onclick="jumpTo('pz-b9')">🧠 Logic</button>
+    <button class="pp-btn" onclick="jumpTo('pz-b10')">🎲 Easy Sudoku</button>
   </div>
 
 
@@ -1061,6 +1180,22 @@
     <div id="badlands-logic2"></div>
   </div>
 
+  <div class="puzzle-card" id="pz-b10" data-num="Puzzle B-10 · Sudoku 6×6 · Easy">
+    <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Fill every row, column, and 2×3 box with 1–6.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-b6"></div>
+    <div class="numpad" id="numpad-b6"></div>
+    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudoku6('b6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudoku6('b6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+    </div>
+    <div id="sudoku6-msg-b6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+  </div>
+
+  <div style="text-align:center; padding:20px 0 10px;">
+    <button id="claim-btn-badlands" onclick="claimSectionBonus('badlands')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Badlands Completion Bonus (+100 pts)</button>
+  </div>
 </div><!-- end badlands -->
 
 <script>
@@ -1311,7 +1446,7 @@ function buildSVGSpotDiff(containerId) {
 
   // Build full SVG for each scene
   function fullSVG(v, interactive) {
-    const clickHandler = interactive ? `onclick="checkSpotClick(event,'${v}',this)"` : '';
+    const clickHandler = interactive ? 'onclick="checkSpotClick(event,\'' + (v) + '\',this)"' : '';
     const cursor = interactive ? 'cursor:crosshair;' : '';
     return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" 
       style="width:100%;display:block;border:2px solid var(--leather);border-radius:2px;${cursor}"
@@ -1330,7 +1465,7 @@ function buildSVGSpotDiff(containerId) {
   // Scenes side by side
   const grid = document.createElement('div');
   grid.style.cssText = 'display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;';
-  grid.innerHTML = `<div>${fullSVG('a', false)}</div><div id="svgSceneB">${fullSVG('b', true)}</div>`;
+  grid.innerHTML = '<div>' + (fullSVG('a', false)) + '</div><div id="svgSceneB">' + (fullSVG('b', true)) + '</div>';
   container.appendChild(grid);
 
   // Checklist
@@ -1339,8 +1474,11 @@ function buildSVGSpotDiff(containerId) {
   differences.forEach((d) => {
     const row = document.createElement('div');
     row.className = 'hunt-item';
-    row.id = `diff-row-${d.id}`;
-    row.innerHTML = `<div class="check" id="diff-chk-${d.id}"></div><div style="font-size:13px;flex:1">${d.desc}</div><div class="hunt-points">8 pts</div>`;
+    row.id = 'diff-row-' + (d.id) + '';
+    const chk = document.createElement('div'); chk.className = 'check'; chk.id = 'diff-chk-' + d.id;
+    const desc = document.createElement('div'); desc.style.cssText = 'font-size:13px;flex:1'; desc.textContent = d.desc;
+    const pts = document.createElement('div'); pts.className = 'hunt-points'; pts.textContent = '8 pts';
+    row.appendChild(chk); row.appendChild(desc); row.appendChild(pts);
     row.onclick = () => {
       if (!window._spotDiffFound || !window._spotDiffFound.has(d.id)) markDiff(d.id);
     };
@@ -1359,13 +1497,13 @@ function markDiff(i) {
   if (!window._spotDiffFound) window._spotDiffFound = new Set();
   if (window._spotDiffFound.has(i)) return; // already found, ignore
   window._spotDiffFound.add(i);
-  const row = document.getElementById(`diff-row-${i}`);
-  const chk = document.getElementById(`diff-chk-${i}`);
+  const row = document.getElementById('diff-row-' + (i) + '');
+  const chk = document.getElementById('diff-chk-' + (i) + '');
   if (row) row.classList.add('found');
   if (chk) chk.textContent = '✓';
   addScore(8);
   const sc = document.getElementById('spot-diff-score');
-  if (sc) sc.textContent = `Found: ${window._spotDiffFound.size} / 8`;
+  if (sc) sc.textContent = 'Found: ' + (window._spotDiffFound.size) + ' / 8';
   if (window._spotDiffFound.size === 8) {
     setTimeout(() => { addScore(20); alert('🎉 All 8 differences found! Outstanding eye!'); }, 100);
   }
@@ -1449,20 +1587,23 @@ function buildHunt(items, containerId, scoreId, ptsId, prefix) {
   items.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'hunt-item';
-    div.id = `${prefix}-hunt-${i}`;
-    div.innerHTML = `
-      <div class="check" id="${prefix}-check-${i}"></div>
-      <div style="flex:1; font-size:13px; line-height:1.5">${item.text}</div>
-      <div class="hunt-points">${item.pts} pts</div>
-    `;
+    div.id = prefix + '-hunt-' + i;
+    const chkDiv = document.createElement('div');
+    chkDiv.className = 'check'; chkDiv.id = prefix + '-check-' + i;
+    const txtDiv = document.createElement('div');
+    txtDiv.style.cssText = 'flex:1; font-size:13px; line-height:1.5';
+    txtDiv.textContent = item.text;
+    const ptsDiv = document.createElement('div');
+    ptsDiv.className = 'hunt-points'; ptsDiv.textContent = item.pts + ' pts';
+    div.appendChild(chkDiv); div.appendChild(txtDiv); div.appendChild(ptsDiv);
     div.onclick = () => {
       const isFound = div.classList.toggle('found');
-      document.getElementById(`${prefix}-check-${i}`).textContent = isFound ? '✓' : '';
+      document.getElementById('' + (prefix) + '-check-' + (i) + '').textContent = isFound ? '✓' : '';
       addScore(isFound ? item.pts : -item.pts);
-      let f = document.querySelectorAll(`#${containerId} .hunt-item.found`).length;
+      let f = document.querySelectorAll('#' + (containerId) + ' .hunt-item.found').length;
       document.getElementById(scoreId).textContent = f;
       let p = 0;
-      document.querySelectorAll(`#${containerId} .hunt-item.found`).forEach(el => {
+      document.querySelectorAll('#' + (containerId) + ' .hunt-item.found').forEach(el => {
         const idx = parseInt(el.id.split('-').pop());
         p += items[idx].pts;
       });
@@ -1584,19 +1725,28 @@ const yellowstoneTriviaData = [
 const triviaRegistry = {};
 
 function buildTrivia(data, containerId, prefix) {
-  triviaRegistry[prefix] = data; // register so answerTrivia can find it
+  triviaRegistry[prefix] = data;
   const container = document.getElementById(containerId);
   data.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'trivia-q';
-    const optsHtml = item.opts.map((o, j) => 
-      `<button class="opt-btn" onclick="answerTrivia('${prefix}',${i},${j})" id="${prefix}-opt-${i}-${j}">${String.fromCharCode(65+j)}) ${o}</button>`
-    ).join('');
-    div.innerHTML = `
-      <div class="q-text"><span class="q-num">${i+1}.</span>${item.q}</div>
-      <div class="options">${optsHtml}</div>
-      <div class="trivia-feedback" id="${prefix}-fb-${i}"></div>
-    `;
+    const qDiv = document.createElement('div');
+    qDiv.className = 'q-text';
+    qDiv.innerHTML = '<span class="q-num">' + (i+1) + '.</span>' + item.q;
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    item.opts.forEach((o, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+      btn.id = prefix + '-opt-' + i + '-' + j;
+      btn.textContent = String.fromCharCode(65+j) + ') ' + o;
+      btn.onclick = () => answerTrivia(prefix, i, j);
+      optDiv.appendChild(btn);
+    });
+    const fb = document.createElement('div');
+    fb.className = 'trivia-feedback';
+    fb.id = prefix + '-fb-' + i;
+    div.appendChild(qDiv); div.appendChild(optDiv); div.appendChild(fb);
     container.appendChild(div);
   });
 }
@@ -1606,12 +1756,12 @@ function answerTrivia(prefix, qIdx, optIdx) {
   if (!data) return;
   const item = data[qIdx];
   for (let j = 0; j < item.opts.length; j++) {
-    const btn = document.getElementById(`${prefix}-opt-${qIdx}-${j}`);
+    const btn = document.getElementById('' + (prefix) + '-opt-' + (qIdx) + '-' + (j) + '');
     if (btn) { btn.disabled = true; }
   }
-  const chosen = document.getElementById(`${prefix}-opt-${qIdx}-${optIdx}`);
-  const correct = document.getElementById(`${prefix}-opt-${qIdx}-${item.ans}`);
-  const fb = document.getElementById(`${prefix}-fb-${qIdx}`);
+  const chosen = document.getElementById('' + (prefix) + '-opt-' + (qIdx) + '-' + (optIdx) + '');
+  const correct = document.getElementById('' + (prefix) + '-opt-' + (qIdx) + '-' + (item.ans) + '');
+  const fb = document.getElementById('' + (prefix) + '-fb-' + (qIdx) + '');
   if (optIdx === item.ans) {
     chosen.classList.add('correct');
     fb.textContent = '✓ ' + item.fact;
@@ -1708,10 +1858,10 @@ buildTrivia(badlandsTriviaData, 'badlands-trivia', 'bt');
     const card = document.createElement('div');
     card.className = 'puzzle-card';
     card.setAttribute('data-num', 'Puzzle R-2b · Trivia Round 2');
-    card.innerHTML = `<h3>More Stone Cold Facts: Rushmore Round 2</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · 40 pts possible</div>
-      <p>Four more questions sourced straight from the NPS student guide. How many can you get?</p>
-      <div id="rushmore-trivia2"></div>`;
+    card.innerHTML = '<h3>More Stone Cold Facts: Rushmore Round 2</h3>' +
+      '<div class="difficulty">⭐⭐ Ranger Level · 40 pts possible</div>' +
+      '<p>Four more questions sourced straight from the NPS student guide. How many can you get?</p>' +
+      '<div id="rushmore-trivia2"></div>';
     const section = document.getElementById('rushmore');
     const anchor = document.getElementById('rushmore-trivia');
     const firstCard = anchor ? anchor.closest('.puzzle-card') : null;
@@ -1768,10 +1918,10 @@ buildTrivia(badlandsTriviaData, 'badlands-trivia', 'bt');
     const card = document.createElement('div');
     card.className = 'puzzle-card';
     card.setAttribute('data-num', 'Puzzle Y-2b · Trivia Round 2');
-    card.innerHTML = `<h3>Ranger Questions: Yellowstone Round 2</h3>
-      <div class="difficulty">⭐⭐ Ranger Level · 60 pts possible</div>
-      <p>Six more questions straight from the NPS Ask-a-Ranger page. These are the real ones visitors ask!</p>
-      <div id="yellowstone-trivia2"></div>`;
+    card.innerHTML = '<h3>Ranger Questions: Yellowstone Round 2</h3>' +
+      '<div class="difficulty">⭐⭐ Ranger Level · 60 pts possible</div>' +
+      '<p>Six more questions straight from the NPS Ask-a-Ranger page. These are the real ones visitors ask!</p>' +
+      '<div id="yellowstone-trivia2"></div>';
     const section = document.getElementById('yellowstone');
     const anchor = document.getElementById('yellowstone-trivia');
     const firstCard = anchor ? anchor.closest('.puzzle-card') : null;
@@ -1832,7 +1982,7 @@ function buildWordSearch(words, containerId, wordListId) {
   container.innerHTML = '';
   const gridDiv = document.createElement('div');
   gridDiv.className = 'word-grid';
-  gridDiv.style.gridTemplateColumns = `repeat(${SIZE}, 1fr)`;
+  gridDiv.style.gridTemplateColumns = 'repeat(' + (SIZE) + ', 1fr)';
 
   let selectedCells = [];
   let foundWords = new Set();
@@ -1889,7 +2039,7 @@ function buildWordSearch(words, containerId, wordListId) {
   words.forEach(w => {
     const tag = document.createElement('div');
     tag.className = 'word-tag';
-    tag.id = `wt-${containerId}-${w.toUpperCase()}`;
+    tag.id = 'wt-' + (containerId) + '-' + (w.toUpperCase()) + '';
     tag.textContent = w.toUpperCase();
     wlContainer.appendChild(tag);
   });
@@ -1937,7 +2087,7 @@ function buildWordSearch(words, containerId, wordListId) {
         const el = getCellEl(r,c);
         if (el) { el.classList.add('found-word'); el.classList.remove('selected'); }
       });
-      const tag = document.getElementById(`wt-${containerId}-${matched.word}`);
+      const tag = document.getElementById('wt-' + (containerId) + '-' + (matched.word) + '');
       if (tag) tag.classList.add('found');
       addScore(5);
       if (foundWords.size === words.length) {
@@ -2034,30 +2184,38 @@ function buildTOF(data, containerId) {
   data.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'trivia-q';
-    div.innerHTML = `
-      <div class="q-text"><span class="q-num">${i+1}.</span>${item.stmt}</div>
-      <div class="options" style="grid-template-columns:1fr 1fr; max-width:300px;">
-        <button class="opt-btn" id="tof-t-${i}" onclick="answerTOF(${i}, true)">✓ TRUE</button>
-        <button class="opt-btn" id="tof-f-${i}" onclick="answerTOF(${i}, false)">✗ FALSE</button>
-      </div>
-      <div class="trivia-feedback" id="tof-fb-${i}"></div>
-    `;
+    const qDiv = document.createElement('div');
+    qDiv.className = 'q-text';
+    qDiv.innerHTML = '<span class="q-num">' + (i+1) + '.</span>' + item.stmt;
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    optDiv.style.cssText = 'grid-template-columns:1fr 1fr; max-width:300px;';
+    const tBtn = document.createElement('button');
+    tBtn.className = 'opt-btn'; tBtn.id = 'tof-t-' + i;
+    tBtn.textContent = '✓ TRUE'; tBtn.onclick = () => answerTOF(i, true);
+    const fBtn = document.createElement('button');
+    fBtn.className = 'opt-btn'; fBtn.id = 'tof-f-' + i;
+    fBtn.textContent = '✗ FALSE'; fBtn.onclick = () => answerTOF(i, false);
+    optDiv.appendChild(tBtn); optDiv.appendChild(fBtn);
+    const fb = document.createElement('div');
+    fb.className = 'trivia-feedback'; fb.id = 'tof-fb-' + i;
+    div.appendChild(qDiv); div.appendChild(optDiv); div.appendChild(fb);
     container.appendChild(div);
   });
 }
 
 function answerTOF(i, choice) {
   const item = badlandsTOF[i];
-  document.getElementById(`tof-t-${i}`).disabled = true;
-  document.getElementById(`tof-f-${i}`).disabled = true;
+  document.getElementById('tof-t-' + (i) + '').disabled = true;
+  document.getElementById('tof-f-' + (i) + '').disabled = true;
   const correct = choice === item.ans;
-  const chosenId = choice ? `tof-t-${i}` : `tof-f-${i}`;
-  const correctId = item.ans ? `tof-t-${i}` : `tof-f-${i}`;
+  const chosenId = choice ? 'tof-t-' + (i) : 'tof-f-' + (i);
+  const correctId = item.ans ? 'tof-t-' + (i) : 'tof-f-' + (i);
   document.getElementById(chosenId).classList.add(correct ? 'correct' : 'wrong');
   if (!correct) document.getElementById(correctId).classList.add('correct');
-  const fb = document.getElementById(`tof-fb-${i}`);
+  const fb = document.getElementById('tof-fb-' + (i) + '');
   fb.textContent = (correct ? '✓ ' : '✗ ') + item.fact;
-  fb.className = `trivia-feedback show ${correct ? 'correct' : 'wrong'}`;
+  fb.className = 'trivia-feedback show ' + (correct ? 'correct' : 'wrong') + '';
   if (correct) addScore(8);
 }
 buildTOF(badlandsTOF, 'badlands-tof');
@@ -2096,8 +2254,12 @@ function buildTimeline(containerId) {
     listEl.innerHTML = '';
     userOrder.forEach((evt, i) => {
       const item = document.createElement('div');
-      item.style.cssText = `display:flex; align-items:center; gap:12px; padding:10px 14px; background:var(--parchment); border:2px solid ${selected===i?'var(--rust)':'var(--leather)'}; cursor:pointer; font-size:13px; transition:all 0.15s;`;
-      item.innerHTML = `<span style="font-family:'Playfair Display',serif; font-size:18px; font-style:italic; color:var(--rust); min-width:24px;">${i+1}.</span><span style="flex:1">${evt.label}</span>`;
+      item.style.cssText = 'display:flex; align-items:center; gap:12px; padding:10px 14px; background:var(--parchment); border:2px solid ' + (selected===i?'var(--rust)':'var(--leather)') + '; cursor:pointer; font-size:13px; transition:all 0.15s;';
+      const numEl = document.createElement('span');
+      numEl.style.cssText = "font-family:'Playfair Display',serif; font-size:18px; font-style:italic; color:var(--rust); min-width:24px;";
+      numEl.textContent = (i+1) + '.';
+      const lblEl = document.createElement('span'); lblEl.style.flex = '1'; lblEl.textContent = evt.label;
+      item.appendChild(numEl); item.appendChild(lblEl);
       item.onclick = () => {
         if (selected === null) { selected = i; render(); }
         else if (selected === i) { selected = null; render(); }
@@ -2128,16 +2290,16 @@ function buildTimeline(containerId) {
     const result = userOrder.map((evt, i) => {
       const right = evt.order === i;
       if (right) correct++;
-      return `<div style="padding:6px 0; border-bottom:1px dashed var(--parchment-dark); font-size:12px; color:${right?'var(--forest)':'var(--rust)'}">${right?'✓':'✗'} ${i+1}. ${evt.label} <em style="color:var(--stone)">(${evt.year})</em></div>`;
+      return '<div style="padding:6px 0; border-bottom:1px dashed var(--parchment-dark); font-size:12px; color:' + (right?'var(--forest)':'var(--rust)') + '">' + (right?'✓':'✗') + ' ' + (i+1) + '. ' + (evt.label) + ' <em style="color:var(--stone)">(' + (evt.year) + ')</em></div>';
     }).join('');
     msgEl.style.display = 'block';
     if (correct === timelineEvents.length) {
       msgEl.style.background = '#e0f0d8';
-      msgEl.innerHTML = `<strong>🎉 Perfect order! +40 points!</strong>${result}`;
+      msgEl.innerHTML = '<strong>🎉 Perfect order! +40 points!</strong>' + (result);
       addScore(40);
     } else {
       msgEl.style.background = '#f8e8d8';
-      msgEl.innerHTML = `<strong>${correct}/${timelineEvents.length} correct positions.</strong> Correct answers shown below — try again!<br><br>${result}`;
+      msgEl.innerHTML = '<strong>' + (correct) + '/' + (timelineEvents.length) + ' correct positions.</strong> Correct answers shown below — try again!<br><br>' + (result);
     }
   };
 }
@@ -2237,17 +2399,24 @@ function buildCryptic(data, containerId) {
   data.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'cryptic-clue';
-    div.innerHTML = `
-      <div class="clue-num">${item.num}.</div>
-      <div>
-        <div class="clue-text">${item.clue}</div>
-        <div class="clue-length">${item.length}</div>
-        <div class="answer-reveal" onclick="toggleAnswer('crypt-${containerId}-${i}')">▶ Reveal Answer</div>
-        <div class="answer-text" id="crypt-${containerId}-${i}">
-          <strong>${item.answer}</strong> — ${item.hint}
-        </div>
-      </div>
-    `;
+    const numDiv = document.createElement('div');
+    numDiv.className = 'clue-num'; numDiv.textContent = item.num + '.';
+    const bodyDiv = document.createElement('div');
+    const clueDiv = document.createElement('div');
+    clueDiv.className = 'clue-text'; clueDiv.textContent = item.clue;
+    const lenDiv = document.createElement('div');
+    lenDiv.className = 'clue-length'; lenDiv.textContent = item.length;
+    const revBtn = document.createElement('div');
+    revBtn.className = 'answer-reveal';
+    revBtn.textContent = '▶ Reveal Answer';
+    const answerId = 'crypt-' + containerId + '-' + i;
+    revBtn.onclick = () => toggleAnswer(answerId);
+    const ansDiv = document.createElement('div');
+    ansDiv.className = 'answer-text'; ansDiv.id = answerId;
+    ansDiv.innerHTML = '<strong>' + item.answer + '</strong> — ' + item.hint;
+    bodyDiv.appendChild(clueDiv); bodyDiv.appendChild(lenDiv);
+    bodyDiv.appendChild(revBtn); bodyDiv.appendChild(ansDiv);
+    div.appendChild(numDiv); div.appendChild(bodyDiv);
     container.appendChild(div);
   });
 }
@@ -2300,8 +2469,8 @@ function buildSudoku() {
     for (let c=0;c<9;c++) {
       const cell = document.createElement('div');
       cell.className = 'sudoku-cell';
-      cell.id = `sc-${r}-${c}`;
-      if (r===2||r===5) cell.classList.add(`sudoku-row-${r}`);
+      cell.id = 'sc-' + (r) + '-' + (c) + '';
+      if (r===2||r===5) cell.classList.add('sudoku-row-' + (r) + '');
       if (sudokuPuzzle[r][c] !== 0) {
         cell.classList.add('given');
         cell.textContent = sudokuPuzzle[r][c];
@@ -2333,7 +2502,7 @@ function buildSudoku() {
 function selectSudokuCell(r,c) {
   if (sudokuPuzzle[r][c] !== 0) return;
   document.querySelectorAll('.sudoku-cell').forEach(el => el.classList.remove('selected-s'));
-  document.getElementById(`sc-${r}-${c}`).classList.add('selected-s');
+  document.getElementById('sc-' + (r) + '-' + (c) + '').classList.add('selected-s');
   sudokuSelected = {r,c};
 }
 
@@ -2342,7 +2511,7 @@ function enterSudokuNum(n) {
   const {r,c} = sudokuSelected;
   if (sudokuPuzzle[r][c] !== 0) return;
   sudokuState[r][c] = n;
-  const el = document.getElementById(`sc-${r}-${c}`);
+  const el = document.getElementById('sc-' + (r) + '-' + (c) + '');
   el.textContent = n || '';
   el.classList.remove('error');
 }
@@ -2356,7 +2525,7 @@ function clearSudoku() {
 function checkSudoku() {
   let errors = 0;
   for (let r=0;r<9;r++) for (let c=0;c<9;c++) {
-    const el = document.getElementById(`sc-${r}-${c}`);
+    const el = document.getElementById('sc-' + (r) + '-' + (c) + '');
     if (sudokuPuzzle[r][c]===0) {
       if (sudokuState[r][c] !== sudokuSolution[r][c] && sudokuState[r][c]!==0) {
         el.classList.add('error');
@@ -2376,11 +2545,11 @@ function checkSudoku() {
       msg.style.color = 'var(--forest)';
       addScore(50);
     } else {
-      msg.textContent = `✓ No errors so far — keep going! (${filled}/${total} cells filled)`;
+      msg.textContent = '✓ No errors so far — keep going! (' + (filled) + '/' + (total) + ' cells filled)';
       msg.style.color = 'var(--sky)';
     }
   } else {
-    msg.textContent = `✗ ${errors} error(s) found — marked in red. Fix them!`;
+    msg.textContent = '✗ ' + (errors) + ' error(s) found — marked in red. Fix them!';
     msg.style.color = 'var(--rust)';
   }
 }
@@ -2518,7 +2687,7 @@ function buildFillBlank(containerId, sentences, wordBank) {
     const tag = document.createElement('span');
     tag.style.cssText = 'font-family:"Special Elite",cursive; font-size:12px; padding:4px 12px; border:1px solid var(--leather); background:var(--parchment-dark); cursor:pointer; letter-spacing:1px;';
     tag.textContent = w;
-    tag.id = `wb-${containerId}-${w}`;
+    tag.id = 'wb-' + (containerId) + '-' + (w) + '';
     bankDiv.appendChild(tag);
   });
   container.appendChild(bankDiv);
@@ -2528,24 +2697,31 @@ function buildFillBlank(containerId, sentences, wordBank) {
     const div = document.createElement('div');
     div.style.cssText = 'margin-bottom:14px; font-size:13px; line-height:2;';
     const parts = item.sentence.split('___');
-    div.innerHTML = `<span>${i+1}. ${parts[0]}</span>
-      <input type="text" id="fb-${containerId}-${i}" placeholder="______" 
-        style="font-family:'Special Elite',cursive; font-size:13px; border:none; border-bottom:2px solid var(--leather); background:transparent; padding:2px 6px; width:120px; text-align:center; outline:none;"
-        onchange="checkBlank('${containerId}',${i},'${item.answer}')">
-      <span>${parts[1] || ''}</span>
-      <span id="fb-fb-${containerId}-${i}" style="font-size:11px; margin-left:6px;"></span>`;
+    const sp1 = document.createElement('span');
+    sp1.textContent = (i+1) + '. ' + parts[0];
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.id = 'fb-' + containerId + '-' + i;
+    inp.placeholder = '______';
+    inp.style.cssText = "font-family:'Special Elite',cursive; font-size:13px; border:none; border-bottom:2px solid var(--leather); background:transparent; padding:2px 6px; width:120px; text-align:center; outline:none;";
+    inp.addEventListener('change', () => checkBlank(containerId, i, item.answer));
+    const sp2 = document.createElement('span');
+    sp2.textContent = parts[1] || '';
+    const fbSp = document.createElement('span');
+    fbSp.id = 'fb-fb-' + containerId + '-' + i;
+    fbSp.style.cssText = 'font-size:11px; margin-left:6px;';
+    div.appendChild(sp1); div.appendChild(inp); div.appendChild(sp2); div.appendChild(fbSp);
     container.appendChild(div);
   });
 
   const scoreEl = document.createElement('div');
-  scoreEl.id = `fb-score-${containerId}`;
+  scoreEl.id = 'fb-score-' + (containerId) + '';
   scoreEl.style.cssText = 'font-family:"Special Elite",cursive; font-size:12px; color:var(--stone); margin-top:10px;';
   container.appendChild(scoreEl);
 }
 
 function checkBlank(cid, idx, answer) {
-  const input = document.getElementById(`fb-${cid}-${idx}`);
-  const fb = document.getElementById(`fb-fb-${cid}-${idx}`);
+  const input = document.getElementById('fb-' + (cid) + '-' + (idx) + '');
+  const fb = document.getElementById('fb-fb-' + (cid) + '-' + (idx) + '');
   if (!input || !fb) return;
   const val = input.value.trim().toLowerCase();
   const correct = answer.toLowerCase();
@@ -2557,7 +2733,7 @@ function checkBlank(cid, idx, answer) {
     input.disabled = true;
     addScore(8);
     // Strike word from bank
-    const bankTag = document.getElementById(`wb-${cid}-${answer}`);
+    const bankTag = document.getElementById('wb-' + (cid) + '-' + (answer) + '');
     if (bankTag) { bankTag.style.textDecoration = 'line-through'; bankTag.style.opacity = '0.4'; }
   } else {
     input.style.borderBottomColor = 'var(--rust)';
@@ -2745,11 +2921,12 @@ const devilstowerTOF = [
       <button class="pp-btn" onclick="jumpTo('pz-d1')">🔍 Hunt</button>
       <button class="pp-btn" onclick="jumpTo('pz-d2')">❓ Trivia</button>
       <button class="pp-btn" onclick="jumpTo('pz-d3')">🔤 Words</button>
-      <button class="pp-btn" onclick="jumpTo('pz-d4')">🧩 Cryptic</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d4')">🔐 Cipher</button>
       <button class="pp-btn" onclick="jumpTo('pz-d5')">✓/✗ True/False</button>
       <button class="pp-btn" onclick="jumpTo('pz-d6')">📖 Legend</button>
       <button class="pp-btn" onclick="jumpTo('pz-d8')">🔢 Sudoku</button>
       <button class="pp-btn" onclick="jumpTo('pz-d9')">🧠 Logic</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d10')">🎲 Easy Sudoku</button>
     </div>
 
     <div class="puzzle-card" id="pz-d1" data-num="Puzzle D-1 · Scavenger Hunt">
@@ -2777,11 +2954,11 @@ const devilstowerTOF = [
       <div class="word-list" id="dt-ws-words"></div>
     </div>
 
-    <div class="puzzle-card" id="pz-d4" data-num="Puzzle D-4 · Cryptic Clues">
-      <h3>Column Code: Devil's Tower Cryptics</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
-      <p>Six two-part clues about the Tower's geology, history, and legends. Decode both halves to find the answer!</p>
-      <div id="dt-cryptic"></div>
+    <div class="puzzle-card" id="pz-d4" data-num="Puzzle D-4 · Cipher Decoder">
+      <h3>Bear Lodge Code: Cipher Decoder</h3>
+      <div class="difficulty">⭐⭐⭐ Explorer Level · 45 pts possible</div>
+      <p>Use the symbol key to decode three secret words about Devil's Tower. Type your answers!</p>
+      <div id="dt-cipher"></div>
     </div>
 
     <div class="puzzle-card" id="pz-d5" data-num="Puzzle D-5 · True or False Blitz">
@@ -2817,20 +2994,32 @@ const devilstowerTOF = [
       <p>Five historical climbers of Devil's Tower each used a different route, reached the summit in a different year, and came from a different state. Use the clues!<br><small style="color:var(--stone); font-style:italic;">Mark ✓ for yes, ✗ for no.</small></p>
       <div id="devilstower-logic"></div>
     </div>
+
+    <div class="puzzle-card" id="pz-d10" data-num="Puzzle D-10 · Sudoku 6×6 · Easy">
+      <h3>Junior Ranger Grid: Easy 6×6 Sudoku</h3>
+      <div class="difficulty">⭐ Scout Level · All ages</div>
+      <p>Fill every row, column, and 2×3 box with 1–6.</p>
+      <div class="sudoku-wrap" id="sudoku-wrap-d6"></div>
+      <div class="numpad" id="numpad-d6"></div>
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button onclick="checkSudoku6('d6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+        <button onclick="clearSudoku6('d6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+      </div>
+      <div id="sudoku6-msg-d6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+    </div>
+
+    <div style="text-align:center; padding:20px 0 10px;">
+      <button id="claim-btn-devilstower" onclick="claimSectionBonus('devilstower')" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:12px 24px; border:2px solid var(--gold); background:var(--gold); color:var(--ink); cursor:pointer;">🏅 Claim Devil's Tower Completion Bonus (+100 pts)</button>
+    </div>
   `;
-  // Insert before closing body
   document.body.insertBefore(section, document.getElementById('fabHQ').nextSibling);
 
-  // Build all DT puzzles
   buildHunt(devilstowerHuntItems, 'dt-hunt', 'dt-hunt-score', 'dt-hunt-pts', 'dt');
   buildTrivia(devilstowerTriviaData, 'dt-trivia', 'dtt');
   setTimeout(() => buildWordSearch(devilstowerWSWords, 'dt-ws-wrap', 'dt-ws-words'), 300);
-  buildCryptic(devilstowerCryptics, 'dt-cryptic');
   buildTOF2(devilstowerTOF, 'dt-tof');
   buildLegend('dt-legend');
-  setTimeout(() => { buildSudokuBoard('d'); }, 100);
-  // Make all DT cards collapsible
-  // cards built inline, no collapsible needed
+  setTimeout(() => { buildSudokuBoard('d'); buildSudoku6('d6'); }, 100);
 })();
 
 // Second TOF builder (reusable, uses different ID prefix)
@@ -2840,14 +3029,22 @@ function buildTOF2(data, containerId) {
   data.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'trivia-q';
-    div.innerHTML = `
-      <div class="q-text"><span class="q-num">${i+1}.</span>${item.stmt}</div>
-      <div class="options" style="grid-template-columns:1fr 1fr; max-width:300px;">
-        <button class="opt-btn" id="tof2-t-${containerId}-${i}" onclick="answerTOF2('${containerId}',${i},true)">✓ TRUE</button>
-        <button class="opt-btn" id="tof2-f-${containerId}-${i}" onclick="answerTOF2('${containerId}',${i},false)">✗ FALSE</button>
-      </div>
-      <div class="trivia-feedback" id="tof2-fb-${containerId}-${i}"></div>
-    `;
+    const qDiv = document.createElement('div');
+    qDiv.className = 'q-text';
+    qDiv.innerHTML = '<span class="q-num">' + (i+1) + '.</span>' + item.stmt;
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    optDiv.style.cssText = 'grid-template-columns:1fr 1fr; max-width:300px;';
+    const tBtn = document.createElement('button');
+    tBtn.className = 'opt-btn'; tBtn.id = 'tof2-t-' + containerId + '-' + i;
+    tBtn.textContent = '✓ TRUE'; tBtn.onclick = () => answerTOF2(containerId, i, true);
+    const fBtn = document.createElement('button');
+    fBtn.className = 'opt-btn'; fBtn.id = 'tof2-f-' + containerId + '-' + i;
+    fBtn.textContent = '✗ FALSE'; fBtn.onclick = () => answerTOF2(containerId, i, false);
+    optDiv.appendChild(tBtn); optDiv.appendChild(fBtn);
+    const fb = document.createElement('div');
+    fb.className = 'trivia-feedback'; fb.id = 'tof2-fb-' + containerId + '-' + i;
+    div.appendChild(qDiv); div.appendChild(optDiv); div.appendChild(fb);
     container.appendChild(div);
   });
 }
@@ -2857,42 +3054,51 @@ function answerTOF2(cid, i, choice) {
   const data = datasets[cid];
   if (!data) return;
   const item = data[i];
-  document.getElementById(`tof2-t-${cid}-${i}`).disabled = true;
-  document.getElementById(`tof2-f-${cid}-${i}`).disabled = true;
+  const tId = 'tof2-t-' + cid + '-' + i;
+  const fId = 'tof2-f-' + cid + '-' + i;
+  const fbId = 'tof2-fb-' + cid + '-' + i;
+  document.getElementById(tId).disabled = true;
+  document.getElementById(fId).disabled = true;
   const correct = choice === item.ans;
-  document.getElementById(`tof2-${choice?'t':'f'}-${cid}-${i}`).classList.add(correct ? 'correct' : 'wrong');
-  if (!correct) document.getElementById(`tof2-${item.ans?'t':'f'}-${cid}-${i}`).classList.add('correct');
-  const fb = document.getElementById(`tof2-fb-${cid}-${i}`);
+  const chosenId = choice ? tId : fId;
+  const correctId = item.ans ? tId : fId;
+  document.getElementById(chosenId).classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) document.getElementById(correctId).classList.add('correct');
+  const fb = document.getElementById(fbId);
   fb.textContent = (correct ? '✓ ' : '✗ ') + item.fact;
-  fb.className = `trivia-feedback show ${correct ? 'correct' : 'wrong'}`;
+  fb.className = 'trivia-feedback show ' + (correct ? 'correct' : 'wrong');
   if (correct) addScore(8);
 }
 
 function buildLegend(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  const legendText = `<div style="background:var(--parchment); border-left:4px solid var(--gold); padding:16px 20px; margin-bottom:20px; font-size:13px; line-height:1.9; font-style:italic;">
-  "Long ago, seven young girls were playing in the forest when a great bear began to chase them. The girls climbed onto a low rock and prayed to the Great Spirit for help. The rock began to rise up from the earth, lifting the girls high into the sky, out of the bear's reach. As the bear clawed furiously at the sides of the rising rock, its claws left deep grooves carved into the stone. The rock rose so high that the girls became the seven stars of the Pleiades constellation. The grooves of the bear's claws remain on the Tower to this day."
-  <div style="font-style:normal; font-size:11px; color:var(--stone); margin-top:8px; font-family:'Special Elite',cursive;">— A version of the Kiowa legend of Devil's Tower</div>
-  </div>`;
-
-  const questions = [
-    { q: "According to the legend, what created the vertical grooves on the sides of Devil's Tower?", opts: ["Lightning strikes", "A great bear's claws", "Ancient rivers of lava", "The Great Spirit's fingers"], ans: 1, fact: "The bear's claw marks are the classic explanation in many Plains tribes' legends. The real grooves are caused by columnar jointing as the rock cooled." },
-    { q: "In the legend, the girls were transformed into what?", opts: ["Eagles", "The moon", "The Pleiades star cluster", "Butterflies"], ans: 2, fact: "The Pleiades! This star cluster (also called the Seven Sisters) is visible in winter skies — and several Plains tribes connect it to the Tower legend." },
-    { q: "What did the rock do to save the girls?", opts: ["It turned into water", "It burst into flames", "It rose up from the earth", "It became invisible"], ans: 2, fact: "The rock rose into the sky to lift the girls away from the bear — explaining the Tower's dramatic height above the surrounding plains." },
-    { q: "Geologists give a different explanation for the grooves. What actually caused them?", opts: ["Ancient earthquake faults", "Columnar jointing as igneous rock cooled and contracted", "Water erosion over millions of years", "Wind abrasion"], ans: 1, fact: "Columnar jointing! As the phonolite porphyry cooled slowly underground, it contracted and fractured into the distinctive hexagonal columns we see today." }
-  ];
-
-  container.innerHTML = legendText;
+  const legendDiv = document.createElement('div');
+  legendDiv.style.cssText = 'background:var(--parchment); border-left:4px solid var(--gold); padding:16px 20px; margin-bottom:20px; font-size:13px; line-height:1.9; font-style:italic;';
+  legendDiv.textContent = '"Long ago, seven young girls were playing in the forest when a great bear began to chase them. The girls climbed onto a low rock and prayed to the Great Spirit for help. The rock began to rise up from the earth, lifting the girls high into the sky, out of the bear\'s reach. As the bear clawed furiously at the sides of the rising rock, its claws left deep grooves carved into the stone. The rock rose so high that the girls became the seven stars of the Pleiades constellation. The grooves of the bear\'s claws remain on the Tower to this day."';
+  const srcDiv = document.createElement('div');
+  srcDiv.style.cssText = 'font-style:normal; font-size:11px; color:var(--stone); margin-top:8px; font-family:\'Special Elite\',cursive;';
+  srcDiv.textContent = '— A version of the Kiowa legend of Devil\'s Tower';
+  legendDiv.appendChild(srcDiv);
+  container.appendChild(legendDiv);
   questions.forEach((item, i) => {
     const div = document.createElement('div');
     div.className = 'trivia-q';
-    const optsHtml = item.opts.map((o, j) =>
-      `<button class="opt-btn" onclick="answerLegend(${i},${j})" id="leg-opt-${i}-${j}">${String.fromCharCode(65+j)}) ${o}</button>`
-    ).join('');
-    div.innerHTML = `<div class="q-text"><span class="q-num">${i+1}.</span>${item.q}</div>
-      <div class="options">${optsHtml}</div>
-      <div class="trivia-feedback" id="leg-fb-${i}"></div>`;
+    const qDiv = document.createElement('div');
+    qDiv.className = 'q-text';
+    qDiv.innerHTML = '<span class="q-num">' + (i+1) + '.</span>' + item.q;
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    item.opts.forEach((o, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn'; btn.id = 'leg-opt-' + i + '-' + j;
+      btn.textContent = String.fromCharCode(65+j) + ') ' + o;
+      btn.onclick = () => answerLegend(i, j);
+      optDiv.appendChild(btn);
+    });
+    const fb = document.createElement('div');
+    fb.className = 'trivia-feedback'; fb.id = 'leg-fb-' + i;
+    div.appendChild(qDiv); div.appendChild(optDiv); div.appendChild(fb);
     container.appendChild(div);
   });
 
@@ -2903,19 +3109,19 @@ function answerLegend(qIdx, optIdx) {
   const data = window._legendQ;
   const item = data[qIdx];
   for (let j = 0; j < item.opts.length; j++) {
-    const btn = document.getElementById(`leg-opt-${qIdx}-${j}`);
+    const btn = document.getElementById('leg-opt-' + qIdx + '-' + j);
     if (btn) btn.disabled = true;
   }
-  document.getElementById(`leg-opt-${qIdx}-${optIdx}`).classList.add(optIdx === item.ans ? 'correct' : 'wrong');
-  if (optIdx !== item.ans) document.getElementById(`leg-opt-${qIdx}-${item.ans}`).classList.add('correct');
-  const fb = document.getElementById(`leg-fb-${qIdx}`);
+  document.getElementById('leg-opt-' + qIdx + '-' + optIdx).classList.add(optIdx === item.ans ? 'correct' : 'wrong');
+  if (optIdx !== item.ans) document.getElementById('leg-opt-' + qIdx + '-' + item.ans).classList.add('correct');
+  const fb = document.getElementById('leg-fb-' + qIdx);
   fb.textContent = (optIdx === item.ans ? '✓ ' : '✗ ') + item.fact;
-  fb.className = `trivia-feedback show ${optIdx === item.ans ? 'correct' : 'wrong'}`;
+  fb.className = 'trivia-feedback show ' + (optIdx === item.ans ? 'correct' : 'wrong');
   if (optIdx === item.ans) addScore(10);
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.3';
+const APP_VERSION = '1.4';
 
 async function checkForUpdate() {
   try {
@@ -2937,21 +3143,43 @@ const VERSION_URL = 'https://medrosetta.github.io/FamilyExpeditions/version.json
 
 function showUpdateBanner(newVersion, notes) {
   const banner = document.createElement('div');
-  banner.style.cssText = `
-    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-    background: var(--forest); color: var(--parchment);
-    font-family: 'Special Elite', cursive; font-size: 13px;
-    padding: 12px 16px; display: flex; align-items: center;
-    justify-content: space-between; gap: 12px;
-    border-bottom: 2px solid var(--gold); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  `;
-  banner.innerHTML = `
-    <div>🗺️ v${newVersion} available${notes ? ': ' + notes : ''}. Tap to update.</div>
-    <div style="display:flex; gap:10px;">
-      <button onclick="doUpdate()" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 14px; background:var(--gold); color:var(--ink); border:none; cursor:pointer; letter-spacing:1px;">UPDATE</button>
-      <button onclick="this.closest('div').remove()" style="font-family:'Special Elite',cursive; font-size:12px; padding:6px 10px; background:transparent; color:var(--parchment); border:1px solid var(--parchment); cursor:pointer;">✕</button>
-    </div>
-  `;
+  banner.style.position = 'fixed';
+  banner.style.top = '0';
+  banner.style.left = '0';
+  banner.style.right = '0';
+  banner.style.zIndex = '9999';
+  banner.style.background = 'var(--forest)';
+  banner.style.color = 'var(--parchment)';
+  banner.style.fontFamily = "'Special Elite', cursive";
+  banner.style.fontSize = '13px';
+  banner.style.padding = '12px 16px';
+  banner.style.display = 'flex';
+  banner.style.alignItems = 'center';
+  banner.style.justifyContent = 'space-between';
+  banner.style.gap = '12px';
+  banner.style.borderBottom = '2px solid var(--gold)';
+  banner.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+
+  const msgDiv = document.createElement('div');
+  msgDiv.textContent = '🗺️ v' + newVersion + ' available' + (notes ? ': ' + notes : '') + '. Tap to update.';
+
+  const btnWrap = document.createElement('div');
+  btnWrap.style.cssText = 'display:flex; gap:10px;';
+
+  const updateBtn = document.createElement('button');
+  updateBtn.textContent = 'UPDATE';
+  updateBtn.style.cssText = "font-family:'Special Elite',cursive; font-size:12px; padding:6px 14px; background:var(--gold); color:var(--ink); border:none; cursor:pointer; letter-spacing:1px;";
+  updateBtn.onclick = doUpdate;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = '✕';
+  closeBtn.style.cssText = "font-family:'Special Elite',cursive; font-size:12px; padding:6px 10px; background:transparent; color:var(--parchment); border:1px solid var(--parchment); cursor:pointer;";
+  closeBtn.onclick = () => banner.remove();
+
+  btnWrap.appendChild(updateBtn);
+  btnWrap.appendChild(closeBtn);
+  banner.appendChild(msgDiv);
+  banner.appendChild(btnWrap);
   document.body.prepend(banner);
 }
 
@@ -3082,19 +3310,19 @@ function buildSudokuBoard(id) {
   sudokuStates[id] = board.puzzle.map(r => [...r]);
   sudokuSelections[id] = null;
 
-  const wrap = document.getElementById(`sudoku-wrap-${id}`);
+  const wrap = document.getElementById('sudoku-wrap-' + (id) + '');
   if (!wrap) return;
   wrap.innerHTML = '';
   const gridDiv = document.createElement('div');
   gridDiv.className = 'sudoku-grid';
-  gridDiv.id = `sudoku-grid-${id}`;
+  gridDiv.id = 'sudoku-grid-' + (id) + '';
 
   for (let r = 0; r < 9; r++) {
     for (let c = 0; c < 9; c++) {
       const cell = document.createElement('div');
       cell.className = 'sudoku-cell';
-      cell.id = `sc-${id}-${r}-${c}`;
-      if (r === 2 || r === 5) cell.classList.add(`sudoku-row-${r}`);
+      cell.id = 'sc-' + (id) + '-' + (r) + '-' + (c) + '';
+      if (r === 2 || r === 5) cell.classList.add('sudoku-row-' + (r) + '');
       if (board.puzzle[r][c] !== 0) {
         cell.classList.add('given');
         cell.textContent = board.puzzle[r][c];
@@ -3102,7 +3330,7 @@ function buildSudokuBoard(id) {
         cell.classList.add('editable');
         cell.textContent = sudokuStates[id][r][c] || '';
         cell.addEventListener('click', () => {
-          document.querySelectorAll(`#sudoku-grid-${id} .selected-s`).forEach(e => e.classList.remove('selected-s'));
+          document.querySelectorAll('#sudoku-grid-' + (id) + ' .selected-s').forEach(e => e.classList.remove('selected-s'));
           cell.classList.add('selected-s');
           sudokuSelections[id] = {r, c};
         });
@@ -3112,7 +3340,7 @@ function buildSudokuBoard(id) {
   }
   wrap.appendChild(gridDiv);
 
-  const numpad = document.getElementById(`numpad-${id}`);
+  const numpad = document.getElementById('numpad-' + (id) + '');
   if (!numpad) return;
   numpad.innerHTML = '';
   for (let n = 1; n <= 9; n++) {
@@ -3133,7 +3361,7 @@ function enterSudokuNum(id, n) {
   const {r, c} = sel;
   if (sudokuBoards[id].puzzle[r][c] !== 0) return;
   sudokuStates[id][r][c] = n;
-  const el = document.getElementById(`sc-${id}-${r}-${c}`);
+  const el = document.getElementById('sc-' + (id) + '-' + (r) + '-' + (c) + '');
   if (el) { el.textContent = n || ''; el.classList.remove('error'); }
 }
 
@@ -3143,14 +3371,14 @@ function checkSudokuBoard(id) {
   if (!board || !state) return;
   let errors = 0;
   for (let r = 0; r < 9; r++) for (let c = 0; c < 9; c++) {
-    const el = document.getElementById(`sc-${id}-${r}-${c}`);
+    const el = document.getElementById('sc-' + (id) + '-' + (r) + '-' + (c) + '');
     if (board.puzzle[r][c] === 0) {
       if (state[r][c] !== 0 && state[r][c] !== board.solution[r][c]) {
         if (el) el.classList.add('error'); errors++;
       } else if (el) el.classList.remove('error');
     }
   }
-  const msg = document.getElementById(`sudoku-msg-${id}`);
+  const msg = document.getElementById('sudoku-msg-' + (id) + '');
   if (!msg) return;
   msg.style.display = 'block';
   const filled = state.flat().filter((v,i) => board.puzzle.flat()[i] === 0 && v !== 0).length;
@@ -3160,10 +3388,10 @@ function checkSudokuBoard(id) {
     msg.style.color = 'var(--forest)';
     addScore(50);
   } else if (errors === 0) {
-    msg.textContent = `✓ No errors — keep going! (${filled}/${total} filled)`;
+    msg.textContent = '✓ No errors — keep going! (' + (filled) + '/' + (total) + ' filled)';
     msg.style.color = 'var(--sky)';
   } else {
-    msg.textContent = `✗ ${errors} error(s) — marked in red.`;
+    msg.textContent = '✗ ' + (errors) + ' error(s) — marked in red.';
     msg.style.color = 'var(--rust)';
   }
 }
@@ -3172,7 +3400,7 @@ function clearSudokuBoard(id) {
   const board = sudokuBoards[id];
   if (!board) return;
   sudokuStates[id] = board.puzzle.map(r => [...r]);
-  const msg = document.getElementById(`sudoku-msg-${id}`);
+  const msg = document.getElementById('sudoku-msg-' + (id) + '');
   if (msg) msg.style.display = 'none';
   buildSudokuBoard(id);
 }
@@ -3249,6 +3477,290 @@ buildLogicPuzzle('devilstower-logic',
     "The North Face route was the last of the five to be established, in 1941."
   ]
 );
+
+// ===================== TIER SYSTEM =====================
+const TIERS = [
+  { name: 'Ant',             animal: '🐜',  min: 0    },
+  { name: 'Prairie Dog',     animal: '🐾',  min: 50   },
+  { name: 'Ground Squirrel', animal: '🐿️',  min: 150  },
+  { name: 'Bison',           animal: '🦬',  min: 300  },
+  { name: 'Grey Wolf',       animal: '🐺',  min: 500  },
+  { name: 'Grizzly Bear',    animal: '🐻',  min: 750  },
+  { name: 'Bald Eagle',      animal: '🦅',  min: 1000 },
+  { name: 'Mountain Goat',   animal: '🐐',  min: 1350 },
+  { name: 'Park Ranger',     animal: '🎖️',  min: 1750 },
+  { name: 'Superintendent',  animal: '⭐',  min: 2200 },
+];
+const DAY_BASE = 25;
+const STREAK_MULT = [1, 1.2, 1.5, 2.0, 2.5, 3.0];
+
+function saveState() {
+  try { localStorage.setItem('fe_state', JSON.stringify({ score: totalScore, streak: window._streak||0, lastDay: window._lastDay||'', sections: window._sectionsCompleted||[] })); } catch(e) {}
+}
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem('fe_state')||'{}');
+    totalScore = s.score||0; window._streak = s.streak||0;
+    window._lastDay = s.lastDay||''; window._sectionsCompleted = s.sections||[];
+  } catch(e) { totalScore=0; window._streak=0; window._lastDay=''; window._sectionsCompleted=[]; }
+}
+
+function updateTierDisplay() {
+  const pts = totalScore;
+  let tier = TIERS[0], nextTier = TIERS[1];
+  for (let i = TIERS.length-1; i >= 0; i--) { if (pts >= TIERS[i].min) { tier=TIERS[i]; nextTier=TIERS[i+1]||null; break; } }
+  const set = (id, val) => { const el=document.getElementById(id); if(el) el.textContent=val; };
+  set('tierAnimal', tier.animal);
+  set('tierName', tier.name);
+  set('tierPts', nextTier ? (pts) + ' pts · Next: ' + (nextTier.name) + ' at ' + (nextTier.min) + ' pts' : (pts) + ' pts · MAX RANK! 🏆');
+  set('coverScore', pts);
+  set('coverStreak', (window._streak||0)+'🔥');
+  set('coverSections', (window._sectionsCompleted||[]).length+'/4');
+  set('totalScore', pts);
+  const bar = document.getElementById('tierBar');
+  if (bar) { const pct = nextTier ? Math.min(100,((pts-tier.min)/(nextTier.min-tier.min))*100) : 100; bar.style.width=pct+'%'; }
+  saveState();
+}
+
+// Wrap addScore to also refresh tier
+const _origAdd = addScore;
+function addScore(pts) { _origAdd(pts); updateTierDisplay(); }
+
+function claimSectionBonus(sid) {
+  if (!window._sectionsCompleted) window._sectionsCompleted=[];
+  if (window._sectionsCompleted.includes(sid)) { alert('Already claimed!'); return; }
+  window._sectionsCompleted.push(sid);
+  addScore(100);
+  const btn=document.getElementById('claim-btn-'+sid);
+  if (btn) { btn.textContent='✓ +100 pts claimed!'; btn.disabled=true; btn.style.opacity='0.5'; }
+  const b=document.createElement('div'); b.className='section-complete-banner';
+  b.textContent='🎉 Section complete bonus! +100 pts!';
+  const sec=document.querySelector('.section.visible'); if(sec) sec.prepend(b);
+  setTimeout(()=>b.remove(), 4000);
+}
+
+function logExpeditionDay() {
+  const today = new Date().toDateString();
+  const msg = document.getElementById('dayLogMsg');
+  const btn = document.getElementById('expeditionDayBtn');
+  if (window._lastDay === today) { if(msg) msg.textContent="Already logged today!"; return; }
+  const yesterday = new Date(Date.now()-86400000).toDateString();
+  window._streak = (window._lastDay===yesterday) ? (window._streak||0)+1 : 1;
+  window._lastDay = today;
+  const idx = Math.min((window._streak)-1, STREAK_MULT.length-1);
+  const earned = Math.round(DAY_BASE * STREAK_MULT[idx]);
+  addScore(earned);
+  if(btn) btn.disabled=true;
+  if(msg) msg.textContent='Day ' + (window._streak) + ' logged! +' + (earned) + ' pts (' + (STREAK_MULT[idx]) + '× streak bonus)';
+}
+
+// Load persisted state on start
+loadState();
+updateTierDisplay();
+// Check if today already logged
+(function(){ const today=new Date().toDateString(); if(window._lastDay===today){ const btn=document.getElementById('expeditionDayBtn'); if(btn) btn.disabled=true; const msg=document.getElementById('dayLogMsg'); if(msg) msg.textContent='Today\'s expedition already logged!'; }})();
+
+// ===================== CIPHER DECODER =====================
+const CIPHER_KEY = {
+  A:'🌲',B:'🦅',C:'🌊',D:'🦌',E:'🌿',F:'🔥',G:'🗿',H:'⛰️',
+  I:'🌸',J:'🦋',K:'🪨',L:'🐺',M:'🌙',N:'🍂',O:'🎯',P:'🌺',
+  Q:'🦆',R:'🌄',S:'❄️',T:'🏔️',U:'🌵',V:'🦉',W:'💧',X:'🦁',
+  Y:'🌾',Z:'⚡'
+};
+
+function encodeWord(word) { return word.toUpperCase().split('').map(l=>CIPHER_KEY[l]||l); }
+
+const CIPHER_DATA = {
+  rushmore: [
+    { answer:'BORGLUM',  hint:'The master sculptor of Mount Rushmore' },
+    { answer:'DYNAMITE', hint:'Used to remove 90% of the mountain rock' },
+    { answer:'GRANITE',  hint:'The rock type — erodes just 1 inch per 10,000 years' },
+  ],
+  yellowstone: [
+    { answer:'GEYSER',   hint:'Yellowstone has over 500 of them — half the world\'s total' },
+    { answer:'LAMAR',    hint:'The valley where wolves roam at dawn' },
+    { answer:'VOLCANO',  hint:'What lies beneath Yellowstone' },
+  ],
+  badlands: [
+    { answer:'BRONTOTHERE', hint:'The thunder beast — largest Badlands fossil mammal' },
+    { answer:'EROSION',     hint:'The force still sculpting the Badlands today' },
+    { answer:'FOSSILS',     hint:'What the Badlands is world-famous for finding' },
+  ],
+  devilstower: [
+    { answer:'BEARLODGE', hint:'The Lakota Sioux name for Devil\'s Tower' },
+    { answer:'ROOSEVELT',  hint:'He declared America\'s first national monument in 1906' },
+    { answer:'COLUMNS',    hint:'The hexagonal rock formations making the Tower climbable' },
+  ]
+};
+
+// Pre-encode
+Object.values(CIPHER_DATA).forEach(arr => arr.forEach(p => { p.encoded = encodeWord(p.answer); }));
+
+function buildCipherDecoder(containerId, sectionId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const puzzles = CIPHER_DATA[sectionId];
+
+  // Key display
+  const keyWrap = document.createElement('div');
+  keyWrap.innerHTML = '<div style="font-family:\'Special Elite\',cursive;font-size:10px;letter-spacing:2px;color:var(--stone);text-transform:uppercase;margin-bottom:8px;">Decode Key — symbol = letter:</div>';
+  const keyGrid = document.createElement('div');
+  keyGrid.className = 'cipher-key';
+  Object.entries(CIPHER_KEY).forEach(([l,s]) => {
+    const p = document.createElement('div');
+    p.className = 'cipher-pair';
+    const symEl = document.createElement('span'); symEl.className = 'cipher-symbol'; symEl.textContent = s;
+    const letEl = document.createElement('span'); letEl.className = 'cipher-letter'; letEl.textContent = l;
+    p.appendChild(symEl); p.appendChild(letEl);
+    keyGrid.appendChild(p);
+  });
+  keyWrap.appendChild(keyGrid);
+  container.appendChild(keyWrap);
+
+  puzzles.forEach((puzzle, pi) => {
+    const div = document.createElement('div');
+    div.style.cssText = 'margin-bottom:22px; padding-top:14px; border-top:1px dashed var(--parchment-dark);';
+    const lbl = document.createElement('div');
+    lbl.style.cssText = 'font-family:\'Special Elite\',cursive;font-size:11px;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;';
+    lbl.textContent = 'Message ' + (pi+1) + ' — ' + (puzzle.hint) + '';
+    div.appendChild(lbl);
+    const msg = document.createElement('div');
+    msg.className = 'cipher-msg';
+    msg.textContent = puzzle.encoded.join('  ');
+    div.appendChild(msg);
+    const row = document.createElement('div');
+    row.className = 'cipher-input-row';
+    puzzle.answer.split('').forEach((letter, li) => {
+      const box = document.createElement('div');
+      box.className = 'cipher-char-box';
+      const sym = document.createElement('div');
+      sym.className = 'cipher-symbol-hint';
+      sym.textContent = puzzle.encoded[li];
+      const inp = document.createElement('input');
+      inp.type = 'text'; inp.maxLength = 1;
+      inp.id = 'ci-' + (containerId) + '-' + (pi) + '-' + (li) + '';
+      inp.addEventListener('input', () => {
+        inp.value = inp.value.toUpperCase().replace(/[^A-Z]/,'').slice(-1);
+        checkCipher(containerId, pi, puzzle);
+        const next = document.getElementById('ci-' + (containerId) + '-' + (pi) + '-' + (li+1) + '');
+        if (inp.value && next) next.focus();
+      });
+      box.appendChild(sym); box.appendChild(inp); row.appendChild(box);
+    });
+    div.appendChild(row);
+    const fb = document.createElement('div');
+    fb.id = 'cfb-' + (containerId) + '-' + (pi) + '';
+    fb.style.cssText = 'font-family:\'Special Elite\',cursive;font-size:12px;margin-top:6px;min-height:18px;';
+    div.appendChild(fb);
+    container.appendChild(div);
+  });
+}
+
+function checkCipher(containerId, pi, puzzle) {
+  const letters = puzzle.answer.split('');
+  let allOk = true;
+  letters.forEach((l,li) => {
+    const inp = document.getElementById('ci-' + (containerId) + '-' + (pi) + '-' + (li) + '');
+    if (!inp) return;
+    if (inp.value===l) { inp.classList.add('correct'); inp.classList.remove('wrong'); }
+    else if (inp.value) { inp.classList.add('wrong'); inp.classList.remove('correct'); allOk=false; }
+    else { inp.classList.remove('correct','wrong'); allOk=false; }
+  });
+  const key = '_cipherdone_' + (containerId) + '_' + (pi);
+  const fb = document.getElementById('cfb-' + (containerId) + '-' + (pi) + '');
+  if (allOk && !window[key]) {
+    window[key]=true;
+    if(fb) { fb.textContent='✓ Decoded! +15 pts'; fb.style.color='var(--forest)'; }
+    addScore(15);
+  }
+}
+
+buildCipherDecoder('rushmore-cipher','rushmore');
+buildCipherDecoder('yellowstone-cipher','yellowstone');
+buildCipherDecoder('badlands-cipher','badlands');
+buildCipherDecoder('dt-cipher','devilstower');
+
+// ===================== 6×6 SUDOKU ENGINE =====================
+const sudoku6Data = {
+  r6: {
+    puzzle:   [[5,3,0,0,7,0],[6,0,0,1,9,5],[0,9,8,0,0,0],[8,0,0,0,6,0],[4,0,0,8,0,3],[7,0,0,0,2,0]],
+    solution: [[5,3,4,6,7,2],[6,7,2,1,9,5],[1,9,8,3,4,6],[8,2,3,4,6,7],[4,6,7,8,5,3],[7,5,6,9,2,1]]
+  },
+  y6: {
+    puzzle:   [[0,2,0,4,0,0],[0,0,4,0,5,0],[1,0,0,0,0,4],[4,0,0,0,0,1],[0,5,0,6,0,0],[0,0,6,0,4,0]],
+    solution: [[3,2,5,4,1,6],[6,1,4,2,5,3],[1,3,2,5,6,4],[4,6,3,1,2,5],[2,5,1,6,3,4],[5,4,6,3,4,2]]
+  },
+  b6: {
+    puzzle:   [[0,0,3,0,0,6],[1,0,0,4,0,0],[0,4,0,0,2,0],[0,3,0,0,5,0],[0,0,6,0,0,1],[4,0,0,2,0,0]],
+    solution: [[2,5,3,1,4,6],[1,6,2,4,3,5],[3,4,1,6,2,5],[6,2,4,3,5,4],[5,1,6,5,3,1],[4,3,5,2,6,3]]
+  },
+  d6: {
+    puzzle:   [[0,0,0,2,0,0],[4,0,0,0,1,0],[0,1,0,0,0,4],[3,0,0,0,2,0],[0,4,0,0,0,3],[0,0,5,0,0,0]],
+    solution: [[1,5,4,2,3,6],[4,2,3,6,1,5],[2,1,6,3,5,4],[3,6,1,4,2,5],[5,4,2,1,6,3],[6,3,5,5,4,1]]
+  }
+};
+
+const s6States={}, s6Sel={};
+
+function buildSudoku6(id) {
+  const board=sudoku6Data[id]; if(!board) return;
+  s6States[id]=board.puzzle.map(r=>[...r]); s6Sel[id]=null;
+  const wrap=document.getElementById('sudoku-wrap-' + (id) + ''); if(!wrap) return;
+  wrap.innerHTML='';
+  const grid=document.createElement('div'); grid.className='sudoku6-grid'; grid.id='s6g-' + (id);
+  for(let r=0;r<6;r++) for(let c=0;c<6;c++) {
+    const cell=document.createElement('div'); cell.className='sudoku6-cell'; cell.id='s6-' + (id) + '-' + (r) + '-' + (c);
+    if(r===2) cell.classList.add('sudoku6-row3');
+    if(board.puzzle[r][c]!==0) { cell.classList.add('given'); cell.textContent=board.puzzle[r][c]; }
+    else {
+      cell.classList.add('editable'); cell.textContent=s6States[id][r][c]||'';
+      cell.addEventListener('click',()=>{ document.querySelectorAll('#s6g-' + (id) + ' .selected-s').forEach(e=>e.classList.remove('selected-s')); cell.classList.add('selected-s'); s6Sel[id]={r,c}; });
+    }
+    grid.appendChild(cell);
+  }
+  wrap.appendChild(grid);
+  const np=document.getElementById('numpad-' + (id) + ''); if(!np) return;
+  np.innerHTML='';
+  for(let n=1;n<=6;n++) { const b=document.createElement('button'); b.textContent=n; b.onclick=()=>enterS6(id,n); np.appendChild(b); }
+  const cl=document.createElement('button'); cl.textContent='✕'; cl.onclick=()=>enterS6(id,0); np.appendChild(cl);
+}
+
+function enterS6(id,n) {
+  const sel=s6Sel[id]; if(!sel) return; const{r,c}=sel;
+  if(sudoku6Data[id].puzzle[r][c]!==0) return;
+  s6States[id][r][c]=n;
+  const el=document.getElementById('s6-' + (id) + '-' + (r) + '-' + (c) + '');
+  if(el){el.textContent=n||''; el.classList.remove('error');}
+}
+
+function checkSudoku6(id) {
+  const board=sudoku6Data[id], state=s6States[id]; if(!board||!state) return;
+  let errors=0;
+  for(let r=0;r<6;r++) for(let c=0;c<6;c++) {
+    const el=document.getElementById('s6-' + (id) + '-' + (r) + '-' + (c) + '');
+    if(board.puzzle[r][c]===0) {
+      if(state[r][c]!==0&&state[r][c]!==board.solution[r][c]){if(el)el.classList.add('error');errors++;}
+      else if(el)el.classList.remove('error');
+    }
+  }
+  const msg=document.getElementById('sudoku6-msg-' + (id) + ''); if(!msg) return;
+  msg.style.display='block';
+  const filled=state.flat().filter((v,i)=>board.puzzle.flat()[i]===0&&v!==0).length;
+  const total=board.puzzle.flat().filter(v=>v===0).length;
+  if(errors===0&&filled===total){msg.textContent='🎉 Solved! +30 points!';msg.style.color='var(--forest)';addScore(30);}
+  else if(errors===0){msg.textContent='✓ No errors — keep going! (' + (filled) + '/' + (total) + ')';msg.style.color='var(--sky)';}
+  else{msg.textContent='✗ ' + (errors) + ' error(s) marked in red.';msg.style.color='var(--rust)';}
+}
+
+function clearSudoku6(id) {
+  const board=sudoku6Data[id]; if(!board) return;
+  s6States[id]=board.puzzle.map(r=>[...r]);
+  const msg=document.getElementById('sudoku6-msg-' + (id) + ''); if(msg)msg.style.display='none';
+  buildSudoku6(id);
+}
+
+buildSudoku6('r6'); buildSudoku6('y6'); buildSudoku6('b6');
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/FamilyExpeditions/sw.js').catch(() => {});
