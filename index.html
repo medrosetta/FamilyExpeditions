@@ -46,6 +46,156 @@
     opacity: 0.5;
   }
 
+  /* FEATURE NAV */
+  .feature-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: min(340px, 90vw);
+    margin-top: 4px;
+  }
+  .feature-btn {
+    font-family: 'Special Elite', cursive;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 9px 6px;
+    border: 1px solid var(--leather);
+    background: var(--parchment);
+    color: var(--leather);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .feature-btn:hover { background: var(--leather); color: var(--parchment); }
+
+  /* JOURNAL */
+  .journal-entry {
+    background: var(--parchment);
+    border: 1px solid var(--parchment-dark);
+    border-left: 3px solid var(--gold);
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .journal-date {
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--stone);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .journal-textarea {
+    width: 100%;
+    min-height: 80px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    border: 1px solid var(--leather);
+    background: var(--parchment);
+    padding: 8px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    line-height: 1.7;
+  }
+
+  /* WILDLIFE LOG */
+  .wildlife-item {
+    background: var(--parchment);
+    border: 1px solid var(--parchment-dark);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .wildlife-thumb {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    object-fit: cover;
+    border: 1px solid var(--leather);
+    background: var(--parchment-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .wildlife-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .wildlife-info { flex: 1; min-width: 0; }
+  .wildlife-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--rust); }
+  .wildlife-meta { font-family: 'Special Elite', cursive; font-size: 10px; color: var(--stone); letter-spacing: 1px; margin-top: 2px; }
+  .wildlife-notes { font-size: 12px; color: var(--ink); margin-top: 4px; line-height: 1.5; }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .gallery-thumb {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 2px solid var(--parchment-dark);
+    cursor: pointer;
+    background: var(--parchment-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    overflow: hidden;
+  }
+  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-thumb:hover { border-color: var(--leather); }
+  .gallery-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+  }
+  .gallery-lightbox.open { display: flex; }
+  .gallery-lightbox img { max-width: 100%; max-height: 70vh; object-fit: contain; border: 2px solid var(--parchment); }
+  .gallery-lightbox-caption { font-family: 'Special Elite', cursive; font-size: 13px; color: var(--parchment); letter-spacing: 1px; text-align: center; }
+
+  /* VOCAB */
+  .vocab-card {
+    background: var(--parchment);
+    border: 1px solid var(--leather);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .vocab-native { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: var(--rust); min-width: 100px; }
+  .vocab-english { font-size: 13px; line-height: 1.5; flex: 1; }
+  .vocab-english .hidden { filter: blur(4px); transition: filter 0.3s; }
+  .vocab-english .hidden.revealed { filter: none; }
+  .vocab-lang { font-family: 'Special Elite', cursive; font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
+
+  /* COMING SOON */
+  .coming-soon {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Special Elite', cursive;
+    color: var(--stone);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .coming-soon .cs-icon { font-size: 48px; margin-bottom: 12px; }
+  .coming-soon h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--rust); margin-bottom: 8px; }
+
   /* TIER PANEL */
   .tier-panel {
     background: rgba(122,74,30,0.12);
@@ -757,7 +907,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.4</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.5</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -775,21 +925,9 @@
 
 <!-- COVER -->
 <div class="cover" id="cover">
-  <div class="cover-badge">Family Expeditions — June 2026</div>
+  <div class="cover-badge">Family Expeditions</div>
   <div class="cover-divider"></div>
-  <h1>Great Plains<br><span>&amp; Peaks</span></h1>
-  <div class="cover-sub">Black Hills · Badlands · Yellowstone · Devil's Tower</div>
-  <div class="cover-divider"></div>
-
-  <!-- SECTION BUTTONS — visible without scrolling -->
-  <div class="cover-nav">
-    <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
-    <button onclick="showSection('badlands')">🦕 Badlands</button>
-    <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
-    <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
-  </div>
-
-  <div class="cover-divider"></div>
+  <h1>Expedition<br><span>HQ</span></h1>
 
   <!-- TIER DISPLAY -->
   <div class="tier-panel" id="tierPanel">
@@ -820,13 +958,28 @@
       <div class="cover-score-label">Sections Done</div>
     </div>
   </div>
+  <div id="dayLogMsg" style="font-family:'Special Elite',cursive; font-size:11px; color:var(--gold); letter-spacing:1px; min-height:14px; text-align:center;"></div>
 
-  <!-- AUTO DAY LOG STATUS (no button needed) -->
-  <div id="dayLogMsg" style="font-family:'Special Elite',cursive; font-size:11px; color:var(--gold); letter-spacing:1px; min-height:16px; text-align:center;"></div>
+  <div class="cover-divider"></div>
 
-  <div class="cover-details" style="font-size:11px; margin-top:8px;">
-    Expedition of June 6–21, 2026 · Family Expeditions
+  <!-- SECTION BUTTONS -->
+  <div class="cover-nav">
+    <button onclick="showSection('rushmore')">🗿 Mt. Rushmore</button>
+    <button onclick="showSection('badlands')">🦕 Badlands</button>
+    <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
+    <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
   </div>
+
+  <div class="cover-divider"></div>
+
+  <!-- FEATURE BUTTONS -->
+  <div class="feature-nav">
+    <button class="feature-btn" onclick="showSection('journal')">📓 Trip Journal</button>
+    <button class="feature-btn" onclick="showSection('wildlife')">🦅 Wildlife Log</button>
+    <button class="feature-btn" onclick="showSection('gallery')">📸 Photo Gallery</button>
+    <button class="feature-btn" onclick="showSection('vocab')">🗣️ Native Words</button>
+  </div>
+
 </div>
 
 <!-- MT. RUSHMORE SECTION -->
@@ -1184,6 +1337,85 @@
   </div>
 
 </div><!-- end badlands -->
+<!-- JOURNAL SECTION -->
+<div class="section" id="journal">
+  <div class="section-header">
+    <span class="section-tag">Field Notes</span>
+    <h2>Trip Journal</h2>
+    <p style="font-size:12px; color:var(--stone); font-style:italic; margin-top:6px;">🔒 Entries are saved only on this device and are never uploaded or shared.</p>
+  </div>
+  <div id="journal-entries"></div>
+  <div class="puzzle-card" data-num="New Entry">
+    <h3>Today's Entry</h3>
+    <div class="difficulty" id="journal-today-date"></div>
+    <!-- Daily prompt -->
+    <div id="journal-prompt-box" style="background:var(--parchment); border-left:3px solid var(--gold); padding:10px 14px; margin-bottom:12px; font-size:13px; font-style:italic; color:var(--leather); line-height:1.6;">
+      <span style="font-family:'Special Elite',cursive; font-size:10px; letter-spacing:2px; color:var(--stone); display:block; margin-bottom:4px; font-style:normal;">TODAY'S PROMPT</span>
+      <span id="journal-prompt-text"></span>
+    </div>
+    <!-- Prompt picker -->
+    <div style="margin-bottom:10px;">
+      <span style="font-family:'Special Elite',cursive; font-size:10px; letter-spacing:2px; color:var(--stone); text-transform:uppercase;">Try a different prompt:</span>
+      <div id="journal-prompt-list" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;"></div>
+    </div>
+    <textarea class="journal-textarea" id="journal-input" placeholder="Write your entry here…"></textarea>
+    <button onclick="saveJournalEntry()" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1px; padding:10px 20px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer; margin-top:10px;">Save Entry</button>
+    <div id="journal-save-msg" style="font-family:'Special Elite',cursive; font-size:11px; color:var(--gold); margin-top:6px; min-height:16px;"></div>
+  </div>
+</div>
+
+<!-- WILDLIFE LOG SECTION -->
+<div class="section" id="wildlife">
+  <div class="section-header">
+    <span class="section-tag">Field Log</span>
+    <h2>Wildlife Log</h2>
+    <p>Record every sighting. Tap the camera to add a photo as proof.</p>
+  </div>
+  <div class="puzzle-card" data-num="Log a Sighting">
+    <h3>New Sighting</h3>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+      <input type="text" id="wl-species" placeholder="Species / what you saw" style="font-family:'Libre Baskerville',serif; font-size:13px; padding:8px 10px; border:1px solid var(--leather); background:var(--parchment); outline:none; width:100%; box-sizing:border-box;">
+      <input type="text" id="wl-notes" placeholder="Notes (location, behaviour, weather…)" style="font-family:'Libre Baskerville',serif; font-size:13px; padding:8px 10px; border:1px solid var(--leather); background:var(--parchment); outline:none; width:100%; box-sizing:border-box;">
+      <label style="font-family:'Special Elite',cursive; font-size:11px; letter-spacing:1px; color:var(--leather); cursor:pointer; display:flex; align-items:center; gap:8px;">
+        📷 Add Photo (optional)
+        <input type="file" id="wl-photo" accept="image/*" capture="environment" style="display:none;" onchange="previewWildlifePhoto()">
+      </label>
+      <img id="wl-preview" style="display:none; max-height:120px; object-fit:cover; border:1px solid var(--leather);">
+      <button onclick="saveWildlifeSighting()" style="font-family:'Special Elite',cursive; font-size:12px; letter-spacing:1px; padding:10px 20px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Log Sighting +10 pts</button>
+    </div>
+  </div>
+  <div id="wildlife-log-list"></div>
+</div>
+
+<!-- PHOTO GALLERY SECTION -->
+<div class="section" id="gallery">
+  <div class="section-header">
+    <span class="section-tag">Expedition Record</span>
+    <h2>Photo Gallery</h2>
+    <p>All photos from Wildlife Log and Scavenger Hunt sightings. Tap any photo to view full size.</p>
+  </div>
+  <div id="gallery-grid-wrap">
+    <div class="gallery-grid" id="gallery-grid"></div>
+    <div id="gallery-empty" style="font-family:'Special Elite',cursive; font-size:13px; color:var(--stone); text-align:center; padding:40px; letter-spacing:1px;">NO PHOTOS YET — log a wildlife sighting or complete a scavenger hunt to add photos.</div>
+  </div>
+</div>
+<div class="gallery-lightbox" id="gallery-lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+  <div class="gallery-lightbox-caption" id="lightbox-caption"></div>
+  <div style="font-family:'Special Elite',cursive; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:1px;">TAP ANYWHERE TO CLOSE</div>
+</div>
+
+<!-- VOCAB SECTION -->
+<div class="section" id="vocab">
+  <div class="section-header">
+    <span class="section-tag">Native Languages</span>
+    <h2>Native Words</h2>
+    <p>Words from the peoples whose land you're visiting. Tap any card to reveal the meaning — try to guess first!</p>
+  </div>
+  <div id="vocab-content"></div>
+</div>
+
+
 
 <script>
 
@@ -1255,10 +1487,16 @@ function checkSectionComplete(sectionId) {
 function showSection(id) {
   document.getElementById('cover').style.display = 'none';
   document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-  document.getElementById(id).classList.add('visible');
+  const sec = document.getElementById(id);
+  if (sec) sec.classList.add('visible');
   document.getElementById('fabHQ').classList.add('visible');
   document.getElementById('fabTop').classList.add('visible');
   window.scrollTo(0,0);
+  // Initialize feature sections on first open
+  if (id === 'journal') initJournal();
+  if (id === 'wildlife') renderWildlifeLog();
+  if (id === 'gallery') renderGallery();
+  if (id === 'vocab') buildVocab();
 }
 
 function showCover() {
@@ -3223,7 +3461,7 @@ function answerTOF2(cid, i, choice) {
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.4';
+const APP_VERSION = '1.5';
 
 async function checkForUpdate() {
   try {
@@ -3832,6 +4070,407 @@ function clearSudoku6(id) {
 }
 
 buildSudoku6('r6'); buildSudoku6('y6'); buildSudoku6('b6');
+
+
+
+// ===================== TRIP JOURNAL =====================
+function getJournalEntries() {
+  try { return JSON.parse(localStorage.getItem('fe_journal') || '[]'); } catch(e) { return []; }
+}
+function saveJournalEntries(entries) {
+  try { localStorage.setItem('fe_journal', JSON.stringify(entries)); } catch(e) {}
+}
+
+function saveJournalEntry() {
+  const text = document.getElementById('journal-input').value.trim();
+  if (!text) return;
+  const entries = getJournalEntries();
+  const today = new Date().toDateString();
+  const existing = entries.findIndex(e => e.date === today);
+  if (existing >= 0) {
+    entries[existing].text = text;
+  } else {
+    entries.unshift({ date: today, text, id: Date.now() });
+    addScore(20);
+  }
+  saveJournalEntries(entries);
+  document.getElementById('journal-input').value = '';
+  const msg = document.getElementById('journal-save-msg');
+  msg.textContent = '✓ Entry saved!';
+  setTimeout(() => msg.textContent = '', 2000);
+  renderJournal();
+}
+
+function renderJournal() {
+  const container = document.getElementById('journal-entries');
+  if (!container) return;
+  const entries = getJournalEntries();
+  container.innerHTML = '';
+  if (entries.length === 0) {
+    container.innerHTML = '<p style="font-family:\'Special Elite\',cursive; font-size:13px; color:var(--stone); text-align:center; padding:20px; letter-spacing:1px;">NO ENTRIES YET — write your first one below!</p>';
+    return;
+  }
+  entries.forEach(entry => {
+    const div = document.createElement('div');
+    div.className = 'journal-entry';
+    const dateDiv = document.createElement('div');
+    dateDiv.className = 'journal-date';
+    dateDiv.textContent = entry.date;
+    const text = document.createElement('p');
+    text.style.cssText = 'margin:0; font-size:13px; line-height:1.7;';
+    text.textContent = entry.text;
+    const delBtn = document.createElement('button');
+    delBtn.style.cssText = 'font-family:\'Special Elite\',cursive; font-size:10px; letter-spacing:1px; padding:3px 8px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer; margin-top:8px;';
+    delBtn.textContent = 'DELETE';
+    delBtn.onclick = () => {
+      const all = getJournalEntries().filter(e => e.id !== entry.id);
+      saveJournalEntries(all);
+      renderJournal();
+    };
+    div.appendChild(dateDiv); div.appendChild(text); div.appendChild(delBtn);
+    container.appendChild(div);
+  });
+  // Pre-fill textarea if today already has entry
+  const today = new Date().toDateString();
+  const todayEntry = entries.find(e => e.date === today);
+  if (todayEntry) document.getElementById('journal-input').value = todayEntry.text;
+}
+
+const JOURNAL_PROMPTS = [
+  "What was the single best moment of today?",
+  "Describe the most interesting animal or plant you saw today.",
+  "What did you eat today that you'd never had before?",
+  "If you could re-live one part of today, what would it be?",
+  "What surprised you most today?",
+  "Describe what you saw in as much detail as you can — pretend you're writing for someone who wasn't there.",
+  "Rate today 1–10 and explain your score.",
+  "What's one thing you learned today that you didn't know before?",
+  "What was the funniest moment of the day?",
+  "If you took a photo today, describe what's in it and why you took it.",
+  "What would you tell a friend about today in three sentences?",
+  "What was harder than you expected? What was easier?",
+  "Describe the sounds and smells of where you were today.",
+  "What question about this place do you still want answered?",
+  "What are you most looking forward to tomorrow?",
+];
+
+function getDailyPrompt() {
+  // Rotate by day-of-trip so each day gets a different prompt
+  const start = new Date('2026-06-06').getTime();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const dayNum = Math.max(0, Math.floor((today.getTime() - start) / 86400000));
+  return JOURNAL_PROMPTS[dayNum % JOURNAL_PROMPTS.length];
+}
+
+function setPrompt(text) {
+  const el = document.getElementById('journal-prompt-text');
+  if (el) el.textContent = text;
+  const ta = document.getElementById('journal-input');
+  if (ta && !ta.value) ta.placeholder = text + ' (or write whatever you like)';
+}
+
+function initJournal() {
+  const dateEl = document.getElementById('journal-today-date');
+  if (dateEl) dateEl.textContent = new Date().toDateString();
+
+  // Set daily prompt
+  setPrompt(getDailyPrompt());
+
+  // Build prompt picker chips
+  const list = document.getElementById('journal-prompt-list');
+  if (list && list.children.length === 0) {
+    // Show 5 random prompts as alternatives (excluding today's auto prompt)
+    const daily = getDailyPrompt();
+    const others = JOURNAL_PROMPTS.filter(p => p !== daily);
+    // Shuffle and take 5
+    const picks = others.sort(() => Math.random() - 0.5).slice(0, 5);
+    picks.forEach(prompt => {
+      const btn = document.createElement('button');
+      btn.style.cssText = "font-family:'Special Elite',cursive; font-size:10px; letter-spacing:1px; padding:5px 10px; border:1px solid var(--leather); background:var(--parchment); color:var(--leather); cursor:pointer; transition:all 0.15s;";
+      btn.textContent = prompt.length > 40 ? prompt.substring(0,38) + '…' : prompt;
+      btn.title = prompt;
+      btn.onclick = () => {
+        setPrompt(prompt);
+        // Highlight selected
+        list.querySelectorAll('button').forEach(b => { b.style.background = 'var(--parchment)'; b.style.color = 'var(--leather)'; });
+        btn.style.background = 'var(--leather)'; btn.style.color = 'var(--parchment)';
+      };
+      list.appendChild(btn);
+    });
+  }
+
+  renderJournal();
+}
+
+// ===================== WILDLIFE LOG =====================
+function getWildlifeLog() {
+  try { return JSON.parse(localStorage.getItem('fe_wildlife') || '[]'); } catch(e) { return []; }
+}
+function saveWildlifeLog(log) {
+  try { localStorage.setItem('fe_wildlife', JSON.stringify(log)); } catch(e) {}
+}
+
+function previewWildlifePhoto() {
+  const file = document.getElementById('wl-photo').files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const preview = document.getElementById('wl-preview');
+    preview.src = e.target.result;
+    preview.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveWildlifeSighting() {
+  const species = document.getElementById('wl-species').value.trim();
+  if (!species) { alert('Please enter what you saw!'); return; }
+  const notes = document.getElementById('wl-notes').value.trim();
+  const preview = document.getElementById('wl-preview');
+  const photoData = preview.src && preview.style.display !== 'none' ? preview.src : null;
+
+  const log = getWildlifeLog();
+  const entry = {
+    id: Date.now(),
+    species,
+    notes,
+    photo: photoData,
+    date: new Date().toDateString(),
+    time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})
+  };
+  log.unshift(entry);
+  saveWildlifeLog(log);
+
+  // Clear form
+  document.getElementById('wl-species').value = '';
+  document.getElementById('wl-notes').value = '';
+  document.getElementById('wl-photo').value = '';
+  preview.src = ''; preview.style.display = 'none';
+
+  addScore(10);
+  if (photoData) addGalleryPhoto(photoData, species, 'Wildlife Log');
+  renderWildlifeLog();
+}
+
+function renderWildlifeLog() {
+  const container = document.getElementById('wildlife-log-list');
+  if (!container) return;
+  const log = getWildlifeLog();
+  container.innerHTML = '';
+  if (log.length === 0) {
+    container.innerHTML = '<p style="font-family:\'Special Elite\',cursine; font-size:13px; color:var(--stone); text-align:center; padding:20px; letter-spacing:1px;">NO SIGHTINGS YET — log your first one above!</p>';
+    return;
+  }
+  log.forEach(entry => {
+    const div = document.createElement('div');
+    div.className = 'wildlife-item puzzle-card';
+    div.setAttribute('data-num', entry.date + ' · ' + entry.time);
+    const thumb = document.createElement('div');
+    thumb.className = 'wildlife-thumb';
+    if (entry.photo) {
+      const img = document.createElement('img');
+      img.src = entry.photo; img.alt = entry.species;
+      thumb.appendChild(img);
+    } else {
+      thumb.textContent = '🔭';
+    }
+    const info = document.createElement('div');
+    info.className = 'wildlife-info';
+    const name = document.createElement('div');
+    name.className = 'wildlife-name'; name.textContent = entry.species;
+    const meta = document.createElement('div');
+    meta.className = 'wildlife-meta'; meta.textContent = entry.date + (entry.notes ? '' : '');
+    const notes = document.createElement('div');
+    notes.className = 'wildlife-notes'; notes.textContent = entry.notes || '';
+    info.appendChild(name); info.appendChild(meta);
+    if (entry.notes) info.appendChild(notes);
+    div.appendChild(thumb); div.appendChild(info);
+    container.appendChild(div);
+  });
+}
+
+// ===================== PHOTO GALLERY =====================
+const _galleryPhotos = [];
+
+function addGalleryPhoto(dataUrl, caption, source) {
+  _galleryPhotos.unshift({ dataUrl, caption, source, id: Date.now() });
+  renderGallery();
+}
+
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  const empty = document.getElementById('gallery-empty');
+  if (!grid) return;
+  // Collect all photos: wildlife log + any future scavenger hunt photos
+  const wl = getWildlifeLog().filter(e => e.photo);
+  const allPhotos = wl.map(e => ({ dataUrl: e.photo, caption: e.species, source: 'Wildlife · ' + e.date }));
+
+  if (allPhotos.length === 0) {
+    if (empty) empty.style.display = 'block';
+    grid.innerHTML = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  grid.innerHTML = '';
+  allPhotos.forEach(photo => {
+    const thumb = document.createElement('div');
+    thumb.className = 'gallery-thumb';
+    const img = document.createElement('img');
+    img.src = photo.dataUrl; img.alt = photo.caption;
+    thumb.appendChild(img);
+    thumb.onclick = () => openLightbox(photo.dataUrl, photo.caption + ' — ' + photo.source);
+    grid.appendChild(thumb);
+  });
+}
+
+function openLightbox(src, caption) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-caption').textContent = caption;
+  document.getElementById('gallery-lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('gallery-lightbox').classList.remove('open');
+}
+
+// ===================== NATIVE LANGUAGE VOCAB =====================
+const VOCAB_DATA = [
+  {
+    lang: 'Lakota Sioux',
+    context: 'People of the Great Plains — Black Hills & Badlands',
+    color: '#b5401a',
+    words: [
+      { native: 'Paha Sapa', english: 'Black Hills — sacred homeland of the Lakota, meaning "hills that are black"', pronunciation: 'pah-HAH sah-PAH' },
+      { native: 'Mako Sica', english: 'Badlands — meaning "bad lands" or "land bad"', pronunciation: 'MAH-ko SEE-cha' },
+      { native: 'Tatanka', english: 'Bison / Buffalo — the sacred animal central to Lakota life', pronunciation: 'tah-TAHN-kah' },
+      { native: 'Wakan Tanka', english: 'Great Spirit / Great Mystery — the supreme being', pronunciation: 'wah-KAHN TAHN-kah' },
+      { native: 'Mitákuye Oyásʼiŋ', english: 'All my relations / We are all related — a prayer of connection to all living things', pronunciation: 'mee-TAH-koo-yay oh-YAH-seen' },
+      { native: 'Čhaŋkú Lúta', english: 'Red Road — the path of right living and spiritual balance', pronunciation: 'chahn-KOO loo-TAH' },
+      { native: 'Waŋblí', english: 'Eagle — sacred bird, messenger between humans and the Great Spirit', pronunciation: 'wahng-BLEE' },
+      { native: 'Ȟeháka', english: 'Elk — graceful animal of the plains and forests', pronunciation: 'heh-HAH-kah' },
+    ]
+  },
+  {
+    lang: 'Crow / Apsáalooke',
+    context: 'People of the Yellowstone region — "Children of the Large-Beaked Bird"',
+    color: '#2d5a27',
+    words: [
+      { native: 'Apsáalooke', english: 'Crow — the people\'s name for themselves, meaning "Children of the Large-Beaked Bird"', pronunciation: 'ahp-SAH-loh-kay' },
+      { native: 'Bishée', english: 'Yellowstone River — the river sacred to the Crow homeland', pronunciation: 'bish-EE' },
+      { native: 'Awaxaawippíia', english: 'Crazy Mountains — sacred peaks visible from Crow country', pronunciation: 'ah-wah-KHAH-wee-PEE-ah' },
+      { native: 'Baákulé', english: 'Good / Beautiful — an expression of appreciation', pronunciation: 'bah-AH-koo-lay' },
+      { native: 'Iisáaxpua', english: 'Tobacco — sacred plant used in Crow ceremony and prayer', pronunciation: 'ee-SAAK-pwah' },
+      { native: 'Dasshe', english: 'Thank you — an expression of gratitude', pronunciation: 'DAH-sheh' },
+    ]
+  },
+  {
+    lang: 'Kiowa',
+    context: 'People of Devil\'s Tower — who call it Tso-aa, "tree rock"',
+    color: '#3a6b8a',
+    words: [
+      { native: 'Tso-aa', english: 'Devil\'s Tower — the Kiowa name, meaning "tree rock"', pronunciation: 'tsoh-AH' },
+      { native: 'Daw-K\'ee', english: 'Sun Dance — the most sacred Kiowa ceremony, held in summer', pronunciation: 'daw-KEE' },
+      { native: 'Sayn-Day', english: 'Coyote — the trickster figure in Kiowa stories', pronunciation: 'sayn-DAY' },
+      { native: 'Guipago', english: 'Lone Wolf — name of a great Kiowa chief', pronunciation: 'gwee-PAH-go' },
+    ]
+  }
+];
+
+function buildVocab() {
+  const container = document.getElementById('vocab-content');
+  if (!container) return;
+  container.innerHTML = '';
+
+  VOCAB_DATA.forEach(group => {
+    // Group header
+    const header = document.createElement('div');
+    header.style.cssText = 'margin-bottom:16px; margin-top:20px;';
+    const title = document.createElement('div');
+    title.style.cssText = 'font-family:\'Playfair Display\',serif; font-size:18px; font-weight:700; color:' + group.color + '; margin-bottom:2px;';
+    title.textContent = group.lang;
+    const ctx = document.createElement('div');
+    ctx.style.cssText = 'font-family:\'Special Elite\',cursive; font-size:10px; letter-spacing:1.5px; color:var(--stone); text-transform:uppercase;';
+    ctx.textContent = group.context;
+    header.appendChild(title); header.appendChild(ctx);
+    container.appendChild(header);
+
+    group.words.forEach((word, i) => {
+      const card = document.createElement('div');
+      card.className = 'vocab-card';
+      card.style.borderLeftColor = group.color;
+      card.style.borderLeft = '3px solid ' + group.color;
+
+      const native = document.createElement('div');
+      native.className = 'vocab-native';
+      native.style.color = group.color;
+      native.textContent = word.native;
+
+      const right = document.createElement('div');
+      right.style.flex = '1';
+      const lang = document.createElement('div');
+      lang.className = 'vocab-lang';
+      lang.textContent = group.lang + ' · tap to reveal';
+      const english = document.createElement('div');
+      english.className = 'vocab-english';
+      const span = document.createElement('span');
+      span.className = 'hidden';
+      span.textContent = word.english;
+      const pron = document.createElement('div');
+      pron.style.cssText = 'font-size:11px; color:var(--stone); font-style:italic; margin-top:3px;';
+      const pronSpan = document.createElement('span');
+      pronSpan.className = 'hidden';
+      pronSpan.textContent = '🔊 ' + word.pronunciation;
+      pron.appendChild(pronSpan);
+      english.appendChild(span);
+      right.appendChild(lang); right.appendChild(english); right.appendChild(pron);
+
+      card.appendChild(native); card.appendChild(right);
+      card.onclick = () => {
+        const wasHidden = span.classList.contains('hidden');
+        span.classList.toggle('hidden');
+        span.classList.toggle('revealed');
+        pronSpan.classList.toggle('hidden');
+        pronSpan.classList.toggle('revealed');
+        if (wasHidden) {
+          const key = 'vocab_' + group.lang + '_' + i;
+          if (!window[key]) { window[key] = true; addScore(5); }
+          lang.textContent = group.lang;
+        } else {
+          lang.textContent = group.lang + ' · tap to reveal';
+        }
+      };
+      container.appendChild(card);
+    });
+  });
+
+  // Vocab quiz at end
+  const quizCard = document.createElement('div');
+  quizCard.className = 'puzzle-card';
+  quizCard.setAttribute('data-num', 'Vocab Challenge · Quiz');
+  quizCard.innerHTML = '<h3>Test Your Knowledge</h3><div class="difficulty">⭐⭐ Ranger Level · 50 pts possible</div><p>Match the native word to its meaning. Study the cards above first!</p><div id="vocab-quiz"></div>';
+  container.appendChild(quizCard);
+  buildVocabQuiz();
+}
+
+function buildVocabQuiz() {
+  const container = document.getElementById('vocab-quiz');
+  if (!container) return;
+  const questions = [
+    { q: 'What does "Tatanka" mean in Lakota?', opts: ['Eagle', 'Bison', 'Black Hills', 'Great Spirit'], ans: 1 },
+    { q: 'The Lakota word "Paha Sapa" refers to what place?', opts: ['Yellowstone', 'Badlands', 'Black Hills', 'Devil\'s Tower'], ans: 2 },
+    { q: 'What does "Wakan Tanka" mean?', opts: ['Red Road', 'All my relations', 'Great Spirit', 'Eagle'], ans: 2 },
+    { q: 'The Kiowa name "Tso-aa" means what?', opts: ['Sacred mountain', 'Tree rock', 'Bear lodge', 'Big tower'], ans: 1 },
+    { q: '"Dasshe" in Crow means what?', opts: ['Hello', 'Goodbye', 'Thank you', 'Beautiful'], ans: 2 },
+    { q: 'Which tribe calls themselves "Apsáalooke"?', opts: ['Lakota', 'Kiowa', 'Crow', 'Cheyenne'], ans: 2 },
+    { q: '"Waŋblí" is the Lakota word for which sacred animal?', opts: ['Bison', 'Wolf', 'Bear', 'Eagle'], ans: 3 },
+    { q: 'What does "Mitákuye Oyásʼiŋ" mean?', opts: ['We are all related', 'The Red Road', 'Sacred land', 'Great Mystery'], ans: 0 },
+    { q: '"Mako Sica" is the Lakota name for?', opts: ['Black Hills', 'Yellowstone', 'Badlands', 'Plains'], ans: 2 },
+    { q: 'What is "Tatanka" revered as in Lakota culture?', opts: ['A spirit guide only', 'Sacred animal central to life', 'A constellation', 'A river'], ans: 1 },
+  ];
+  buildTrivia(questions.map(q => ({...q, fact: ''})), 'vocab-quiz', 'vq');
+}
+
+// Feature sections are initialized inside showSection below
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
