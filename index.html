@@ -211,6 +211,7 @@
   }
   .tier-animal { font-size: 32px; line-height: 1; }
   .tier-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--rust); }
+  .tier-tag { font-family: 'Libre Baskerville', serif; font-size: 11px; font-style: italic; color: var(--stone); margin-top: 1px; }
   .tier-bar-wrap { height: 6px; background: var(--parchment-dark); border: 1px solid var(--leather); border-radius: 3px; overflow: hidden; }
   .tier-bar { height: 100%; background: linear-gradient(to right, var(--gold), var(--rust)); border-radius: 3px; width: 0%; transition: width 0.6s ease; }
   .tier-pts { font-family: 'Special Elite', cursive; font-size: 10px; color: var(--stone); letter-spacing: 0.5px; margin-top: 2px; }
@@ -940,7 +941,8 @@
       <div class="tier-animal" id="tierAnimal">🐜</div>
       <div>
         <div class="tier-name" id="tierName">Ant</div>
-        <div class="tier-pts" id="tierPts">0 pts · Next: Prairie Dog at 50 pts</div>
+        <div class="tier-tag" id="tierTag">Everyone starts small</div>
+        <div class="tier-pts" id="tierPts">0 pts · Next: Ground Squirrel at 50 pts</div>
       </div>
     </div>
     <div class="tier-bar-wrap" style="margin-top:8px;">
@@ -3810,16 +3812,16 @@ buildLogicPuzzle('badlands-logic2',
 
 // ===================== TIER SYSTEM =====================
 const TIERS = [
-  { name: 'Ant',             animal: '🐜',  min: 0    },
-  { name: 'Prairie Dog',     animal: '🐾',  min: 50   },
-  { name: 'Ground Squirrel', animal: '🐿️',  min: 150  },
-  { name: 'Bison',           animal: '🦬',  min: 300  },
-  { name: 'Grey Wolf',       animal: '🐺',  min: 500  },
-  { name: 'Grizzly Bear',    animal: '🐻',  min: 750  },
-  { name: 'Bald Eagle',      animal: '🦅',  min: 1000 },
-  { name: 'Mountain Goat',   animal: '🐐',  min: 1350 },
-  { name: 'Park Ranger',     animal: '🎖️',  min: 1750 },
-  { name: 'Superintendent',  animal: '⭐',  min: 2200 },
+  { name: 'Ant',            animal: '🐜',  min: 0,    tag: 'Everyone starts small' },
+  { name: 'Ground Squirrel',animal: '🐿️',  min: 50,   tag: 'Curious, quick, always exploring' },
+  { name: 'Prairie Dog',    animal: '🦫',  min: 150,  tag: 'Social, builds community' },
+  { name: 'River Otter',          animal: '🦦',  min: 300,  tag: 'Playful, loves rivers' },
+  { name: 'Pronghorn',      animal: '🦌',  min: 500,  tag: 'Fastest animal in North America' },
+  { name: 'Bison',          animal: '🦬',  min: 750,  tag: 'Iconic, resilient, rules the plains' },
+  { name: 'Grey Wolf',      animal: '🐺',  min: 1000, tag: 'Pack hunter, intelligent' },
+  { name: 'Grizzly Bear',   animal: '🐻',  min: 1350, tag: 'Powerful, respected' },
+  { name: 'Bald Eagle',     animal: '🦅',  min: 1750, tag: 'Soars above everything' },
+  { name: 'Mountain Goat',  animal: '🐐',  min: 2200, tag: 'Reaches the highest peaks' },
 ];
 const DAY_BASE = 25;
 const STREAK_MULT = [1, 1.2, 1.5, 2.0, 2.5, 3.0];
@@ -3842,6 +3844,7 @@ function updateTierDisplay() {
   const set = (id, val) => { const el=document.getElementById(id); if(el) el.textContent=val; };
   set('tierAnimal', tier.animal);
   set('tierName', tier.name);
+  set('tierTag', tier.tag || '');
   set('tierPts', nextTier ? (pts) + ' pts · Next: ' + (nextTier.name) + ' at ' + (nextTier.min) + ' pts' : (pts) + ' pts · MAX RANK! 🏆');
   set('coverScore', pts);
   set('coverStreak', (window._streak||0)+'🔥');
