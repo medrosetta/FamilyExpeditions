@@ -913,7 +913,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.5</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.6</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -975,6 +975,7 @@
     <button onclick="showSection('badlands')">🦕 Badlands</button>
     <button onclick="showSection('yellowstone')">🌋 Yellowstone</button>
     <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
+    <button onclick="showSection('denver')">🎨 Denver</button>
   </div>
 
   <div class="cover-divider"></div>
@@ -1344,6 +1345,86 @@
   </div>
 
 </div><!-- end badlands -->
+<!-- DENVER SECTION -->
+<div class="section" id="denver">
+  <div class="section-header">
+    <span class="section-tag">Denver, Colorado — June 10–12, 2026</span>
+    <h2>Denver<br>City Expedition</h2>
+    <p>Art, science, mystery, and the Mile High City — two days packed with experiences.</p>
+  </div>
+
+  <div id="puzzle-nav-denver" class="puzzle-picker">
+    <div class="puzzle-picker-label">Jump to puzzle:</div>
+    <button class="pp-btn" onclick="jumpTo('pz-dv1')">🔍 Hunt</button>
+    <button class="pp-btn" onclick="jumpTo('pz-dv2')">❓ Trivia</button>
+    <button class="pp-btn" onclick="jumpTo('pz-dv3')">🔤 Words</button>
+    <button class="pp-btn" onclick="jumpTo('pz-dv4')">🔐 Cipher</button>
+    <button class="pp-btn" onclick="jumpTo('pz-dv5')">✓/✗ True/False</button>
+    <button class="pp-btn" onclick="jumpTo('pz-dv6')">✏️ Fill Blanks</button>
+    <button class="pp-btn" onclick="jumpTo('pz-dv7')">🔢 Compact Sudoku</button>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv1" data-num="Puzzle DV-1 · Scavenger Hunt">
+    <h3>Mile High Hunt: Denver City Scavenger Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 70 pts possible</div>
+    <p>Explore RiNo, the Botanic Gardens, and Meow Wolf. Tap each item as you find it!</p>
+    <div class="hunt-grid" id="denver-hunt"></div>
+    <div style="margin-top:12px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+      Found: <span id="denver-hunt-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="denver-hunt-pts">0</span>
+    </div>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv2" data-num="Puzzle DV-2 · Trivia">
+    <h3>Mile High Facts: Denver Quiz</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 70 pts possible</div>
+    <p>Seven questions about Denver's art, culture, altitude, and the places you're visiting.</p>
+    <div id="denver-trivia"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv3" data-num="Puzzle DV-3 · Word Search">
+    <h3>Denver Word Search</h3>
+    <div class="difficulty">⭐ Scout Level · All ages</div>
+    <p>Find 12 Denver words hidden in the grid.</p>
+    <div class="word-search-wrap" id="denver-ws-wrap"></div>
+    <div class="word-list" id="denver-ws-words"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv4" data-num="Puzzle DV-4 · Cipher Decoder">
+    <h3>Convergence Code: Denver Cipher</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 45 pts possible</div>
+    <p>Decode three secret Denver words using the symbol key.</p>
+    <div id="denver-cipher"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv5" data-num="Puzzle DV-5 · True or False">
+    <h3>Denver: Fact or Fiction?</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
+    <p>Eight rapid-fire Denver statements. True or False?</p>
+    <div id="denver-tof"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv6" data-num="Puzzle DV-6 · Fill in the Blanks">
+    <h3>Visitor's Notebook: Fill the Blanks</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
+    <p>Complete the Denver field notes using the word bank.</p>
+    <div id="denver-fillblank"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-dv7" data-num="Puzzle DV-7 · Compact Sudoku">
+    <h3>Convergence Grid: Compact Sudoku</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Compact Grid</div>
+    <p>Fill every row, column, and 2×3 box with 1–6.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-dv6"></div>
+    <div class="numpad" id="numpad-dv6"></div>
+    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudoku6('dv6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudoku6('dv6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+    </div>
+    <div id="sudoku6-msg-dv6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+  </div>
+
+</div><!-- end denver -->
+
 <!-- JOURNAL SECTION -->
 <div class="section" id="journal">
   <div class="section-header">
@@ -3407,7 +3488,8 @@ function buildTOF2(data, containerId) {
 }
 
 function answerTOF2(cid, i, choice) {
-  const datasets = { 'dt-tof': devilstowerTOF };
+  const datasets = window._tofDatasets || {};
+  datasets['dt-tof'] = devilstowerTOF;
   const data = datasets[cid];
   if (!data) return;
   const item = data[i];
@@ -3468,7 +3550,7 @@ function answerTOF2(cid, i, choice) {
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.5';
+const APP_VERSION = '1.6';
 
 async function checkForUpdate() {
   try {
@@ -4479,6 +4561,85 @@ function buildVocabQuiz() {
 }
 
 // Feature sections are initialized inside showSection below
+
+// ===================== DENVER PUZZLES =====================
+const denverHuntItems = [
+  { text: "Find a mural in RiNo and name the street it's on", pts: 7 },
+  { text: "Spot a mural that includes an animal — what animal is it?", pts: 7 },
+  { text: "At Meow Wolf: find all four alien worlds — C Street, Eemia, Numina, Ossuary", pts: 7 },
+  { text: "At Meow Wolf: discover a hidden doorway or secret passage", pts: 7 },
+  { text: "At the Botanic Gardens: find a plant from a country you've visited or want to visit", pts: 7 },
+  { text: "At the Botanic Gardens: find the Japanese Tea Garden bonsai pavilion", pts: 7 },
+  { text: "Spot the Colorado state capitol building's gold dome", pts: 7 },
+  { text: "Find the exact spot on the steps of the State Capitol marked 'One Mile Above Sea Level'", pts: 7 },
+  { text: "At Union Station: find the massive neon sign and read what it says", pts: 7 },
+  { text: "Spot a Harry Potter reference anywhere related to Cursed Child", pts: 7 },
+];
+
+const denverTriviaData = [
+  { q: "Denver is called the Mile High City. What is its exact official elevation?", opts: ["5,000 feet", "5,280 feet", "5,500 feet", "6,000 feet"], ans: 1, fact: "Exactly 5,280 feet — one mile above sea level. The exact elevation marker is embedded in the 13th step of the Colorado State Capitol." },
+  { q: "What does RiNo stand for?", opts: ["River North", "Right Now", "Rhinoceros", "River Node"], ans: 0, fact: "River North — named for the neighborhood's location north of the South Platte River. The rhino logo is a visual pun on the abbreviation!" },
+  { q: "Meow Wolf's Denver exhibition has how many alien worlds to explore?", opts: ["Two", "Three", "Four", "Five"], ans: 2, fact: "Four worlds: C Street (neon alien metropolis), Eemia (ice cities), Ossuary (ancient underground mysteries), and Numina (transcendent space-time)." },
+  { q: "How many artists created Meow Wolf Convergence Station?", opts: ["About 50", "About 150", "Over 350", "Over 1,000"], ans: 2, fact: "Over 350 local and international artists across its 90,000 square feet of immersive art." },
+  { q: "The Denver Botanic Gardens spans how many acres?", opts: ["10 acres", "24 acres", "50 acres", "100 acres"], ans: 1, fact: "24 acres of gardens including a Japanese Tea Ceremony house shipped from Japan and reassembled by Japanese craftspeople." },
+  { q: "Larimer Square — one of Denver's historic districts — was saved from demolition in what decade?", opts: ["1950s", "1960s", "1980s", "1990s"], ans: 1, fact: "The 1960s! Developer Dana Crawford led efforts to preserve Denver's oldest commercial block in 1965, pioneering historic preservation in Colorado." },
+  { q: "Union Station Denver's iconic main building was originally built in what year?", opts: ["1881", "1914", "1936", "1952"], ans: 1, fact: "1914! After a $54 million renovation in 2014 it reopened as a hotel, restaurant hub, and transit center — now called 'the living room of Denver.'" },
+];
+
+const denverTOFData = [
+  { stmt: "Denver has more sunny days per year than Miami or Los Angeles.", ans: true, fact: "True! Denver averages 300 sunny days per year — more than both Miami and LA, despite being known for snow." },
+  { stmt: "Meow Wolf was founded in Denver, Colorado.", ans: false, fact: "False! Meow Wolf was founded in Santa Fe, New Mexico in 2008. Denver's Convergence Station is their third permanent exhibition." },
+  { stmt: "The Denver Botanic Gardens has a Japanese Tea Ceremony House shipped from Japan.", ans: true, fact: "True! It was dismantled in Japan, shipped to Denver, and reassembled by Japanese craftspeople." },
+  { stmt: "Water boils at 212°F in Denver — the same as at sea level.", ans: false, fact: "False! At 5,280 feet, water boils at about 202°F — 10 degrees lower. Cooking times are affected at altitude!" },
+  { stmt: "RiNo has been called the Street Art Capital of the U.S.", ans: true, fact: "True! AFAR magazine proclaimed RiNo the Street Art Capital of the U.S. in 2019. The district has over 200 murals." },
+  { stmt: "Union Station Denver was abandoned for decades before its 2014 renovation.", ans: true, fact: "True! The historic station fell into disuse before a $54 million renovation transformed it into a vibrant hub." },
+  { stmt: "Colorado and Washington were the first states to legalize recreational cannabis simultaneously in 2012.", ans: true, fact: "True! Both passed ballot measures the same election day in November 2012." },
+  { stmt: "Meow Wolf's Convergence Station covers 90,000 square feet across four floors.", ans: true, fact: "True! It's Meow Wolf's largest exhibition, spread across four floors with interactive art, a concert venue, and a cocktail lounge." },
+];
+
+// Register denverTOF for answerTOF2
+window._tofDatasets = window._tofDatasets || {};
+window._tofDatasets['denver-tof'] = denverTOFData;
+
+buildHunt(denverHuntItems, 'denver-hunt', 'denver-hunt-score', 'denver-hunt-pts', 'denver');
+buildTrivia(denverTriviaData, 'denver-trivia', 'dvt');
+setTimeout(() => buildWordSearch(['RINO','MURALS','MEOWWOLF','CONVERGENCE','BOTANICAL','DENVER','LARIMER','UNIONSTATION','COLORADO','MILEHIGH','CURSEDCHILD','ESCAPEWORKS'], 'denver-ws-wrap', 'denver-ws-words'), 400);
+
+// Denver cipher
+(function() {
+  const dvCipher = [
+    { answer: 'MURALS', hint: 'What covers the buildings of RiNo — over 200 of them' },
+    { answer: 'CONVERGENCE', hint: "The name of Meow Wolf's Denver exhibition" },
+    { answer: 'MILEHIGH', hint: "Denver's famous nickname — exactly 5,280 feet up" },
+  ];
+  dvCipher.forEach(p => { p.encoded = encodeWord(p.answer); });
+  // Patch CIPHER_DATA for denver
+  if (typeof CIPHER_DATA !== 'undefined') CIPHER_DATA['denver'] = dvCipher;
+  buildCipherDecoder('denver-cipher', 'denver');
+})();
+
+buildTOF2(denverTOFData, 'denver-tof');
+buildFillBlank('denver-fillblank',
+  [
+    { sentence: "Denver is exactly ___ feet above sea level — one mile high.", answer: "5280" },
+    { sentence: "RiNo stands for River ___, Denver's street art capital.", answer: "North" },
+    { sentence: "Meow Wolf's Denver exhibit is called Convergence ___.", answer: "Station" },
+    { sentence: "The Denver Botanic Gardens spans ___ acres on York Street.", answer: "24" },
+    { sentence: "Water boils at ___ °F in Denver due to the high altitude.", answer: "202" },
+    { sentence: "Denver averages ___ sunny days per year.", answer: "300" },
+  ],
+  ["5280","North","Station","24","202","300"]
+);
+
+// Denver compact sudoku
+sudoku6Data['dv6'] = {
+  puzzle:   [[0,1,0,0,4,0],[0,0,4,0,0,2],[2,0,0,1,0,0],[0,0,6,0,0,4],[4,0,0,5,0,0],[0,3,0,0,1,0]],
+  solution: [[3,1,2,6,4,5],[5,6,4,3,1,2],[2,4,5,1,6,3],[1,5,6,2,3,4],[4,2,1,5,3,6],[6,3,3,4,1,5]]
+};
+buildSudoku6('dv6');
+
+// Update section completion to include denver
+SECTION_REQUIRED['denver'] = ['hunt','trivia','words','cipher','tof'];
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
