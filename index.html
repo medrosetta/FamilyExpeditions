@@ -913,7 +913,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.6</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.7</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -936,7 +936,7 @@
   <h1>Expedition<br><span>HQ</span></h1>
 
   <!-- TIER DISPLAY -->
-  <div class="tier-panel" id="tierPanel">
+  <div class="tier-panel" id="tierPanel" onclick="openTierModal()" style="cursor:pointer;" title="Tap to see all ranks">
     <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
       <div class="tier-animal" id="tierAnimal">🐜</div>
       <div>
@@ -948,6 +948,7 @@
     <div class="tier-bar-wrap" style="margin-top:8px;">
       <div class="tier-bar" id="tierBar"></div>
     </div>
+    <div style="font-family:'Special Elite',cursive; font-size:9px; color:var(--stone); letter-spacing:1.5px; text-align:center; margin-top:6px; text-transform:uppercase;">Tap to see all ranks</div>
   </div>
 
   <!-- SCORE ROW -->
@@ -1010,6 +1011,8 @@
     <button class="pp-btn" onclick="jumpTo('pz-r7')">🔢 Sudoku</button>
     <button class="pp-btn" onclick="jumpTo('pz-r8')">🧠 Logic</button>
     <button class="pp-btn" onclick="jumpTo('pz-r9')">🎲 Compact Sudoku</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r10')">🦬 Custer Hunt</button>
+    <button class="pp-btn" onclick="jumpTo('pz-r11')">🦬 Custer Quiz</button>
   </div>
 
 
@@ -1095,6 +1098,23 @@
       <button onclick="clearSudoku6('r6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
     </div>
     <div id="sudoku6-msg-r6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-r10" data-num="Puzzle R-10 · Wildlife Loop Scavenger Hunt">
+    <h3>Custer State Park: Wildlife Loop Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 80 pts possible</div>
+    <p>The 18-mile Wildlife Loop is home to over 1,300 free-roaming bison and 12+ species. Tap each animal or sight as you spot it from the car!</p>
+    <div class="hunt-grid" id="custer-hunt"></div>
+    <div style="margin-top:12px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+      Found: <span id="custer-hunt-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="custer-hunt-pts">0</span>
+    </div>
+  </div>
+
+  <div class="puzzle-card" id="pz-r11" data-num="Puzzle R-11 · Custer State Park Trivia">
+    <h3>Buffalo Commons: Custer State Park Quiz</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 60 pts possible</div>
+    <p>Six questions about the Wildlife Loop and Custer State Park — answer before or after the drive!</p>
+    <div id="custer-trivia"></div>
   </div>
 
 </div><!-- end rushmore -->
@@ -1487,7 +1507,16 @@
     <div id="gallery-empty" style="font-family:'Special Elite',cursive; font-size:13px; color:var(--stone); text-align:center; padding:40px; letter-spacing:1px;">NO PHOTOS YET — log a wildlife sighting or complete a scavenger hunt to add photos.</div>
   </div>
 </div>
-<div class="gallery-lightbox" id="gallery-lightbox" onclick="closeLightbox()">
+<!-- TIER PROGRESS MODAL -->
+<div id="tier-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9500; align-items:flex-end; justify-content:center;" onclick="closeTierModal(event)">
+  <div id="tier-modal-inner" style="background:var(--parchment); width:min(420px,100%); max-height:80vh; overflow-y:auto; border-top:3px solid var(--gold); padding:20px 16px 32px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--rust);">Wildlife Ranks</div>
+      <button onclick="closeTierModal()" style="font-family:'Special Elite',cursive; font-size:12px; padding:4px 10px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">✕ CLOSE</button>
+    </div>
+    <div id="tier-modal-list"></div>
+  </div>
+</div>
   <img id="lightbox-img" src="" alt="">
   <div class="gallery-lightbox-caption" id="lightbox-caption"></div>
   <div style="font-family:'Special Elite',cursive; font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:1px;">TAP ANYWHERE TO CLOSE</div>
@@ -3550,7 +3579,7 @@ function answerTOF2(cid, i, choice) {
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.6';
+const APP_VERSION = '1.7';
 
 async function checkForUpdate() {
   try {
@@ -3894,16 +3923,17 @@ buildLogicPuzzle('badlands-logic2',
 
 // ===================== TIER SYSTEM =====================
 const TIERS = [
-  { name: 'Ant',            animal: '🐜',  min: 0,    tag: 'Everyone starts small' },
-  { name: 'Ground Squirrel',animal: '🐿️',  min: 50,   tag: 'Curious, quick, always exploring' },
-  { name: 'Prairie Dog',    animal: '🦫',  min: 150,  tag: 'Social, builds community' },
-  { name: 'River Otter',          animal: '🦦',  min: 300,  tag: 'Playful, loves rivers' },
-  { name: 'Pronghorn',      animal: '🦌',  min: 500,  tag: 'Fastest animal in North America' },
-  { name: 'Bison',          animal: '🦬',  min: 750,  tag: 'Iconic, resilient, rules the plains' },
-  { name: 'Grey Wolf',      animal: '🐺',  min: 1000, tag: 'Pack hunter, intelligent' },
-  { name: 'Grizzly Bear',   animal: '🐻',  min: 1350, tag: 'Powerful, respected' },
-  { name: 'Bald Eagle',     animal: '🦅',  min: 1750, tag: 'Soars above everything' },
-  { name: 'Mountain Goat',  animal: '🐐',  min: 2200, tag: 'Reaches the highest peaks' },
+  { name: 'Ant',                 animal: '🐜',  min: 0,    tag: 'Everyone starts small' },
+  { name: 'Ground Squirrel',     animal: '🐿️',  min: 50,   tag: 'Curious, quick, always exploring' },
+  { name: 'Prairie Dog',         animal: '🦫',  min: 150,  tag: 'Social, builds community' },
+  { name: 'Black-footed Ferret', animal: '🦡',  min: 300,  tag: 'Critically endangered — rarest in N. America' },
+  { name: 'River Otter',         animal: '🦦',  min: 500,  tag: 'Playful, loves rivers' },
+  { name: 'Pronghorn',           animal: '🦌',  min: 750,  tag: 'Fastest animal in North America' },
+  { name: 'Bison',               animal: '🦬',  min: 1050, tag: 'Iconic, resilient, rules the plains' },
+  { name: 'Grey Wolf',           animal: '🐺',  min: 1400, tag: 'Pack hunter, intelligent' },
+  { name: 'Grizzly Bear',        animal: '🐻',  min: 1800, tag: 'Powerful, respected' },
+  { name: 'Bald Eagle',          animal: '🦅',  min: 2250, tag: 'Soars above everything' },
+  { name: 'Mountain Goat',       animal: '🐐',  min: 2750, tag: 'Reaches the highest peaks' },
 ];
 const DAY_BASE = 25;
 const STREAK_MULT = [1, 1.2, 1.5, 2.0, 2.5, 3.0];
@@ -3917,6 +3947,50 @@ function loadState() {
     totalScore = s.score||0; window._streak = s.streak||0;
     window._lastDay = s.lastDay||''; window._sectionsCompleted = s.sections||[];
   } catch(e) { totalScore=0; window._streak=0; window._lastDay=''; window._sectionsCompleted=[]; }
+}
+
+function openTierModal() {
+  const pts = totalScore;
+  const list = document.getElementById('tier-modal-list');
+  if (!list) return;
+  list.innerHTML = '';
+  TIERS.forEach((tier, i) => {
+    const reached = pts >= tier.min;
+    const isCurrent = reached && (!TIERS[i+1] || pts < TIERS[i+1].min);
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex; align-items:center; gap:12px; padding:10px 8px; border-bottom:1px solid var(--parchment-dark);' +
+      (isCurrent ? 'background:rgba(122,74,30,0.1); border-left:3px solid var(--gold);' : '');
+    const emoji = document.createElement('div');
+    emoji.style.cssText = 'font-size:28px; min-width:36px; text-align:center; opacity:' + (reached ? '1' : '0.3') + ';';
+    emoji.textContent = tier.animal;
+    const info = document.createElement('div');
+    info.style.flex = '1';
+    const nameRow = document.createElement('div');
+    nameRow.style.cssText = 'display:flex; align-items:baseline; gap:8px;';
+    const name = document.createElement('span');
+    name.style.cssText = 'font-family:\'Playfair Display\',serif; font-size:15px; font-weight:700; color:' + (reached ? 'var(--rust)' : 'var(--stone)') + ';';
+    name.textContent = tier.name;
+    const pts_label = document.createElement('span');
+    pts_label.style.cssText = 'font-family:\'Special Elite\',cursive; font-size:10px; color:var(--stone); letter-spacing:1px;';
+    pts_label.textContent = tier.min === 0 ? 'Start' : tier.min + ' pts';
+    nameRow.appendChild(name); nameRow.appendChild(pts_label);
+    const tag = document.createElement('div');
+    tag.style.cssText = 'font-size:11px; font-style:italic; color:' + (reached ? 'var(--stone)' : '#ccc') + '; margin-top:2px;';
+    tag.textContent = tier.tag;
+    info.appendChild(nameRow); info.appendChild(tag);
+    const status = document.createElement('div');
+    status.style.cssText = 'font-size:18px; min-width:24px; text-align:center;';
+    status.textContent = isCurrent ? '📍' : reached ? '✓' : '🔒';
+    row.appendChild(emoji); row.appendChild(info); row.appendChild(status);
+    list.appendChild(row);
+  });
+  const modal = document.getElementById('tier-modal');
+  modal.style.display = 'flex';
+}
+
+function closeTierModal(e) {
+  if (e && e.target !== document.getElementById('tier-modal')) return;
+  document.getElementById('tier-modal').style.display = 'none';
 }
 
 function updateTierDisplay() {
@@ -4562,7 +4636,34 @@ function buildVocabQuiz() {
 
 // Feature sections are initialized inside showSection below
 
-// ===================== DENVER PUZZLES =====================
+// ===================== CUSTER STATE PARK PUZZLES =====================
+const custerHuntItems = [
+  { text: "Spot a bison — bonus if it's within 50 feet of the car!", pts: 8 },
+  { text: "Find a prairie dog town and watch them pop up and down", pts: 8 },
+  { text: "Spot a pronghorn (look for white rump patch on the grasslands)", pts: 8 },
+  { text: "Get stopped by a 'bison jam' — herd crossing the road", pts: 8 },
+  { text: "Find a feral burro (the famous begging donkeys of Custer)", pts: 8 },
+  { text: "Spot a white-tailed or mule deer", pts: 8 },
+  { text: "See an eagle, hawk, or large bird of prey in the sky", pts: 8 },
+  { text: "Spot bighorn sheep (look on rocky outcroppings and hillsides)", pts: 8 },
+  { text: "Find the elevation marker or a historical sign along the loop", pts: 8 },
+  { text: "Photograph the best wildlife encounter of the drive", pts: 8 },
+];
+
+const custerTriviaData = [
+  { q: "How long is the Custer State Park Wildlife Loop?", opts: ["8 miles", "12 miles", "18 miles", "25 miles"], ans: 2, fact: "18 miles of open grasslands and pine-speckled hills. Plan at least 90 minutes — more if you hit a bison jam!" },
+  { q: "Approximately how many free-roaming bison live in Custer State Park?", opts: ["About 200", "About 500", "About 900", "About 1,300"], ans: 3, fact: "Around 1,300 bison — one of the largest publicly-owned herds in the world. The annual roundup each September manages the herd size." },
+  { q: "The 'begging burros' of Custer are famous for what?", opts: ["Running alongside cars", "Approaching vehicles looking for food", "Blocking roads for hours", "Swimming across the creek"], ans: 1, fact: "The feral burros descended from donkeys used by early tourist operations. They'll walk right up to car windows hoping for carrots!" },
+  { q: "What is the best time of day to see wildlife on the Wildlife Loop?", opts: ["Midday", "Early morning or late evening", "Just after noon", "Any time is equally good"], ans: 1, fact: "Early morning or late evening — animals are most active when it's cooler. Midday heat sends most wildlife into shade." },
+  { q: "Which rarely-spotted large predator also lives in Custer State Park?", opts: ["Grizzly bear", "Jaguar", "Mountain lion", "Black bear"], ans: 2, fact: "Mountain lions! They're very rarely seen but do live in the park. Coyotes are more commonly spotted on the Wildlife Loop." },
+  { q: "Custer State Park covers approximately how many acres?", opts: ["10,000 acres", "35,000 acres", "71,000 acres", "150,000 acres"], ans: 2, fact: "71,000 acres — one of the largest state parks in the United States, bigger than many national parks!" },
+];
+
+buildHunt(custerHuntItems, 'custer-hunt', 'custer-hunt-score', 'custer-hunt-pts', 'custer');
+buildTrivia(custerTriviaData, 'custer-trivia', 'cst');
+
+// Update coverSections to count Rushmore + Denver together
+
 const denverHuntItems = [
   { text: "Find a mural in RiNo and name the street it's on", pts: 7 },
   { text: "Spot a mural that includes an animal — what animal is it?", pts: 7 },
