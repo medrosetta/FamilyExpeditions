@@ -913,7 +913,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.7</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.8</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -3293,13 +3293,35 @@ const devilstowerCryptics = [
 
 const devilstowerTOF = [
   { stmt: "Devil's Tower was the first national monument in the United States.", ans: true, fact: "True! Declared by President Theodore Roosevelt on September 24, 1906." },
-  { stmt: "The Tower is a dormant volcano that could erupt again.", ans: false, fact: "False! The Tower is not a volcano. It's a magma intrusion that cooled underground and was exposed by millions of years of erosion." },
-  { stmt: "Over 20 Native American tribes have cultural connections to Devil's Tower.", ans: true, fact: "True! Tribes including the Lakota, Cheyenne, Kiowa, and Crow all have sacred legends and ties to the Tower." },
-  { stmt: "The Tower's hexagonal columns were formed as lava cooled on the surface.", ans: false, fact: "False! The rock cooled slowly underground. The hexagonal (columnar) jointing formed as the rock contracted during cooling — similar to how mud cracks as it dries." },
-  { stmt: "Rock climbing on Devil's Tower is permanently banned in June.", ans: false, fact: "False! The June climbing closure is voluntary, not mandatory. The NPS asks climbers to respect Native American ceremonies — and most do comply." },
-  { stmt: "The first recorded climbers used a handmade wooden stake ladder to summit the Tower in 1893.", ans: true, fact: "True! Ranchers William Rogers and Willard Ripley drove wooden stakes into a crack and climbed it. Remnants of that wooden ladder are still visible on the Tower today." },
-  { stmt: "Devil's Tower appears in a famous Steven Spielberg science fiction film.", ans: true, fact: "True! Close Encounters of the Third Kind (1977) — the aliens chose it as their rendezvous point." },
-  { stmt: "The Tower's base diameter is approximately 1,000 feet.", ans: true, fact: "True! The base is about 1,000 feet across — nearly the length of three football fields." }
+  { stmt: "The Tower's hexagonal columns were formed as lava cooled on the surface.", ans: false, fact: "False! The rock cooled slowly underground. The hexagonal jointing formed as it contracted during cooling — similar to how mud cracks as it dries." },
+  { stmt: "Rock climbing on Devil's Tower is permanently banned in June.", ans: false, fact: "False! The June closure is voluntary, not mandatory — the NPS asks climbers to respect Native American ceremonies, and most do comply." },
+  { stmt: "The first recorded climbers used a handmade wooden stake ladder to summit in 1893.", ans: true, fact: "True! Ranchers Rogers and Ripley drove wooden stakes into a crack. Remnants of that ladder are still visible on the Tower." },
+  { stmt: "Spearfish Canyon is known for being warmer than the surrounding Black Hills.", ans: false, fact: "False! Spearfish Canyon is actually cooler — the limestone walls and dense tree cover create a shaded microclimate significantly cooler than Rapid City." },
+  { stmt: "Wild Bill Hickok was shot and killed in Deadwood, South Dakota.", ans: true, fact: "True! He was shot from behind at a poker table in Deadwood on August 2, 1876. He was holding two aces and two eights — now called the Dead Man's Hand." },
+  { stmt: "Roughlock Falls in Spearfish Canyon requires a difficult 5-mile hike to reach.", ans: false, fact: "False! Roughlock Falls is only about 0.5 miles round trip on an easy boardwalk trail — very accessible for all ages." },
+  { stmt: "Deadwood is a National Historic Landmark.", ans: true, fact: "True! The entire town is a National Historic Landmark. It was one of the wildest gold rush boomtowns in the American West." },
+];
+
+const dtDayTripHunt = [
+  { text: "Spot Devil's Tower from the car before arriving at the monument", pts: 8 },
+  { text: "Walk to the base of the Tower and touch the rock columns", pts: 8 },
+  { text: "Find a chipmunk or prairie dog near the Tower base trail", pts: 8 },
+  { text: "At Spearfish Canyon: spot Spearfish Creek running alongside the road", pts: 8 },
+  { text: "Find Bridal Veil Falls — photograph it from the viewing area", pts: 8 },
+  { text: "Find Roughlock Falls and walk the boardwalk to the best viewpoint", pts: 8 },
+  { text: "Spot a bald eagle, osprey, or large bird of prey in the canyon", pts: 8 },
+  { text: "In Deadwood: find the building where Wild Bill Hickok was shot", pts: 8 },
+  { text: "On Historic Main Street Deadwood: read a historical marker aloud to the group", pts: 8 },
+  { text: "Count how many states you crossed through today (hint: it's two!)", pts: 8 },
+];
+
+const deadwoodTriviaData = [
+  { q: "Wild Bill Hickok was killed in Deadwood while playing poker. What cards was he holding — now called the 'Dead Man's Hand'?", opts: ["Two kings and two queens", "Two aces and two eights", "Four aces", "Two jacks and two tens"], ans: 1, fact: "Two aces and two eights! He was shot from behind by Jack McCall on August 2, 1876. The fifth card is historically disputed." },
+  { q: "Deadwood boomed in the 1870s because of what discovery?", opts: ["Silver", "Oil", "Gold", "Copper"], ans: 2, fact: "Gold! The discovery of gold in the Black Hills in 1874 triggered a rush that built Deadwood almost overnight — despite the land belonging to the Lakota Sioux by treaty." },
+  { q: "Spearfish Canyon is carved through what type of rock?", opts: ["Granite", "Sandstone", "Limestone", "Basalt"], ans: 2, fact: "Limestone! The canyon walls rise up to 1,000 feet above Spearfish Creek. The canyon stretches about 20 miles through the northern Black Hills." },
+  { q: "Which legendary frontierswoman is buried alongside Wild Bill Hickok in Deadwood?", opts: ["Annie Oakley", "Belle Starr", "Calamity Jane", "Pearl Hart"], ans: 2, fact: "Calamity Jane — real name Martha Jane Cannary. She reportedly requested to be buried next to Wild Bill, and she was, in 1903." },
+  { q: "How tall does Roughlock Falls drop in Spearfish Canyon?", opts: ["About 15 feet", "About 50 feet", "About 100 feet", "About 200 feet"], ans: 0, fact: "About 15 feet — but the wide, layered cascade over limestone shelves makes it the most photographed waterfall in the Black Hills. Beauty isn't always about height!" },
+  { q: "Deadwood is one of only a few places in South Dakota where what activity is legal?", opts: ["Bear hunting", "Casino gambling", "Open carry firearms", "Off-road driving on main street"], ans: 1, fact: "Casino gambling! Deadwood legalized gaming in 1989 to help fund historic preservation. Over 80 gaming establishments now operate in the historic district." },
 ];
 
 // Build Devil's Tower section dynamically
@@ -3316,14 +3338,14 @@ const devilstowerTOF = [
     </div>
     <div id="puzzle-nav-devilstower" class="puzzle-picker">
       <div class="puzzle-picker-label">Jump to puzzle:</div>
-      <button class="pp-btn" onclick="jumpTo('pz-d1')">🔍 Hunt</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d1')">🔍 Tower Hunt</button>
       <button class="pp-btn" onclick="jumpTo('pz-d2')">❓ Trivia</button>
-      <button class="pp-btn" onclick="jumpTo('pz-d3')">🔤 Words</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d3')">🗺️ Day Trip Hunt</button>
       <button class="pp-btn" onclick="jumpTo('pz-d4')">🔐 Cipher</button>
       <button class="pp-btn" onclick="jumpTo('pz-d5')">✓/✗ True/False</button>
       <button class="pp-btn" onclick="jumpTo('pz-d6')">📖 Legend</button>
       <button class="pp-btn" onclick="jumpTo('pz-d8')">🔢 Sudoku</button>
-      <button class="pp-btn" onclick="jumpTo('pz-d9')">🧠 Logic</button>
+      <button class="pp-btn" onclick="jumpTo('pz-d9')">🤠 Deadwood</button>
       <button class="pp-btn" onclick="jumpTo('pz-d10')">🎲 Compact Sudoku</button>
     </div>
 
@@ -3344,12 +3366,14 @@ const devilstowerTOF = [
       <div id="dt-trivia"></div>
     </div>
 
-    <div class="puzzle-card" id="pz-d3" data-num="Puzzle D-3 · Word Search">
-      <h3>Tower Finder: Word Search</h3>
-      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
-      <p>Find 12 Devil's Tower words hidden in the grid.</p>
-      <div class="word-search-wrap" id="dt-ws-wrap"></div>
-      <div class="word-list" id="dt-ws-words"></div>
+    <div class="puzzle-card" id="pz-d3" data-num="Puzzle D-3 · Day Trip Scavenger Hunt">
+      <h3>Black Hills Day Trip Hunt</h3>
+      <div class="difficulty">⭐⭐ Ranger Level · 80 pts possible</div>
+      <p>Today covers Devil's Tower, Spearfish Canyon, and Deadwood. Tap each item as you find it!</p>
+      <div class="hunt-grid" id="dt-daytrip-hunt"></div>
+      <div style="margin-top:12px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+        Found: <span id="dt-daytrip-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="dt-daytrip-pts">0</span>
+      </div>
     </div>
 
     <div class="puzzle-card" id="pz-d4" data-num="Puzzle D-4 · Cipher Decoder">
@@ -3360,9 +3384,9 @@ const devilstowerTOF = [
     </div>
 
     <div class="puzzle-card" id="pz-d5" data-num="Puzzle D-5 · True or False Blitz">
-      <h3>Sacred or Myth? Devil's Tower True/False</h3>
+      <h3>Black Hills Day: True or False?</h3>
       <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
-      <p>Eight rapid-fire statements about America's first national monument. True or False?</p>
+      <p>Eight rapid-fire statements about Devil's Tower, Spearfish Canyon, and Deadwood.</p>
       <div id="dt-tof"></div>
     </div>
 
@@ -3386,11 +3410,11 @@ const devilstowerTOF = [
       <div id="sudoku-msg-d" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:10px; display:none;"></div>
     </div>
 
-    <div class="puzzle-card" id="pz-d9" data-num="Puzzle D-9 · Logic Puzzle">
-      <h3>The Climbers' Register: A Logic Puzzle</h3>
-      <div class="difficulty">⭐⭐⭐ Explorer Level · Brain Teaser</div>
-      <p>Five historical climbers of Devil's Tower each used a different route, reached the summit in a different year, and came from a different state. Use the clues!<br><small style="color:var(--stone); font-style:italic;">Mark ✓ for yes, ✗ for no.</small></p>
-      <div id="devilstower-logic"></div>
+    <div class="puzzle-card" id="pz-d9" data-num="Puzzle D-9 · Deadwood & Spearfish">
+      <h3>Wild West & Waterfall Quiz</h3>
+      <div class="difficulty">⭐⭐ Ranger Level · 60 pts possible</div>
+      <p>Six questions about Deadwood's Wild West history and Spearfish Canyon.</p>
+      <div id="deadwood-trivia"></div>
     </div>
 
     <div class="puzzle-card" id="pz-d10" data-num="Puzzle D-10 · Sudoku 6×6 · Easy">
@@ -3411,9 +3435,10 @@ const devilstowerTOF = [
 
   buildHunt(devilstowerHuntItems, 'dt-hunt', 'dt-hunt-score', 'dt-hunt-pts', 'dt');
   buildTrivia(devilstowerTriviaData, 'dt-trivia', 'dtt');
-  setTimeout(() => buildWordSearch(devilstowerWSWords, 'dt-ws-wrap', 'dt-ws-words'), 300);
+  buildHunt(dtDayTripHunt, 'dt-daytrip-hunt', 'dt-daytrip-score', 'dt-daytrip-pts', 'dt-day');
   buildTOF2(devilstowerTOF, 'dt-tof');
   buildLegend('dt-legend');
+  buildTrivia(deadwoodTriviaData, 'deadwood-trivia', 'dwt');
   setTimeout(() => { buildSudokuBoard('d'); buildSudoku6('d6'); }, 100);
   // Build DT logic puzzle here — after section is in the DOM
   buildLogicPuzzle('devilstower-logic',
@@ -3579,7 +3604,7 @@ function answerTOF2(cid, i, choice) {
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.7';
+const APP_VERSION = '1.8';
 
 async function checkForUpdate() {
   try {
