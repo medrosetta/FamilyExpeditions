@@ -962,7 +962,7 @@
 
 <!-- SCORE BAR -->
 <div class="score-bar">
-  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">1.9</span></div>
+  <div>FAMILY EXPEDITIONS <span id="versionDisplay" style="font-size:10px; opacity:0.7; letter-spacing:1px;">2.1</span></div>
   <div>Score: <span id="totalScore">0</span> pts</div>
 </div>
 
@@ -1027,6 +1027,10 @@
     <button onclick="showSection('devilstower')">🪨 Devil's Tower</button>
     <button onclick="showSection('denver')">🎨 Denver</button>
   </div>
+  <div style="font-family:'Special Elite',cursive; font-size:9px; letter-spacing:2px; color:var(--stone); text-transform:uppercase; margin:6px 0 2px;">July 2026</div>
+  <div class="cover-nav">
+    <button onclick="showSection('kauai')" style="background:rgba(0,100,80,0.08); border-color:#2d7a5a; color:#2d7a5a;">🌺 Kauai</button>
+  </div>
 
   <div class="cover-divider"></div>
 
@@ -1088,7 +1092,7 @@
   <!-- WORD SEARCH - RUSHMORE -->
   <div class="puzzle-card" id="pz-r3" data-num="Puzzle R-3 · Word Search">
     <h3>Black Hills Word Search</h3>
-      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
+      <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
     <p>Find all 12 hidden words. They run across, down, and diagonally.</p>
     <div class="word-search-wrap" id="rushmore-ws-wrap"></div>
     <div class="word-list" id="rushmore-ws-words"></div>
@@ -1136,17 +1140,17 @@
     <div id="rushmore-logic2"></div>
   </div>
 
-  <div class="puzzle-card" id="pz-r9" data-num="Puzzle R-9 · Sudoku 6×6 · Easy">
-    <h3>Compact Sudoku</h3>
-    <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
-    <p>Fill every row, column, and 2×3 box with 1–6.</p>
-    <div class="sudoku-wrap" id="sudoku-wrap-r6"></div>
-    <div class="numpad" id="numpad-r6"></div>
+  <div class="puzzle-card" id="pz-r9" data-num="Puzzle R-9 · Sudoku">
+    <h3>Classic Sudoku</h3>
+    <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
+    <p>Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-r2"></div>
+    <div class="numpad" id="numpad-r2"></div>
     <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button onclick="checkSudoku6('r6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
-      <button onclick="clearSudoku6('r6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+      <button onclick="checkSudokuBoard('r2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudokuBoard('r2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
     </div>
-    <div id="sudoku6-msg-r6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+    <div id="sudoku-msg-r2" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
   <div class="puzzle-card" id="pz-r10" data-num="Puzzle R-10 · Wildlife Loop Scavenger Hunt">
@@ -1217,7 +1221,7 @@
   <!-- WORD SEARCH - YELLOWSTONE -->
   <div class="puzzle-card" id="pz-y3" data-num="Puzzle Y-3 · Word Search">
     <h3>Wonderland Word Search</h3>
-      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
+      <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
     <p>Find 14 Yellowstone words hidden in all directions.</p>
     <div class="word-search-wrap" id="yellowstone-ws-wrap"></div>
     <div class="word-list" id="yellowstone-ws-words"></div>
@@ -1288,17 +1292,17 @@
     <div id="yellowstone-logic2"></div>
   </div>
 
-  <div class="puzzle-card" id="pz-y11" data-num="Puzzle Y-11 · Sudoku 6×6 · Easy">
-    <h3>Compact Sudoku</h3>
-    <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
-    <p>Fill every row, column, and 2×3 box with 1–6.</p>
-    <div class="sudoku-wrap" id="sudoku-wrap-y6"></div>
-    <div class="numpad" id="numpad-y6"></div>
+  <div class="puzzle-card" id="pz-y11" data-num="Puzzle Y-11 · Sudoku">
+    <h3>Classic Sudoku</h3>
+    <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
+    <p>Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-y3"></div>
+    <div class="numpad" id="numpad-y3"></div>
     <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button onclick="checkSudoku6('y6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
-      <button onclick="clearSudoku6('y6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+      <button onclick="checkSudokuBoard('y3')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudokuBoard('y3')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
     </div>
-    <div id="sudoku6-msg-y6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+    <div id="sudoku-msg-y3" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
 </div><!-- end yellowstone -->
@@ -1347,7 +1351,7 @@
 
   <div class="puzzle-card" id="pz-b3" data-num="Puzzle B-3 · Word Search">
     <h3>Badlands Word Search</h3>
-      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
+      <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
     <p>Find 12 Badlands words hidden in the grid.</p>
     <div class="word-search-wrap" id="badlands-ws-wrap"></div>
     <div class="word-list" id="badlands-ws-words"></div>
@@ -1400,17 +1404,17 @@
     <div id="badlands-logic2"></div>
   </div>
 
-  <div class="puzzle-card" id="pz-b10" data-num="Puzzle B-10 · Sudoku 6×6 · Easy">
-    <h3>Compact Sudoku</h3>
-    <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
-    <p>Fill every row, column, and 2×3 box with 1–6.</p>
-    <div class="sudoku-wrap" id="sudoku-wrap-b6"></div>
-    <div class="numpad" id="numpad-b6"></div>
+  <div class="puzzle-card" id="pz-b10" data-num="Puzzle B-10 · Sudoku">
+    <h3>Classic Sudoku</h3>
+    <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
+    <p>Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-b2"></div>
+    <div class="numpad" id="numpad-b2"></div>
     <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button onclick="checkSudoku6('b6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
-      <button onclick="clearSudoku6('b6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+      <button onclick="checkSudokuBoard('b2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudokuBoard('b2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
     </div>
-    <div id="sudoku6-msg-b6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+    <div id="sudoku-msg-b2" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
 </div><!-- end badlands -->
@@ -1479,20 +1483,99 @@
     <div id="denver-fillblank"></div>
   </div>
 
-  <div class="puzzle-card" id="pz-dv7" data-num="Puzzle DV-7 · Compact Sudoku">
-    <h3>Convergence Grid: Compact Sudoku</h3>
-    <div class="difficulty">⭐⭐ Ranger Level · Compact Grid</div>
-    <p>Fill every row, column, and 2×3 box with 1–6.</p>
-    <div class="sudoku-wrap" id="sudoku-wrap-dv6"></div>
-    <div class="numpad" id="numpad-dv6"></div>
+  <div class="puzzle-card" id="pz-dv7" data-num="Puzzle DV-7 · Sudoku">
+    <h3>Convergence Grid: Sudoku</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Classic Sudoku</div>
+    <p>Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-dv"></div>
+    <div class="numpad" id="numpad-dv"></div>
     <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button onclick="checkSudoku6('dv6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
-      <button onclick="clearSudoku6('dv6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+      <button onclick="checkSudokuBoard('dv')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudokuBoard('dv')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
     </div>
-    <div id="sudoku6-msg-dv6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+    <div id="sudoku-msg-dv" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
   </div>
 
 </div><!-- end denver -->
+
+<!-- KAUAI SECTION -->
+<div class="section" id="kauai">
+  <div class="section-header" style="background:linear-gradient(135deg, #1a5c3a 0%, #2d7a5a 100%);">
+    <span class="section-tag">Kauaʻi, Hawaiʻi — July 11–18, 2026</span>
+    <h2 style="color:#fff;">The Garden Isle<br><span style="color:#a8e6cf;">Kauaʻi</span></h2>
+    <p style="color:rgba(255,255,255,0.85);">Na Pali cliffs, Waimea Canyon, saimin, coffee farms, and the most beautiful island in the Pacific.</p>
+  </div>
+
+  <div id="puzzle-nav-kauai" class="puzzle-picker">
+    <div class="puzzle-picker-label">Jump to puzzle:</div>
+    <button class="pp-btn" onclick="jumpTo('pz-k1')">🔍 Island Hunt</button>
+    <button class="pp-btn" onclick="jumpTo('pz-k2')">🏔️ Waimea Canyon</button>
+    <button class="pp-btn" onclick="jumpTo('pz-k3')">🍜 Food &amp; Culture</button>
+    <button class="pp-btn" onclick="jumpTo('pz-k4')">🔐 Cipher</button>
+    <button class="pp-btn" onclick="jumpTo('pz-k5')">✓/✗ True/False</button>
+    <button class="pp-btn" onclick="jumpTo('pz-k6')">🗣️ Hawaiian Words</button>
+    <button class="pp-btn" onclick="jumpTo('pz-k7')">🎲 Compact Sudoku</button>
+  </div>
+
+  <div class="puzzle-card" id="pz-k1" data-num="Puzzle K-1 · Island Scavenger Hunt">
+    <h3>Garden Isle Hunt</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 80 pts possible</div>
+    <p>Tap each item as you find it across the island. Some are easy, some need a sharp eye!</p>
+    <div class="hunt-grid" id="kauai-hunt"></div>
+    <div style="margin-top:12px; font-family:'Special Elite',cursive; font-size:13px; color:var(--leather);">
+      Found: <span id="kauai-hunt-score">0</span> / 10 &nbsp;|&nbsp; Points: <span id="kauai-hunt-pts">0</span>
+    </div>
+  </div>
+
+  <div class="puzzle-card" id="pz-k2" data-num="Puzzle K-2 · Waimea Canyon Trivia">
+    <h3>Grand Canyon of the Pacific</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 60 pts possible</div>
+    <p>Six questions about Waimea Canyon, Kōkeʻe State Park, and the Kalalau Lookout.</p>
+    <div id="kauai-waimea-trivia"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-k3" data-num="Puzzle K-3 · Food & Culture Quiz">
+    <h3>Ono Grindz: Kauaʻi Food & Culture</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · 60 pts possible</div>
+    <p>Six questions about Kauaʻi food, history, and the places you're visiting — from Hamura Saimin to the coffee estate.</p>
+    <div id="kauai-food-trivia"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-k4" data-num="Puzzle K-4 · Cipher Decoder">
+    <h3>Island Code: Kauaʻi Cipher</h3>
+    <div class="difficulty">⭐⭐⭐ Explorer Level · 45 pts possible</div>
+    <p>Decode three secret Kauaʻi words using the symbol key.</p>
+    <div id="kauai-cipher"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-k5" data-num="Puzzle K-5 · True or False">
+    <h3>Kauaʻi: True or False?</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
+    <p>Eight statements about Kauaʻi's geography, wildlife, and culture. True or False?</p>
+    <div id="kauai-tof"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-k6" data-num="Puzzle K-6 · Hawaiian Vocabulary">
+    <h3>ʻŌlelo Hawaiʻi: Hawaiian Words</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · All ages</div>
+    <p>Learn the Hawaiian words you'll see and hear all week. Tap any card to reveal the meaning!</p>
+    <div id="kauai-vocab"></div>
+  </div>
+
+  <div class="puzzle-card" id="pz-k7" data-num="Puzzle K-7 · Sudoku">
+    <h3>Nā Pali Grid: Sudoku</h3>
+    <div class="difficulty">⭐⭐ Ranger Level · Classic Sudoku</div>
+    <p>Fill every row, column, and 3×3 box with 1–9.</p>
+    <div class="sudoku-wrap" id="sudoku-wrap-k"></div>
+    <div class="numpad" id="numpad-k"></div>
+    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button onclick="checkSudokuBoard('k')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+      <button onclick="clearSudokuBoard('k')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+    </div>
+    <div id="sudoku-msg-k" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+  </div>
+
+</div><!-- end kauai -->
 
 <!-- JOURNAL SECTION -->
 <div class="section" id="journal">
@@ -3466,17 +3549,17 @@ const deadwoodTriviaData = [
       <div id="deadwood-trivia"></div>
     </div>
 
-    <div class="puzzle-card" id="pz-d10" data-num="Puzzle D-10 · Sudoku 6×6 · Easy">
-      <h3>Compact Sudoku</h3>
-      <div class="difficulty">⭐ Ranger Level · Compact Grid</div>
-      <p>Fill every row, column, and 2×3 box with 1–6.</p>
-      <div class="sudoku-wrap" id="sudoku-wrap-d6"></div>
-      <div class="numpad" id="numpad-d6"></div>
+    <div class="puzzle-card" id="pz-d10" data-num="Puzzle D-10 · Sudoku">
+      <h3>Classic Sudoku</h3>
+      <div class="difficulty">⭐ Ranger Level · Classic Sudoku</div>
+      <p>Fill every row, column, and 3×3 box with 1–9.</p>
+      <div class="sudoku-wrap" id="sudoku-wrap-d2"></div>
+      <div class="numpad" id="numpad-d2"></div>
       <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-        <button onclick="checkSudoku6('d6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
-        <button onclick="clearSudoku6('d6')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
+        <button onclick="checkSudokuBoard('d2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--forest); background:transparent; color:var(--forest); cursor:pointer;">Check</button>
+        <button onclick="clearSudokuBoard('d2')" style="font-family:'Special Elite',cursive; font-size:12px; padding:8px 16px; border:1px solid var(--stone); background:transparent; color:var(--stone); cursor:pointer;">Clear</button>
       </div>
-      <div id="sudoku6-msg-d6" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
+      <div id="sudoku-msg-d2" style="font-family:'Special Elite',cursive; font-size:13px; margin-top:8px; display:none;"></div>
     </div>
 
   `;
@@ -3488,7 +3571,7 @@ const deadwoodTriviaData = [
   buildTOF2(devilstowerTOF, 'dt-tof');
   buildLegend('dt-legend');
   buildTrivia(deadwoodTriviaData, 'deadwood-trivia', 'dwt');
-  setTimeout(() => { buildSudokuBoard('d'); buildSudoku6('d6'); }, 100);
+  setTimeout(() => { buildSudokuBoard('d'); }, 100);
   // Build DT logic puzzle here — after section is in the DOM
   buildLogicPuzzle('devilstower-logic',
     ['Rogers', 'Ripley', 'Fritz', 'Durrance', 'Wiessner'],
@@ -3653,7 +3736,7 @@ function answerTOF2(cid, i, choice) {
 }
 
 // ===================== VERSION & UPDATE CHECK =====================
-const APP_VERSION = '1.9';
+const APP_VERSION = '2.1';
 
 async function checkForUpdate() {
   try {
@@ -4004,10 +4087,10 @@ const TIERS = [
   { name: 'River Otter',         animal: '🦦',  min: 500,  tag: 'Playful, loves rivers' },
   { name: 'Pronghorn',           animal: '🦌',  min: 750,  tag: 'Fastest animal in North America' },
   { name: 'Bison',               animal: '🦬',  min: 1050, tag: 'Iconic, resilient, rules the plains' },
-  { name: 'Grey Wolf',           animal: '🐺',  min: 1400, tag: 'Pack hunter, intelligent' },
-  { name: 'Grizzly Bear',        animal: '🐻',  min: 1800, tag: 'Powerful, respected' },
-  { name: 'Bald Eagle',          animal: '🦅',  min: 2250, tag: 'Soars above everything' },
-  { name: 'Mountain Goat',       animal: '🐐',  min: 2750, tag: 'Reaches the highest peaks' },
+  { name: 'Sea Turtle',          animal: '🐢',  min: 1400, tag: 'Ancient navigator — returns to the same beach for life' },
+  { name: 'Monk Seal',           animal: '🦭',  min: 1800, tag: 'Hawaii\'s most endangered native mammal' },
+  { name: 'Humpback Whale',      animal: '🐋',  min: 2250, tag: 'Sings the longest songs in the animal kingdom' },
+  { name: 'Nēnē Goose',         animal: '🪿',  min: 2750, tag: 'Hawaii\'s state bird — found nowhere else on Earth' },
 ];
 const DAY_BASE = 25;
 const STREAK_MULT = [1, 1.2, 1.5, 2.0, 2.5, 3.0];
@@ -4307,7 +4390,160 @@ function clearSudoku6(id) {
   buildSudoku6(id);
 }
 
-buildSudoku6('r6'); buildSudoku6('y6'); buildSudoku6('b6');
+// Additional 9x9 sudoku boards for all sections
+const extraSudokuBoards = {
+  r2: {
+    puzzle: [
+      [0,0,0, 2,6,0, 7,0,1],
+      [6,8,0, 0,7,0, 0,9,0],
+      [1,9,0, 0,0,4, 5,0,0],
+      [8,2,0, 1,0,0, 0,4,0],
+      [0,0,4, 6,0,2, 9,0,0],
+      [0,5,0, 0,0,3, 0,2,8],
+      [0,0,9, 3,0,0, 0,7,4],
+      [0,4,0, 0,5,0, 0,3,6],
+      [7,0,3, 0,1,8, 0,0,0]
+    ],
+    solution: [
+      [4,3,5, 2,6,9, 7,8,1],
+      [6,8,2, 5,7,1, 4,9,3],
+      [1,9,7, 8,3,4, 5,6,2],
+      [8,2,6, 1,9,5, 3,4,7],
+      [3,7,4, 6,8,2, 9,1,5],
+      [9,5,1, 7,4,3, 6,2,8],
+      [5,1,9, 3,2,6, 8,7,4],
+      [2,4,8, 9,5,7, 1,3,6],
+      [7,6,3, 4,1,8, 2,5,9]
+    ]
+  },
+  y3: {
+    puzzle: [
+      [0,2,0, 0,0,0, 0,0,0],
+      [0,0,0, 6,0,0, 0,0,3],
+      [0,7,4, 0,8,0, 0,0,0],
+      [0,0,0, 0,0,3, 0,0,2],
+      [0,8,0, 0,4,0, 0,1,0],
+      [6,0,0, 5,0,0, 0,0,0],
+      [0,0,0, 0,1,0, 7,8,0],
+      [5,0,0, 0,0,9, 0,0,0],
+      [0,0,0, 0,0,0, 0,4,0]
+    ],
+    solution: [
+      [1,2,6, 4,3,7, 9,5,8],
+      [8,9,5, 6,2,1, 4,7,3],
+      [3,7,4, 9,8,5, 1,2,6],
+      [4,5,7, 1,9,3, 8,6,2],
+      [9,8,3, 2,4,6, 5,1,7],
+      [6,1,2, 5,7,8, 3,9,4],
+      [2,6,9, 3,1,4, 7,8,5],
+      [5,4,8, 7,6,9, 2,3,1],
+      [7,3,1, 8,5,2, 6,4,9]
+    ]
+  },
+  b2: {
+    puzzle: [
+      [0,0,0, 0,0,0, 0,0,0],
+      [0,0,0, 0,0,3, 0,8,5],
+      [0,0,1, 0,2,0, 0,0,0],
+      [0,0,0, 5,0,7, 0,0,0],
+      [0,0,4, 0,0,0, 1,0,0],
+      [0,9,0, 0,0,0, 0,0,0],
+      [5,0,0, 0,0,0, 0,7,3],
+      [0,0,2, 0,1,0, 0,0,0],
+      [0,0,0, 0,4,0, 0,0,9]
+    ],
+    solution: [
+      [9,8,7, 6,5,4, 3,2,1],
+      [2,4,6, 1,7,3, 9,8,5],
+      [3,5,1, 9,2,8, 7,4,6],
+      [1,2,8, 5,3,7, 6,9,4],
+      [6,3,4, 8,9,2, 1,5,7],
+      [7,9,5, 4,6,1, 8,3,2],
+      [5,1,9, 2,8,6, 4,7,3],
+      [4,7,2, 3,1,9, 5,6,8],
+      [8,6,3, 7,4,5, 2,1,9]
+    ]
+  },
+  dv: {
+    puzzle: [
+      [5,3,0, 0,7,0, 0,0,0],
+      [6,0,0, 1,9,5, 0,0,0],
+      [0,9,8, 0,0,0, 0,6,0],
+      [8,0,0, 0,6,0, 0,0,3],
+      [4,0,0, 8,0,3, 0,0,1],
+      [7,0,0, 0,2,0, 0,0,6],
+      [0,6,0, 0,0,0, 2,8,0],
+      [0,0,0, 4,1,9, 0,0,5],
+      [0,0,0, 0,8,0, 0,7,9]
+    ],
+    solution: [
+      [5,3,4, 6,7,8, 9,1,2],
+      [6,7,2, 1,9,5, 3,4,8],
+      [1,9,8, 3,4,2, 5,6,7],
+      [8,5,9, 7,6,1, 4,2,3],
+      [4,2,6, 8,5,3, 7,9,1],
+      [7,1,3, 9,2,4, 8,5,6],
+      [9,6,1, 5,3,7, 2,8,4],
+      [2,8,7, 4,1,9, 6,3,5],
+      [3,4,5, 2,8,6, 1,7,9]
+    ]
+  },
+  d2: {
+    puzzle: [
+      [0,0,0, 6,0,0, 4,0,0],
+      [7,0,0, 0,0,3, 6,0,0],
+      [0,0,0, 0,9,1, 0,8,0],
+      [0,0,0, 0,0,0, 0,0,0],
+      [0,5,0, 1,8,0, 0,0,3],
+      [0,0,0, 3,0,6, 0,4,5],
+      [0,4,0, 2,0,0, 0,6,0],
+      [9,0,3, 0,0,0, 0,0,0],
+      [0,2,0, 0,0,0, 1,0,0]
+    ],
+    solution: [
+      [1,9,8, 6,2,5, 4,3,7],
+      [7,2,5, 4,1,3, 6,9,8],
+      [4,3,6, 7,9,1, 5,8,2],
+      [2,8,7, 9,4,6, 3,1,5],
+      [6,5,4, 1,8,7, 9,2,3],
+      [3,1,9, 3,5,6, 7,4,5],
+      [5,4,1, 2,7,9, 8,6,3],
+      [9,6,3, 5,4,8, 2,7,1],
+      [8,2,7, 6,3,4, 1,5,9]
+    ]
+  },
+  k: {
+    puzzle: [
+      [0,0,0, 0,0,0, 0,0,0],
+      [0,0,0, 0,0,3, 0,8,5],
+      [0,0,1, 0,2,0, 0,0,0],
+      [0,0,0, 5,0,7, 0,0,0],
+      [0,0,4, 0,0,0, 1,0,0],
+      [0,9,0, 0,0,0, 0,0,0],
+      [5,0,0, 0,0,0, 0,7,3],
+      [0,0,2, 0,1,0, 0,0,0],
+      [0,0,0, 0,4,0, 0,0,9]
+    ],
+    solution: [
+      [9,8,7, 6,5,4, 3,2,1],
+      [2,4,6, 1,7,3, 9,8,5],
+      [3,5,1, 9,2,8, 7,4,6],
+      [1,2,8, 5,3,7, 6,9,4],
+      [6,3,4, 8,9,2, 1,5,7],
+      [7,9,5, 4,6,1, 8,3,2],
+      [5,1,9, 2,8,6, 4,7,3],
+      [4,7,2, 3,1,9, 5,6,8],
+      [8,6,3, 7,4,5, 2,1,9]
+    ]
+  }
+};
+
+// Register all extra boards and build them
+Object.entries(extraSudokuBoards).forEach(([id, board]) => {
+  sudokuBoards[id] = board;
+  buildSudokuBoard(id);
+});
+
 
 
 
@@ -4710,6 +4946,148 @@ function buildVocabQuiz() {
 
 // Feature sections are initialized inside showSection below
 
+// ===================== KAUAI PUZZLES =====================
+const kauaiHuntItems = [
+  { text: "Spot a nēnē goose — Hawaii's state bird", pts: 8 },
+  { text: "Find a rooster in the wild (they're everywhere on Kauaʻi!)", pts: 8 },
+  { text: "See a Hawaiian green sea turtle (honu) on a beach or in the water", pts: 8 },
+  { text: "Stand at the rim of Waimea Canyon and describe the colors you see", pts: 8 },
+  { text: "Find a plumeria or hibiscus flower and smell it", pts: 8 },
+  { text: "Eat something with lilikoi (passion fruit) in it", pts: 8 },
+  { text: "Spot a rainbow — Kauaʻi gets more than almost anywhere on Earth", pts: 8 },
+  { text: "See the Na Pali Coast cliffs from the water or a lookout", pts: 8 },
+  { text: "Find a shave ice stand and try a flavor you've never had", pts: 8 },
+  { text: "Watch the sunset from the west side of the island", pts: 8 },
+];
+
+const kauaiWaimeaTriviaData = [
+  { q: "Waimea Canyon is nicknamed what?", opts: ["The Grand Canyon of the Islands", "The Grand Canyon of the Pacific", "The Red Canyon of Hawaii", "The Rainbow Canyon"], ans: 1, fact: "The Grand Canyon of the Pacific! Mark Twain is often credited with the name. The canyon is about 14 miles long and over 3,600 feet deep — carved from volcanic rock over 5 million years." },
+  { q: "What does 'Waimea' mean in Hawaiian?", opts: ["Deep valley", "Reddish water", "High cliffs", "Sacred mountain"], ans: 1, fact: "Reddish water — a reference to the red soil that erodes from the canyon walls into the Waimea River. The red color comes from iron-rich basalt exposed over millions of years." },
+  { q: "How was Waimea Canyon formed — differently from the Grand Canyon?", opts: ["Only by a river over time", "By a glacier", "By volcanic collapse AND river erosion", "By an asteroid impact"], ans: 2, fact: "Two forces: the catastrophic collapse of Kauaʻi's volcano roughly 4 million years ago created a depression, and the Waimea River has been eroding it ever since — fed by the world's wettest mountain, Mt. Waiʻaleʻale." },
+  { q: "The Kalalau Lookout gives views of which dramatic Kauaʻi landmark?", opts: ["Waimea town below", "The Na Pali Coast sea cliffs", "Niʻihau Island", "The Poipu coastline"], ans: 1, fact: "The Na Pali Coast! From Kalalau Lookout at about 4,000 feet elevation, you get a bird's-eye view of the dramatic green sea cliffs and the Kalalau Valley — one of the most spectacular viewpoints in Hawaii." },
+  { q: "What is the Kōkeʻe Natural History Museum known for?", opts: ["Surfing history exhibits", "Native bird exhibits and trail maps", "Ancient Hawaiian royal artifacts", "Whale migration tracking"], ans: 1, fact: "Native birds and natural history of the western mountains. It's also the best place to get current trail conditions and maps before hiking in Kōkeʻe State Park." },
+  { q: "Temperatures at the Waimea Canyon and Kōkeʻe lookouts are roughly how much cooler than at the coast?", opts: ["5°F cooler", "10°F cooler", "20°F cooler", "Same temperature"], ans: 2, fact: "About 20°F cooler! At 3,500–4,000 feet elevation, it can be 65°F when it's 85°F in Waimea town. Many visitors are caught off guard — always bring a jacket!" },
+];
+
+const kauaiFoodTriviaData = [
+  { q: "Hamura Saimin in Lihue was founded in what year?", opts: ["1932", "1952", "1968", "1975"], ans: 1, fact: "1952! Charles and Aiko Hamura opened in a converted Army barracks on Kress Street, Lihue. It's still run by their granddaughter Lori Tanigawa today — and the recipe hasn't changed." },
+  { q: "Hamura Saimin received what prestigious culinary honor in 2006?", opts: ["Michelin Star", "James Beard Foundation America's Classic Award", "Food & Wine Best New Restaurant", "Zagat #1 Hawaii Restaurant"], ans: 1, fact: "James Beard America's Classic — one of the highest honors in American food. The award recognizes restaurants with timeless appeal and local character. Don't miss the lilikoi chiffon pie!" },
+  { q: "Saimin is unique to Hawaii. What is it?", opts: ["A type of shave ice", "A noodle soup from the plantation era", "A Hawaiian poke dish", "A sweet rice cake"], ans: 1, fact: "A noodle soup born during the plantation era, when immigrant workers from Japan, China, Korea, and the Philippines combined their culinary traditions. The curly noodles are darker than ramen, the broth lighter." },
+  { q: "The Kauai Coffee Estate is the largest coffee farm in what area?", opts: ["Hawaii", "The Pacific", "The United States", "North America"], ans: 2, fact: "The largest coffee farm in the United States, covering about 3,100 acres on Kauaʻi's southwest side. In June 2026 the company secured a new 15-year lease — it's open and thriving for your visit!" },
+  { q: "The Lihue Sunshine Market is a local farmers market. What is special about it?", opts: ["It only sells coffee", "It's one of Kauai's longest-running community markets", "It only operates at night", "It's only for residents"], ans: 1, fact: "One of Kauaʻi's longest-running community farmers markets, held at Vidinha Stadium in Lihue. Locals sell fresh produce, flowers, and homemade goods. Cash is king and it moves fast!" },
+  { q: "Lilikoi is the Hawaiian name for which fruit?", opts: ["Mango", "Guava", "Passion fruit", "Papaya"], ans: 2, fact: "Passion fruit! Lilikoi grows abundantly in Hawaii and has a tart, intensely tropical flavor. You'll find it in pie (at Hamura's!), shave ice, jam, and salad dressings all over Kauaʻi." },
+];
+
+const kauaiTOFData = [
+  { stmt: "Kauaʻi is the oldest of the main Hawaiian Islands.", ans: true, fact: "True! At about 5 million years old, Kauaʻi is the oldest and most eroded of the main islands. Its age is why it has deep canyons and lush valleys instead of active volcanoes." },
+  { stmt: "Mount Waiʻaleʻale on Kauaʻi is one of the wettest spots on Earth.", ans: true, fact: "True! Mount Waiʻaleʻale receives an average of about 450 inches (37 feet) of rain per year — making it one of the wettest places on the planet. This rainfall feeds Waimea Canyon." },
+  { stmt: "The Na Pali Coast cliffs can be reached by car from the main highway.", ans: false, fact: "False! The Na Pali Coast has no road access — you can only reach it by boat, kayak, helicopter, or hiking the challenging Kalalau Trail. The sea views from Kōkeʻe lookouts are the closest by car." },
+  { stmt: "Hawaiian green sea turtles (honu) are endangered and protected by federal law.", ans: true, fact: "True! Green sea turtles are protected under the Endangered Species Act. You must stay at least 6 feet away and never touch or approach them. Many nest on Kauaʻi's beaches." },
+  { stmt: "Wild roosters and chickens are common on Kauaʻi because farmers released them intentionally.", ans: false, fact: "The popular story: Hurricane Iniki (1992) destroyed chicken coops and released thousands of birds. They bred with native jungle fowl and now roam freely everywhere. You will definitely hear them at 3 AM!" },
+  { stmt: "The Hawaiian Monk Seal is one of the most endangered marine mammals in the world.", ans: true, fact: "True! Only about 1,300 remain. The Hawaiian Monk Seal is endemic to Hawaii and is the state's most endangered marine mammal. If you spot one resting on a beach, stay well back — 150 feet minimum." },
+  { stmt: "Kauaʻi has an active volcano that occasionally erupts.", ans: false, fact: "False! Kauaʻi's volcano has been extinct for millions of years — it's far too old. Active volcanism in Hawaii is currently only on the Big Island (Kilauea and Mauna Loa)." },
+  { stmt: "Humpback whales visit Hawaiian waters mainly in winter months.", ans: true, fact: "True! Humpbacks migrate from Alaska to Hawaii between November and May to breed and give birth in the warm, shallow waters. Your July visit is outside peak season — though occasional sightings still happen." },
+];
+
+// Hawaiian vocabulary
+const kauaiVocabWords = [
+  { native: 'Aloha', english: 'Hello, goodbye, and love — the spirit of Hawaii itself', pronunciation: 'ah-LOH-hah', category: 'Everyday' },
+  { native: 'Mahalo', english: 'Thank you — you\'ll hear and say this constantly', pronunciation: 'mah-HAH-loh', category: 'Everyday' },
+  { native: 'ʻOhana', english: 'Family — extended family, community, the people who matter', pronunciation: 'oh-HAH-nah', category: 'Everyday' },
+  { native: 'Honu', english: 'Hawaiian green sea turtle — sacred and protected', pronunciation: 'HOH-noo', category: 'Wildlife' },
+  { native: 'Nēnē', english: 'Hawaiian state bird — a goose found only in Hawaii', pronunciation: 'NAY-nay', category: 'Wildlife' },
+  { native: 'Lilikoi', english: 'Passion fruit — tart and tropical, in pie, shave ice, and everything', pronunciation: 'lee-lee-KOH-ee', category: 'Food' },
+  { native: 'Saimin', english: 'Hawaii\'s iconic noodle soup — a plantation-era fusion dish', pronunciation: 'SIGH-min', category: 'Food' },
+  { native: 'Makai', english: 'Toward the ocean — used for directions instead of compass points', pronunciation: 'mah-KAI', category: 'Directions' },
+  { native: 'Mauka', english: 'Toward the mountain — the other key Kauaʻi direction', pronunciation: 'MAU-kah', category: 'Directions' },
+  { native: 'Pali', english: 'Cliff — as in Na Pali Coast, the famous sea cliffs of the north shore', pronunciation: 'PAH-lee', category: 'Places' },
+  { native: 'Wai', english: 'Fresh water — Waimea means "reddish water"', pronunciation: 'WHY', category: 'Places' },
+  { native: 'ʻOno', english: 'Delicious — "ono grindz" means delicious food', pronunciation: 'OH-noh', category: 'Food' },
+];
+
+function buildKauaiVocab() {
+  const container = document.getElementById('kauai-vocab');
+  if (!container || container.children.length > 0) return;
+  const categories = [...new Set(kauaiVocabWords.map(w => w.category))];
+  categories.forEach(cat => {
+    const hdr = document.createElement('div');
+    hdr.style.cssText = 'font-family:\'Special Elite\',cursive; font-size:10px; letter-spacing:2px; color:var(--gold); text-transform:uppercase; margin:16px 0 6px;';
+    hdr.textContent = cat;
+    container.appendChild(hdr);
+    kauaiVocabWords.filter(w => w.category === cat).forEach((word, i) => {
+      const card = document.createElement('div');
+      card.className = 'vocab-card';
+      card.style.borderLeft = '3px solid #2d7a5a';
+      const native = document.createElement('div');
+      native.className = 'vocab-native';
+      native.style.color = '#2d7a5a';
+      native.textContent = word.native;
+      const right = document.createElement('div');
+      right.style.flex = '1';
+      const lbl = document.createElement('div');
+      lbl.className = 'vocab-lang';
+      lbl.textContent = 'Hawaiian · tap to reveal';
+      const eng = document.createElement('div');
+      eng.className = 'vocab-english';
+      const sp = document.createElement('span');
+      sp.className = 'hidden';
+      sp.textContent = word.english;
+      const pron = document.createElement('div');
+      pron.style.cssText = 'font-size:11px; color:var(--stone); font-style:italic; margin-top:2px;';
+      const ps = document.createElement('span');
+      ps.className = 'hidden';
+      ps.textContent = '🔊 ' + word.pronunciation;
+      pron.appendChild(ps);
+      eng.appendChild(sp);
+      right.appendChild(lbl); right.appendChild(eng); right.appendChild(pron);
+      card.appendChild(native); card.appendChild(right);
+      card.onclick = () => {
+        const wasHidden = sp.classList.contains('hidden');
+        sp.classList.toggle('hidden'); sp.classList.toggle('revealed');
+        ps.classList.toggle('hidden'); ps.classList.toggle('revealed');
+        if (wasHidden) {
+          lbl.textContent = 'Hawaiian';
+          const key = 'kvocab_' + i + '_' + cat;
+          if (!window[key]) { window[key] = true; addScore(5); }
+        } else {
+          lbl.textContent = 'Hawaiian · tap to reveal';
+        }
+      };
+      container.appendChild(card);
+    });
+  });
+}
+
+// Register Kauai TOF
+window._tofDatasets = window._tofDatasets || {};
+window._tofDatasets['kauai-tof'] = kauaiTOFData;
+
+buildHunt(kauaiHuntItems, 'kauai-hunt', 'kauai-hunt-score', 'kauai-hunt-pts', 'kauai');
+buildTrivia(kauaiWaimeaTriviaData, 'kauai-waimea-trivia', 'kwt');
+buildTrivia(kauaiFoodTriviaData, 'kauai-food-trivia', 'kft');
+
+// Kauai cipher
+(function() {
+  const kCipher = [
+    { answer: 'NAPALI',     hint: 'The dramatic sea cliffs of the north shore' },
+    { answer: 'WAIMEA',     hint: 'The canyon — means "reddish water" in Hawaiian' },
+    { answer: 'LILIKOI',    hint: 'The tart tropical fruit in Hamura\'s famous pie' },
+  ];
+  kCipher.forEach(p => { p.encoded = encodeWord(p.answer); });
+  if (typeof CIPHER_DATA !== 'undefined') CIPHER_DATA['kauai'] = kCipher;
+  buildCipherDecoder('kauai-cipher', 'kauai');
+})();
+
+buildTOF2(kauaiTOFData, 'kauai-tof');
+buildKauaiVocab();
+
+// Add kauai to section completion tracking
+SECTION_REQUIRED['kauai'] = ['hunt','trivia','words','cipher','tof'];
+
+// Override showSection to also init kauai vocab
+const _showSectionOrig = showSection;
+// Note: kauai vocab is built on load so no special init needed
+
 // ===================== CUSTER STATE PARK PUZZLES =====================
 const custerHuntItems = [
   { text: "Spot a bison — bonus if it's within 50 feet of the car!", pts: 8 },
@@ -4807,11 +5185,7 @@ buildFillBlank('denver-fillblank',
 );
 
 // Denver compact sudoku
-sudoku6Data['dv6'] = {
-  puzzle:   [[0,1,0,0,4,0],[0,0,4,0,0,2],[2,0,0,1,0,0],[0,0,6,0,0,4],[4,0,0,5,0,0],[0,3,0,0,1,0]],
-  solution: [[3,1,2,6,4,5],[5,6,4,3,1,2],[2,4,5,1,6,3],[1,5,6,2,3,4],[4,2,1,5,3,6],[6,3,3,4,1,5]]
-};
-buildSudoku6('dv6');
+
 
 // Update section completion to include denver
 SECTION_REQUIRED['denver'] = ['hunt','trivia','words','cipher','tof'];
